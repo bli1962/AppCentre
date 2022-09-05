@@ -1,0 +1,40 @@
+﻿body {
+	position: relative;
+	margin-top: 5px;
+	padding-top: 5px;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	margin: 0;
+	/*background-image: url("http://www.iamag.co/features/itsart/wp-content/uploads/2014/07/imperial-boy-16.jpg");*/
+	font-family: Consolas, monospace,verdana;
+	color: black;	
+}
+
+
+table {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-spacing: 5px;
+	background: darkseagreen 
+}
+
+table tr {
+	height: 20px;
+	vertical-align: top;
+}
+
+table th {
+	text-align: center;
+	font-size: medium;
+}
+
+	table td {
+		height: 20px;
+		font-size: medium;
+	}
+
+
+.modal-mizuho {
+	width: 500px;
+	margin: auto;
+}

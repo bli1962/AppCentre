@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+
+    <link href="../../../Content/DisplayStyle.css" rel="stylesheet" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+
+    <script src="../CustomScripts.js"></script>
+    <script src="../includeExtHTML.js"></script>
+
+    <script src="PutFXDelivery.js"></script>
+    <!--<script type="text/javascript">
+    </script>-->
+</head>
+
+
+<body style="padding-top:20px">
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>Send FX Settlement To Finalised Status</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <!--<div w3-include-html="../commonMessageBox.html"></div>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <!--Bootstrap alert to display any validation errors-->
+                <div id="divMessageBox" class="alert collapse">
+                    <a id="linkClose" href="#" class="close">&times;</a>
+                    <div id="divMessageText"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-10">
+                <div id="divData" class="hidden">
+                    <div class="well">
+                        <input id="btnRefresh" class="btn btn-outline-primary m-1 float-left" type="button" value="Get Pending Delivery" />
+                        <br />
+                    </div>
+                    <table class="table table-sm table-bordered table-striped table-hover" style="background: #99ccff" id="tblData">
+                        <thead>
+                            <tr class="success">
+                                <th>REF NO</th>
+                                <th>CUST ABBR</th>
+                                <th>REC SETTL CODE</th>
+                                <th>REC CUST ABBR</th>
+                                <th>REC CCY CD</th>
+                                <th>PAY SETTL CODE</th>
+                                <th>PAY CUST ABBR</th>
+                                <th>PAY CCY CD</th>
+                                <th>STATUS</th>
+                                <th>DELETION STATUS</th>
+                                <th>GIP STATUS</th>
+                                <th>GIP DESCRIPTION</th>
+                                <th>AUTHORIZE BY</th>
+                                <th>TRAN NO</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyData"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-6">
+
+                <div id="DivSpanUsername">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>GBASE Ref No :</td>
+                            <td><input type="text" class="form-control" id="refNo" value="" required /></td>
+                            <td>For example: FSS751379801</td>
+                        </tr>
+                        <tr>
+                            <td>AUTHORIZED BY :</td>
+                            <td><input type="text" class="form-control" id="authoriser" value="" readonly /></td>
+                            <td>Readonly</td>
+                        </tr>
+                        <tr>
+                            <td>STATUS :</td>
+                            <td><input type="text" class="form-control" id="status" value="F" disabled /></td>
+                            <!--<td>
+                            <select class="form-control" id="status">
+                                <option value="F">Finalised</option>
+                                <option value="A">To be Authroised</option>
+                                <option value="V">Verified</option>
+                                <option value="D">Deleted</option>
+                            </select>
+                        </td>-->
+                            <td>Readonly</td>
+                        </tr>
+                        <tr>
+                            <td>DELETION STATUS :</td>
+                            <!--<td><input type="text" class="form-control" id="deletionStatus" value="" /></td>-->
+                            <td>
+                                <select class="form-control" id="deletionStatus">
+                                    <option value="">N/A</option>
+                                    <option value="D">D</option>
+                                </select>
+                            </td>
+                            <td>N/A for upload, D for deletion</td>
+                        </tr>
+                        <tr>
+                            <td>GIP STATUS :</td>
+                            <!--<td><input type="text" class="form-control" id="gipStatus" value="15" /></td>-->
+                            <td>
+                                <select class="form-control" id="gipStatus" disabled>
+                                    <option value="15">15</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </td>
+                            <td>15 for upload, 8 for deletion</td>
+                        </tr>
+                        <tr>
+                            <td>GIP DESCRIPTION :</td>
+                            <td><input type="text" class="form-control" id="gipDescription" value="Approved" Readonly /></td>
+                            <td>Readonly</td>
+                        </tr>
+                        <tr>
+                            <td>TRAN NO. :</td>
+                            <td><input type="text" class="form-control" id="tranNo" value="" maxlength="5" required /></td>
+                            <td>Please input tran no.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="well">
+                    <input id="btnUpdate" class="btn btn-outline-primary m-1 float-left" type="button" value="Set FX Delivery to Finalised Status" />
+                  
+                    <input id="btnBack" class="btn btn-outline-primary m-1 float-right" type="button" value="Back" />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel" style="color: red; border-color: #ffffff; ">
+                    <div class="panel-body">
+                        <ul>
+                            <li>The only <b>pending</b> status can be sent to finalised status.</li>
+                            <li>You must be the last <b>authorisor</b> of the transaction.</li>
+                            <li>No GIP will be generated to the operation, so no GBASE data will be updated.</li>
+                            <li>The excution can be tracked in our audit log table.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+        $('#divBasicAuthUsername').hide('fade');
+        includeHTML();
+    </script>
+</body>
+</html>

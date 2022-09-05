@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3879ee28d9a429b970eca17a97293d6" Name="Diagram1">
+        <EntityTypeShape EntityType="eDocumentModel.CurrentSavingsStatement" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.ForeignExchangeConfirmation" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.ForeignExchangeStatement" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.gBaseDocument" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.MoneyMarketConfirmation" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.MoneyMarketStatement" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDocumentModel.Statement" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="eDocumentModel.FK_CurrentSavingsDepositStatements_Statements" ManuallyRouted="false" />
+        <AssociationConnector Association="eDocumentModel.FK_ForeignExchangeConfirmations_gBaseDocuments" ManuallyRouted="false" />
+        <AssociationConnector Association="eDocumentModel.FK_ForeignExchangeStatement_Statements" ManuallyRouted="false" />
+        <AssociationConnector Association="eDocumentModel.FK_MoneyMarketConfirmations_gBaseDocuments" ManuallyRouted="false" />
+        <AssociationConnector Association="eDocumentModel.FK_Statements_gBaseDocuments" ManuallyRouted="false" />
+        <AssociationConnector Association="eDocumentModel.FK_CallLoanAndDepositStatements_Statements" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

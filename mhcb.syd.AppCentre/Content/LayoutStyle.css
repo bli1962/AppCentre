@@ -1,0 +1,166 @@
+﻿body {
+    position: relative;
+    margin-top: 5px;
+    padding-top: 5px;
+
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    /*background-image: url("http://www.iamag.co/features/itsart/wp-content/uploads/2014/07/imperial-boy-16.jpg");*/
+    font-family: Consolas, monospace,verdana;
+    color: black;
+}
+
+.Logoheader img {
+    float: left;
+    width: 150px;
+    height: 50px;
+    /*   background: #555;*/
+}
+
+
+/***** navbar-custom  #0041C2  ; ******/
+.navbar-custom {
+    background-color: rgb(20, 0, 121);
+    font-size: medium;
+    color: white;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+    }
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+.jumbotron {
+    padding: 5px 50px 5px 20px;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: small;
+    color: black;
+}
+
+#section1 {
+    color: #fff;
+    background-color: #82CAFA;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;  
+}
+
+#section2 {
+    color: #fff;
+    background-color: #A0CFEC;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+#section3 {
+    color: #fff;
+    background-color: #A0CFEC;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+
+#section4 {
+    color: #fff;
+    background-color: #009688;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+#section5 {
+    color: #fff;
+    background-color: #82CAFA;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+#section6 {
+    color: #fff;
+    background-color: #009688;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+#section7 {
+    color: #fff;
+    background-color: #00bfff;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+
+
+
+
+#section41 {
+    color: #fff;
+    background-color: #BCC6CC;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+#section42 {
+    color: #fff;
+    background-color: #009688;
+    font-family: Consolas, monospace,'Courier New';
+    font-size: smaller;
+}
+
+
+
+/***** navbar-custom2  ******/
+.navbar-custom2 {
+    background-color: #0041C2;
+    font-size: medium;
+    color: white;
+}
+
+ul.nav-pills {
+    /*top: 1px;*/
+    background-color: #0041C2;
+    font-size: medium;
+    color: white;
+    /* position: fixed; */
+}
+
+
+myh3 {
+    height: 25px;
+    font-size: larger;
+    /*font-style: italic;*/
+    text-align: center;
+    color: darkblue;
+    /*background-color: #1589FF;*/
+}
+
+
+div.col-8 div {
+    height: 500px;
+}
+
+list-group-item {
+    position: relative;
+    display: block;
+    padding: 0px 5px; /* adjust here */
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    line-height: 1em; /* set to text height */
+    height: auto;
+}
+

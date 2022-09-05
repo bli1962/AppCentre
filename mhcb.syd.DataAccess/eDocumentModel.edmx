@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eDocumentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CurrentSavingsStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatementId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="250" />
+          <Property Name="ValueDate" Type="varchar" MaxLength="250" />
+          <Property Name="RefNo" Type="varchar" MaxLength="250" />
+          <Property Name="Debit" Type="varchar" MaxLength="250" />
+          <Property Name="Credit" Type="varchar" MaxLength="250" />
+          <Property Name="Balance" Type="varchar" MaxLength="250" />
+          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ForeignExchangeConfirmations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gBaseDocumentId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ContractDate" Type="varchar" MaxLength="250" />
+          <Property Name="ReferenceNumber" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="OurPurchaseAmount" Type="varchar" MaxLength="250" />
+          <Property Name="OurPurchaseRate" Type="varchar" MaxLength="250" />
+          <Property Name="OurSaleAmount" Type="varchar" MaxLength="250" />
+          <Property Name="OurSaleDeliveryDate" Type="nchar" MaxLength="10" />
+          <Property Name="OurDueDate" Type="nchar" MaxLength="10" />
+          <Property Name="PleasePayTo" Type="text" />
+          <Property Name="WeWillPayTo" Type="text" />
+          <Property Name="Broker" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+          <Property Name="OperationDate" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TransactionNumber" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Operator" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForeignExchangeStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatementId" Type="int" Nullable="false" />
+          <Property Name="ReferenceNo" Type="varchar" MaxLength="200" />
+          <Property Name="Currency" Type="varchar" MaxLength="200" />
+          <Property Name="OurPrice" Type="varchar" MaxLength="200" />
+          <Property Name="OurSale" Type="varchar" MaxLength="200" />
+          <Property Name="DealDate" Type="varchar" MaxLength="200" />
+          <Property Name="ValueDate" Type="varchar" MaxLength="200" />
+          <Property Name="Rate" Type="varchar" MaxLength="200" />
+          <Property Name="EquivalentAmountCurrency" Type="varchar" MaxLength="200" />
+          <Property Name="EquivalentAmount" Type="varchar" MaxLength="200" />
+          <Property Name="Remarks" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="gBaseDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportType" Type="nvarchar" MaxLength="250" />
+          <Property Name="ReportFileName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReportArchiveLocation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="DateProcessed" Type="date" />
+          <Property Name="Errored" Type="bit" Nullable="false" />
+          <Property Name="ErrorMessage" Type="text" />
+        </EntityType>
+        <EntityType Name="MoneyMarketConfirmations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gBaseDocumentId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ContractDate" Type="varchar" MaxLength="250" />
+          <Property Name="ReferenceNumber" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ValueDate" Type="varchar" MaxLength="250" />
+          <Property Name="DueDate" Type="varchar" MaxLength="250" />
+          <Property Name="Rate" Type="varchar" MaxLength="250" />
+          <Property Name="OldRate" Type="varchar" MaxLength="250" />
+          <Property Name="PrincipalAmount" Type="varchar" MaxLength="250" />
+          <Property Name="IncreaseDecrease" Type="varchar" MaxLength="250" />
+          <Property Name="ClosingBalance" Type="varchar" MaxLength="250" />
+          <Property Name="MHCBPayTo" Type="text" />
+          <Property Name="CustomerPayTo" Type="text" />
+          <Property Name="Broker" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+          <Property Name="Days" Type="varchar" MaxLength="250" />
+          <Property Name="OperationDate" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TransactionNumber" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Operator" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MurexEvent" Type="varchar" MaxLength="200" />
+          <Property Name="MurexGenerator" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="MoneyMarketStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatementId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="200" />
+          <Property Name="DebitCredit" Type="char" MaxLength="1" />
+          <Property Name="Principal" Type="varchar" MaxLength="200" />
+          <Property Name="Days" Type="varchar" MaxLength="200" />
+          <Property Name="Rate" Type="varchar" MaxLength="200" />
+          <Property Name="DealNo" Type="varchar" MaxLength="200" />
+          <Property Name="Term" Type="varchar" MaxLength="200" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="Broker" Type="varchar" MaxLength="200" />
+          <Property Name="Interest" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Statements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gBaseDocumentId" Type="int" Nullable="false" />
+          <Property Name="AccountType" Type="varchar" MaxLength="250" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="250" />
+          <Property Name="Currency" Type="varchar" MaxLength="250" />
+          <Property Name="Period" Type="varchar" MaxLength="250" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="250" />
+          <Property Name="CompanyAddress" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_CallLoanAndDepositStatements_Statements">
+          <End Role="Statements" Type="Self.Statements" Multiplicity="1" />
+          <End Role="MoneyMarketStatements" Type="Self.MoneyMarketStatements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyMarketStatements">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentSavingsDepositStatements_Statements">
+          <End Role="Statements" Type="Self.Statements" Multiplicity="1" />
+          <End Role="CurrentSavingsStatements" Type="Self.CurrentSavingsStatements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrentSavingsStatements">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForeignExchangeConfirmations_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocuments" Multiplicity="1" />
+          <End Role="ForeignExchangeConfirmations" Type="Self.ForeignExchangeConfirmations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForeignExchangeConfirmations">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForeignExchangeStatement_Statements">
+          <End Role="Statements" Type="Self.Statements" Multiplicity="1" />
+          <End Role="ForeignExchangeStatement" Type="Self.ForeignExchangeStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForeignExchangeStatement">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyMarketConfirmations_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocuments" Multiplicity="1" />
+          <End Role="MoneyMarketConfirmations" Type="Self.MoneyMarketConfirmations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyMarketConfirmations">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Statements_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocuments" Multiplicity="1" />
+          <End Role="Statements" Type="Self.Statements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Statements">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eDocumentModelStoreContainer">
+          <EntitySet Name="CurrentSavingsStatements" EntityType="Self.CurrentSavingsStatements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForeignExchangeConfirmations" EntityType="Self.ForeignExchangeConfirmations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForeignExchangeStatement" EntityType="Self.ForeignExchangeStatement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gBaseDocuments" EntityType="Self.gBaseDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoneyMarketConfirmations" EntityType="Self.MoneyMarketConfirmations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoneyMarketStatements" EntityType="Self.MoneyMarketStatements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statements" EntityType="Self.Statements" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CallLoanAndDepositStatements_Statements" Association="Self.FK_CallLoanAndDepositStatements_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="MoneyMarketStatements" EntitySet="MoneyMarketStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentSavingsDepositStatements_Statements" Association="Self.FK_CurrentSavingsDepositStatements_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="CurrentSavingsStatements" EntitySet="CurrentSavingsStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForeignExchangeConfirmations_gBaseDocuments" Association="Self.FK_ForeignExchangeConfirmations_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="ForeignExchangeConfirmations" EntitySet="ForeignExchangeConfirmations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForeignExchangeStatement_Statements" Association="Self.FK_ForeignExchangeStatement_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="ForeignExchangeStatement" EntitySet="ForeignExchangeStatement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyMarketConfirmations_gBaseDocuments" Association="Self.FK_MoneyMarketConfirmations_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="MoneyMarketConfirmations" EntitySet="MoneyMarketConfirmations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Statements_gBaseDocuments" Association="Self.FK_Statements_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="Statements" EntitySet="Statements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eDocumentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CurrentSavingsStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatementId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ValueDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RefNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Debit" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Credit" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Statement" Relationship="Self.FK_CurrentSavingsDepositStatements_Statements" FromRole="CurrentSavingsStatements" ToRole="Statements" />
+        </EntityType>
+        <EntityType Name="ForeignExchangeConfirmation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gBaseDocumentId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContractDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OurPurchaseAmount" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OurPurchaseRate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OurSaleAmount" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OurSaleDeliveryDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OurDueDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PleasePayTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="WeWillPayTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Broker" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OperationDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransactionNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operator" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gBaseDocument" Relationship="Self.FK_ForeignExchangeConfirmations_gBaseDocuments" FromRole="ForeignExchangeConfirmations" ToRole="gBaseDocuments" />
+        </EntityType>
+        <EntityType Name="ForeignExchangeStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatementId" Type="Int32" Nullable="false" />
+          <Property Name="ReferenceNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OurPrice" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OurSale" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DealDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ValueDate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EquivalentAmountCurrency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EquivalentAmount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Statement" Relationship="Self.FK_ForeignExchangeStatement_Statements" FromRole="ForeignExchangeStatement" ToRole="Statements" />
+        </EntityType>
+        <EntityType Name="gBaseDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ReportFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReportArchiveLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="DateProcessed" Type="DateTime" Precision="0" />
+          <Property Name="Errored" Type="Boolean" Nullable="false" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ForeignExchangeConfirmations" Relationship="Self.FK_ForeignExchangeConfirmations_gBaseDocuments" FromRole="gBaseDocuments" ToRole="ForeignExchangeConfirmations" />
+          <NavigationProperty Name="MoneyMarketConfirmations" Relationship="Self.FK_MoneyMarketConfirmations_gBaseDocuments" FromRole="gBaseDocuments" ToRole="MoneyMarketConfirmations" />
+          <NavigationProperty Name="Statements" Relationship="Self.FK_Statements_gBaseDocuments" FromRole="gBaseDocuments" ToRole="Statements" />
+        </EntityType>
+        <EntityType Name="MoneyMarketConfirmation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gBaseDocumentId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContractDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReferenceNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ValueDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OldRate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PrincipalAmount" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IncreaseDecrease" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ClosingBalance" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MHCBPayTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPayTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Broker" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Days" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OperationDate" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TransactionNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Operator" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MurexEvent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MurexGenerator" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gBaseDocument" Relationship="Self.FK_MoneyMarketConfirmations_gBaseDocuments" FromRole="MoneyMarketConfirmations" ToRole="gBaseDocuments" />
+        </EntityType>
+        <EntityType Name="MoneyMarketStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatementId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DebitCredit" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Principal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Days" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DealNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Term" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Broker" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Interest" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Statement" Relationship="Self.FK_CallLoanAndDepositStatements_Statements" FromRole="MoneyMarketStatements" ToRole="Statements" />
+        </EntityType>
+        <EntityType Name="Statement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gBaseDocumentId" Type="Int32" Nullable="false" />
+          <Property Name="AccountType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Period" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CurrentSavingsStatements" Relationship="Self.FK_CurrentSavingsDepositStatements_Statements" FromRole="Statements" ToRole="CurrentSavingsStatements" />
+          <NavigationProperty Name="ForeignExchangeStatements" Relationship="Self.FK_ForeignExchangeStatement_Statements" FromRole="Statements" ToRole="ForeignExchangeStatement" />
+          <NavigationProperty Name="gBaseDocument" Relationship="Self.FK_Statements_gBaseDocuments" FromRole="Statements" ToRole="gBaseDocuments" />
+          <NavigationProperty Name="MoneyMarketStatements" Relationship="Self.FK_CallLoanAndDepositStatements_Statements" FromRole="Statements" ToRole="MoneyMarketStatements" />
+        </EntityType>
+        <Association Name="FK_CurrentSavingsDepositStatements_Statements">
+          <End Role="Statements" Type="Self.Statement" Multiplicity="1" />
+          <End Role="CurrentSavingsStatements" Type="Self.CurrentSavingsStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrentSavingsStatements">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForeignExchangeConfirmations_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocument" Multiplicity="1" />
+          <End Role="ForeignExchangeConfirmations" Type="Self.ForeignExchangeConfirmation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForeignExchangeConfirmations">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForeignExchangeStatement_Statements">
+          <End Role="Statements" Type="Self.Statement" Multiplicity="1" />
+          <End Role="ForeignExchangeStatement" Type="Self.ForeignExchangeStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ForeignExchangeStatement">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyMarketConfirmations_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocument" Multiplicity="1" />
+          <End Role="MoneyMarketConfirmations" Type="Self.MoneyMarketConfirmation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyMarketConfirmations">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Statements_gBaseDocuments">
+          <End Role="gBaseDocuments" Type="Self.gBaseDocument" Multiplicity="1" />
+          <End Role="Statements" Type="Self.Statement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gBaseDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Statements">
+              <PropertyRef Name="gBaseDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallLoanAndDepositStatements_Statements">
+          <End Role="Statements" Type="Self.Statement" Multiplicity="1" />
+          <End Role="MoneyMarketStatements" Type="Self.MoneyMarketStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MoneyMarketStatements">
+              <PropertyRef Name="StatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eDocumentDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CurrentSavingsStatements" EntityType="Self.CurrentSavingsStatement" />
+          <EntitySet Name="ForeignExchangeConfirmations" EntityType="Self.ForeignExchangeConfirmation" />
+          <EntitySet Name="ForeignExchangeStatements" EntityType="Self.ForeignExchangeStatement" />
+          <EntitySet Name="gBaseDocuments" EntityType="Self.gBaseDocument" />
+          <EntitySet Name="MoneyMarketConfirmations" EntityType="Self.MoneyMarketConfirmation" />
+          <EntitySet Name="MoneyMarketStatements" EntityType="Self.MoneyMarketStatement" />
+          <EntitySet Name="Statements" EntityType="Self.Statement" />
+          <AssociationSet Name="FK_CurrentSavingsDepositStatements_Statements" Association="Self.FK_CurrentSavingsDepositStatements_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="CurrentSavingsStatements" EntitySet="CurrentSavingsStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForeignExchangeConfirmations_gBaseDocuments" Association="Self.FK_ForeignExchangeConfirmations_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="ForeignExchangeConfirmations" EntitySet="ForeignExchangeConfirmations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForeignExchangeStatement_Statements" Association="Self.FK_ForeignExchangeStatement_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="ForeignExchangeStatement" EntitySet="ForeignExchangeStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyMarketConfirmations_gBaseDocuments" Association="Self.FK_MoneyMarketConfirmations_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="MoneyMarketConfirmations" EntitySet="MoneyMarketConfirmations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Statements_gBaseDocuments" Association="Self.FK_Statements_gBaseDocuments">
+            <End Role="gBaseDocuments" EntitySet="gBaseDocuments" />
+            <End Role="Statements" EntitySet="Statements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallLoanAndDepositStatements_Statements" Association="Self.FK_CallLoanAndDepositStatements_Statements">
+            <End Role="Statements" EntitySet="Statements" />
+            <End Role="MoneyMarketStatements" EntitySet="MoneyMarketStatements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eDocumentModelStoreContainer" CdmEntityContainer="eDocumentDBEntities">
+          <EntitySetMapping Name="CurrentSavingsStatements">
+            <EntityTypeMapping TypeName="eDocumentModel.CurrentSavingsStatement">
+              <MappingFragment StoreEntitySet="CurrentSavingsStatements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatementId" ColumnName="StatementId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForeignExchangeConfirmations">
+            <EntityTypeMapping TypeName="eDocumentModel.ForeignExchangeConfirmation">
+              <MappingFragment StoreEntitySet="ForeignExchangeConfirmations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gBaseDocumentId" ColumnName="gBaseDocumentId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="OurPurchaseAmount" ColumnName="OurPurchaseAmount" />
+                <ScalarProperty Name="OurPurchaseRate" ColumnName="OurPurchaseRate" />
+                <ScalarProperty Name="OurSaleAmount" ColumnName="OurSaleAmount" />
+                <ScalarProperty Name="OurSaleDeliveryDate" ColumnName="OurSaleDeliveryDate" />
+                <ScalarProperty Name="OurDueDate" ColumnName="OurDueDate" />
+                <ScalarProperty Name="PleasePayTo" ColumnName="PleasePayTo" />
+                <ScalarProperty Name="WeWillPayTo" ColumnName="WeWillPayTo" />
+                <ScalarProperty Name="Broker" ColumnName="Broker" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForeignExchangeStatements">
+            <EntityTypeMapping TypeName="eDocumentModel.ForeignExchangeStatement">
+              <MappingFragment StoreEntitySet="ForeignExchangeStatement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatementId" ColumnName="StatementId" />
+                <ScalarProperty Name="ReferenceNo" ColumnName="ReferenceNo" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="OurPrice" ColumnName="OurPrice" />
+                <ScalarProperty Name="OurSale" ColumnName="OurSale" />
+                <ScalarProperty Name="DealDate" ColumnName="DealDate" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="EquivalentAmountCurrency" ColumnName="EquivalentAmountCurrency" />
+                <ScalarProperty Name="EquivalentAmount" ColumnName="EquivalentAmount" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gBaseDocuments">
+            <EntityTypeMapping TypeName="eDocumentModel.gBaseDocument">
+              <MappingFragment StoreEntitySet="gBaseDocuments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReportType" ColumnName="ReportType" />
+                <ScalarProperty Name="ReportFileName" ColumnName="ReportFileName" />
+                <ScalarProperty Name="ReportArchiveLocation" ColumnName="ReportArchiveLocation" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="DateProcessed" ColumnName="DateProcessed" />
+                <ScalarProperty Name="Errored" ColumnName="Errored" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoneyMarketConfirmations">
+            <EntityTypeMapping TypeName="eDocumentModel.MoneyMarketConfirmation">
+              <MappingFragment StoreEntitySet="MoneyMarketConfirmations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gBaseDocumentId" ColumnName="gBaseDocumentId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+                <ScalarProperty Name="ValueDate" ColumnName="ValueDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="OldRate" ColumnName="OldRate" />
+                <ScalarProperty Name="PrincipalAmount" ColumnName="PrincipalAmount" />
+                <ScalarProperty Name="IncreaseDecrease" ColumnName="IncreaseDecrease" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="MHCBPayTo" ColumnName="MHCBPayTo" />
+                <ScalarProperty Name="CustomerPayTo" ColumnName="CustomerPayTo" />
+                <ScalarProperty Name="Broker" ColumnName="Broker" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="MurexEvent" ColumnName="MurexEvent" />
+                <ScalarProperty Name="MurexGenerator" ColumnName="MurexGenerator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoneyMarketStatements">
+            <EntityTypeMapping TypeName="eDocumentModel.MoneyMarketStatement">
+              <MappingFragment StoreEntitySet="MoneyMarketStatements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatementId" ColumnName="StatementId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DebitCredit" ColumnName="DebitCredit" />
+                <ScalarProperty Name="Principal" ColumnName="Principal" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="DealNo" ColumnName="DealNo" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Broker" ColumnName="Broker" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statements">
+            <EntityTypeMapping TypeName="eDocumentModel.Statement">
+              <MappingFragment StoreEntitySet="Statements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gBaseDocumentId" ColumnName="gBaseDocumentId" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

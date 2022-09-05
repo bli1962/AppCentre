@@ -1,0 +1,2002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LoanDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COVENANT_CONDITION">
+          <Key>
+            <PropertyRef Name="CONDITION_TYPE" />
+          </Key>
+          <Property Name="CONDITION_TYPE" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONDITION_DESC" Type="varchar" MaxLength="150" />
+          <Property Name="CONDITION_GROUP" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="COVENANT_CONDITION_GROUP">
+          <Key>
+            <PropertyRef Name="CONDITION_GROUP_TYPE" />
+          </Key>
+          <Property Name="CONDITION_GROUP_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="CONDITION_GROUP_DESC" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="COVENANT_FREQ_TYPE">
+          <Key>
+            <PropertyRef Name="FREQ_TYPE" />
+          </Key>
+          <Property Name="FREQ_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="FREQ_DESC" Type="varchar" MaxLength="20" />
+          <Property Name="INTERVAL" Type="tinyint" />
+          <Property Name="DATE_PART" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="COVENANT_MASTER">
+          <Key>
+            <PropertyRef Name="COVENANT_NO" />
+          </Key>
+          <Property Name="COVENANT_NO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="15" />
+          <Property Name="BRANCH_NO" Type="varchar" MaxLength="3" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="ACCOUNT_OFFICER" Type="char" MaxLength="6" />
+          <Property Name="COV_TYPE" Type="varchar" MaxLength="3" />
+          <Property Name="REPORT_TYPE" Type="tinyint" />
+          <Property Name="FREQ_TYPE" Type="tinyint" />
+          <Property Name="DAY_OF_MONTH_TYPE" Type="tinyint" />
+          <Property Name="COV_START_DATE" Type="smalldatetime" />
+          <Property Name="COV_END_DATE" Type="smalldatetime" />
+          <Property Name="TIME_OF_RECEIPT" Type="tinyint" />
+          <Property Name="CONDITION_TYPE" Type="tinyint" />
+          <Property Name="MATH_SYMBOL" Type="varchar" MaxLength="2" />
+          <Property Name="VALUE" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="DENOMINATION" Type="varchar" MaxLength="10" />
+          <Property Name="MARGIN_BASE_TYPE" Type="tinyint" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY" Type="char" MaxLength="6" />
+          <Property Name="PROC_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="char" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+        </EntityType>
+        <EntityType Name="COVENANT_PERMISSION">
+          <Key>
+            <PropertyRef Name="DEPT_ID" />
+            <PropertyRef Name="DEPARTMENT_CODE" />
+          </Key>
+          <Property Name="DEPT_ID" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT_CODE" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="DEPT_CODE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="COVENANT_RECEIPT_TIMING">
+          <Key>
+            <PropertyRef Name="TIMING_TYPE" />
+          </Key>
+          <Property Name="TIMING_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="TIMING_DESC" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="INTERVAL" Type="tinyint" Nullable="false" />
+          <Property Name="DATE_PART" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ORDER" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COVENANT_RECORD">
+          <Key>
+            <PropertyRef Name="COVENANT_NO" />
+            <PropertyRef Name="RECORD_NO" />
+          </Key>
+          <Property Name="COVENANT_NO" Type="int" Nullable="false" />
+          <Property Name="RECORD_NO" Type="int" Nullable="false" />
+          <Property Name="REPORT_FREQ_TYPE" Type="tinyint" />
+          <Property Name="REPORT_DATE" Type="smalldatetime" />
+          <Property Name="DUE_DATE" Type="smalldatetime" />
+          <Property Name="CONDITION_TYPE" Type="tinyint" />
+          <Property Name="MATH_SYMBOL" Type="varchar" MaxLength="2" />
+          <Property Name="VALUE" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="DENOMINATION" Type="varchar" MaxLength="10" />
+          <Property Name="DATE_RECIEVED" Type="smalldatetime" />
+          <Property Name="RATE" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="DATE_RECIEVED_ADJ" Type="smalldatetime" />
+          <Property Name="RATE_ADJ" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="IN_COMPLIANCE" Type="varchar" MaxLength="5" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="200" />
+          <Property Name="ORIGINAL_DESC" Type="varchar" MaxLength="500" />
+          <Property Name="AO_REMARKS" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY" Type="char" MaxLength="6" />
+          <Property Name="PROC_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="char" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+          <Property Name="STRESS_VALUE" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="COVENANT_TYPE">
+          <Key>
+            <PropertyRef Name="COVENANT_TYPE" />
+          </Key>
+          <Property Name="COVENANT_TYPE" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="COVENANT_DECS" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="EXCH_RATE">
+          <Key>
+            <PropertyRef Name="CCY_CODE" />
+          </Key>
+          <Property Name="CCY_CODE" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="DKB_SPECIAL_RATE_USD" Type="decimal" Precision="18" Scale="6" />
+        </EntityType>
+        <EntityType Name="FACILITY_MASTER">
+          <Key>
+            <PropertyRef Name="REF_NO" />
+          </Key>
+          <Property Name="REF_NO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="APPLN_NO" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="APPLN_NO1" Type="varchar" MaxLength="11" />
+          <Property Name="RATING1" Type="char" MaxLength="1" />
+          <Property Name="RATING2" Type="smallint" />
+          <Property Name="PROD_TYPE1" Type="smallint" />
+          <Property Name="PROD_TYPE2" Type="smallint" />
+          <Property Name="PROD_TYPE3" Type="smallint" />
+          <Property Name="PROD_TYPE4" Type="smallint" />
+          <Property Name="APPR_DATE" Type="datetime" />
+          <Property Name="APPR_DATE1" Type="datetime" />
+          <Property Name="MULTI_CCY" Type="bit" />
+          <Property Name="BASE_CCY" Type="char" MaxLength="3" />
+          <Property Name="LIMIT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="MAT_DATE" Type="datetime" />
+          <Property Name="SIGHT_DATE" Type="datetime" />
+          <Property Name="MAX_INT_PERIOD" Type="varchar" MaxLength="30" />
+          <Property Name="BASE_RATE" Type="varchar" MaxLength="10" />
+          <Property Name="BASE_RATE_REMARK" Type="varchar" MaxLength="50" />
+          <Property Name="MARGIN" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="INT_CALC_METHOD" Type="smallint" />
+          <Property Name="INT_CALC_REMARK" Type="varchar" MaxLength="50" />
+          <Property Name="REPAY_TYPE" Type="smallint" />
+          <Property Name="REPAY_REMARK" Type="varchar" MaxLength="50" />
+          <Property Name="OTHER_REMARK" Type="varchar" MaxLength="400" />
+          <Property Name="G_FEE_TYPE" Type="smallint" />
+          <Property Name="G_FEE_RATE" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="FEE_KIND_ID" Type="tinyint" Nullable="false" />
+          <Property Name="FEE_RATE" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="FEE_CALC_METHOD_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="FEE_START_DATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="FEE_END_DATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="FEE_PAYMENT_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="FREQ_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="DAY_OF_MONTH_TYPE" Type="tinyint" Nullable="false" />
+          <Property Name="FEE_COL_DATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="FEE_REMARKS" Type="varchar" MaxLength="100" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY1" Type="char" MaxLength="6" />
+          <Property Name="PROC_BY2" Type="char" MaxLength="6" />
+          <Property Name="APPR_BY1" Type="char" MaxLength="6" />
+          <Property Name="APPR_BY2" Type="char" MaxLength="6" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="APPR_ON" Type="datetime" />
+          <Property Name="MODIFY_DATE" Type="datetime" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="BRANCH_NO" Type="varchar" MaxLength="3" />
+          <Property Name="DIRECT_DEBIT" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Loan.dbo.LCS_CUST_MASTER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LCS_CUST_MASTER">
+          <Key>
+            <PropertyRef Name="CUST_ABBR" />
+            <PropertyRef Name="BRANCH_NO" />
+          </Key>
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="BRANCH_NO" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PREP_BY" Type="varchar" MaxLength="6" />
+          <Property Name="PREP_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="varchar" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER">
+          <Key>
+            <PropertyRef Name="LOAN_NO" />
+          </Key>
+          <Property Name="LOAN_NO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRANCH_NO" Type="varchar" MaxLength="3" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="MULTI_BRW" Type="bit" />
+          <Property Name="AGREEM_DATE1" Type="datetime" />
+          <Property Name="AGREEM_DATE2" Type="datetime" />
+          <Property Name="AMENDMENT_DATE" Type="varchar" MaxLength="400" />
+          <Property Name="RATING" Type="varchar" MaxLength="2" />
+          <Property Name="PROD_TYPE2" Type="smallint" />
+          <Property Name="PROD_TYPE4" Type="smallint" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="400" />
+          <Property Name="AGENT" Type="varchar" MaxLength="50" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="70" />
+          <Property Name="CONTACT" Type="varchar" MaxLength="200" />
+          <Property Name="TEL_NO" Type="varchar" MaxLength="25" />
+          <Property Name="FAX_NO" Type="varchar" MaxLength="25" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY" Type="char" MaxLength="6" />
+          <Property Name="PROC_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="char" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+          <Property Name="CCIF" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="CCIF_NAME" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="GCIF" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="RATIO_SPREAD1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RATIO_SPREAD2" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_BORROWER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" Nullable="false" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="CCIF" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="CCIF_NAME" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="GCIF" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_COVENANT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" Nullable="false" />
+          <Property Name="COVENANT_NO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_RATING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" Nullable="false" />
+          <Property Name="RATING_TYPE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="RATING_RANGE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_SECURITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" Nullable="false" />
+          <Property Name="GUARANTEE" Type="bit" Nullable="false" />
+          <Property Name="GUARANTOR" Type="bit" Nullable="false" />
+          <Property Name="GUARANTOR_SECURITY_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="COLLATERAL" Type="bit" Nullable="false" />
+          <Property Name="COLLATERAL_SECURITY_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="COLLATERAL_LEDGER" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EXPIRY_DATE" Type="smalldatetime" />
+          <Property Name="DETAILS" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="COMMENT" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="STATUS" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_STATUS_CODE">
+          <Key>
+            <PropertyRef Name="MODULE" />
+            <PropertyRef Name="STATUS_CODE" />
+          </Key>
+          <Property Name="MODULE" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SHORT_DESC" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="FULL_DESC" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LOAN_TRANS">
+          <Key>
+            <PropertyRef Name="REF_NO" />
+            <PropertyRef Name="TRANS_NO" />
+          </Key>
+          <Property Name="REF_NO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="TRANS_NO" Type="int" Nullable="false" />
+          <Property Name="RO_NO" Type="int" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="START_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DUE_DATE" Type="datetime" />
+          <Property Name="INC_DUE_DATE" Type="bit" />
+          <Property Name="DAYS" Type="int" />
+          <Property Name="DRAW_CCY" Type="char" MaxLength="3" />
+          <Property Name="DRAW_AMT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="DRAW_EQUIV" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="DRAW_EXCH_RATE_IND" Type="char" MaxLength="1" />
+          <Property Name="DRAW_EXCH_RATE" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="REPAY_CCY" Type="char" MaxLength="3" />
+          <Property Name="REPAY_AMT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="REPAY_EQUIV" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="REPAY_EXCH_RATE_IND" Type="char" MaxLength="1" />
+          <Property Name="REPAY_EXCH_RATE" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="BAL_AMT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="INT_RATE" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="BASE_RATE" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="INT_AMT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="INT_AMT_CALC" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="INT_RECV_DATE" Type="varchar" MaxLength="10" />
+          <Property Name="INT_RECV_BY" Type="char" MaxLength="6" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="PROC_BY1" Type="char" MaxLength="6" />
+          <Property Name="PROC_BY2" Type="char" MaxLength="6" />
+          <Property Name="APPR_BY1" Type="char" MaxLength="6" />
+          <Property Name="APPR_BY2" Type="char" MaxLength="6" />
+          <Property Name="CHK_BY" Type="char" MaxLength="6" />
+          <Property Name="FLAG_DEL_BY" Type="char" MaxLength="6" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="100" />
+          <Property Name="INC_START_DATE" Type="bit" />
+          <Property Name="DRAWDOWN_NO" Type="nvarchar" MaxLength="30" />
+          <Property Name="SCHEME_NO" Type="nvarchar" MaxLength="12" />
+          <Property Name="AUTHORIZED" Type="nvarchar" MaxLength="1" />
+          <Property Name="FINAL_DUE_DATE" Type="datetime" />
+          <Property Name="INTEREST_TO_DATE" Type="datetime" />
+          <Property Name="INTEREST_CALC_CODE" Type="nvarchar" MaxLength="5" />
+          <Property Name="BASE_RATE_CODE" Type="nvarchar" MaxLength="5" />
+          <Property Name="SPREAD" Type="decimal" Precision="22" Scale="7" />
+          <Property Name="INTEREST_COLLECT" Type="nvarchar" MaxLength="1" />
+          <Property Name="INTERNAL_RATE" Type="nvarchar" MaxLength="1" />
+          <Property Name="RECEIVING_METHOD" Type="nvarchar" MaxLength="2" />
+          <Property Name="PAYING_METHOD" Type="nvarchar" MaxLength="2" />
+          <Property Name="ACCOUNT_CODE" Type="int" />
+          <Property Name="CUSTOMER_ACCOUNT_CODE_BORROWER" Type="nvarchar" MaxLength="12" />
+          <Property Name="CUSTOMER_ACCOUNT_CODE" Type="int" />
+          <Property Name="ACCOUNT_NO1" Type="int" />
+          <Property Name="ACCOUNT_NO2" Type="int" />
+          <Property Name="ACCOUNT_NO1_MANUAL_ENTRY" Type="nvarchar" MaxLength="3" />
+          <Property Name="ACCOUNT_NO2_MANUAL_ENTRY" Type="nvarchar" MaxLength="6" />
+          <Property Name="ATTENTION" Type="nvarchar" MaxLength="200" />
+          <Property Name="Old_RO_InterestCollect" Type="nvarchar" MaxLength="1" />
+          <Property Name="Old_RO_IntAmt" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="RO_Type1" Type="nvarchar" MaxLength="1" />
+          <Property Name="RO_Type2" Type="nvarchar" MaxLength="1" />
+          <Property Name="InitialInputDateTime" Type="datetime" />
+          <Property Name="InitialApprovalDateTime" Type="datetime" />
+          <Property Name="FinalApprovalDateTime" Type="datetime" />
+          <Property Name="ModifyRateDateTime" Type="datetime" />
+          <Property Name="ApproveModifiedRateDateTime" Type="datetime" />
+          <Property Name="ModifyRatesBy" Type="char" MaxLength="6" />
+          <Property Name="AppRatesBy" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="PROD_TYPE">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="smallint" Nullable="false" />
+          <Property Name="PROD_DESC" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="STATUS_CODE">
+          <Key>
+            <PropertyRef Name="STATUS_CODE" />
+          </Key>
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="STATUS_DESC" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TRANCHE_CONTENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRANCHE_NO" Type="int" Nullable="false" />
+          <Property Name="REF_NO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="LIMIT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="CCY" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="STATUS" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANCHE_GUARANTEE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRANCHE_NO" Type="int" Nullable="false" />
+          <Property Name="GUARANTEE_NO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="GBASE_GUARANTEE_NO" Type="varchar" MaxLength="15" />
+          <Property Name="BORROWER" Type="varchar" MaxLength="100" />
+          <Property Name="MULTI_BORROWERS" Type="varchar" MaxLength="100" />
+          <Property Name="BENEFICIARY" Type="varchar" MaxLength="100" />
+          <Property Name="CCY" Type="varchar" MaxLength="3" />
+          <Property Name="ORIGINAL_AMOUNT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OUTSTANDING_AMOUNT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BG_ISSUE_DATE" Type="smalldatetime" />
+          <Property Name="BG_CANCEL_DATE" Type="smalldatetime" />
+          <Property Name="BG_EXPIRY_DATE" Type="smalldatetime" />
+          <Property Name="BG_REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANCHE_MARGIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TRANCHE_NO" Type="int" Nullable="false" />
+          <Property Name="REF_NO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="RATIO_TYPE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="RATIO_RANGE" Type="varchar" MaxLength="20" />
+          <Property Name="RATIO_MARGIN" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="LINE_FEE" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="COMMITMENT_FEE" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="PERFOMANCE_GNTEE" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="FINANCIAL_GNTEE" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="OTHER" Type="decimal" Precision="12" Scale="6" />
+          <Property Name="SELECTED" Type="bit" Nullable="false" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANCHE_MASTER">
+          <Key>
+            <PropertyRef Name="TRANCHE_NO" />
+          </Key>
+          <Property Name="TRANCHE_NO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" />
+          <Property Name="TRANCHE_TYPE" Type="varchar" MaxLength="16" />
+          <Property Name="TRANCHE_NAME" Type="varchar" MaxLength="5" />
+          <Property Name="PROD_TYPE1" Type="smallint" />
+          <Property Name="PROD_TYPE5" Type="smallint" />
+          <Property Name="APPLN_NO" Type="varchar" MaxLength="11" />
+          <Property Name="APPLN_DATE" Type="datetime" />
+          <Property Name="HO_APPR_DATE" Type="datetime" />
+          <Property Name="APPLN_NO_RELT" Type="varchar" MaxLength="11" />
+          <Property Name="APPLN_DATE_RELT" Type="datetime" />
+          <Property Name="BASE_CCY" Type="char" MaxLength="3" />
+          <Property Name="MULTI_CCY" Type="bit" />
+          <Property Name="TRANCHE_PORTION" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="SYND_PORTION" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="PORTION_NOTES" Type="varchar" MaxLength="200" />
+          <Property Name="AVAIL_START" Type="datetime" />
+          <Property Name="AVAIL_END" Type="datetime" />
+          <Property Name="PERIOD_NOTES" Type="varchar" MaxLength="100" />
+          <Property Name="MAT_DATE" Type="datetime" />
+          <Property Name="MAT_DATE_NOTES" Type="varchar" MaxLength="100" />
+          <Property Name="MIN_DD" Type="varchar" MaxLength="200" />
+          <Property Name="MULTIPLE" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY" Type="char" MaxLength="6" />
+          <Property Name="PROC_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="char" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+          <Property Name="MULTI_CCY_DESC" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_PERIOD" Type="smallint" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_DAYS" Type="smallint" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_TIMES" Type="smallint" Nullable="false" />
+          <Property Name="SILENT_MARGIN" Type="bit" Nullable="false" />
+          <Property Name="TRD_INTERNAL_RATE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CFD_BASE_RATE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MARGIN_11AM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MARGIN_REMARK_11AM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RATING_TYPE" Type="bit" Nullable="false" />
+          <Property Name="RATIIO_TYPE" Type="bit" Nullable="false" />
+          <Property Name="FINANCIAL_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Loan.dbo.vGUIDE_CUSTOMER_MASTER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vGUIDE_CUSTOMER_MASTER">
+          <Key>
+            <PropertyRef Name="BRANCH_NO" />
+            <PropertyRef Name="GUIDE_STATUS" />
+          </Key>
+          <Property Name="BRANCH_NO" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="CUST_NAME" Type="varchar" MaxLength="40" />
+          <Property Name="ADDRESS_1" Type="varchar" MaxLength="40" />
+          <Property Name="ADDRESS_2" Type="varchar" MaxLength="30" />
+          <Property Name="TEL_NO" Type="varchar" MaxLength="15" />
+          <Property Name="FAX_NO" Type="varchar" MaxLength="15" />
+          <Property Name="NATIONALITY" Type="varchar" MaxLength="2" />
+          <Property Name="STATUS_CD" Type="varchar" MaxLength="1" />
+          <Property Name="DEPARTMENT_CD" Type="varchar" MaxLength="2" />
+          <Property Name="STEPS_CUST_CD" Type="varchar" MaxLength="6" />
+          <Property Name="JAPANESE_FLG" Type="varchar" MaxLength="1" />
+          <Property Name="GUIDE_STATUS" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CCIF" Type="varchar" MaxLength="7" />
+          <Property Name="CCIF_NAME" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <Association Name="FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP">
+          <End Role="COVENANT_CONDITION_GROUP" Type="Self.COVENANT_CONDITION_GROUP" Multiplicity="0..1" />
+          <End Role="COVENANT_CONDITION" Type="Self.COVENANT_CONDITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_CONDITION_GROUP">
+              <PropertyRef Name="CONDITION_GROUP_TYPE" />
+            </Principal>
+            <Dependent Role="COVENANT_CONDITION">
+              <PropertyRef Name="CONDITION_GROUP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVENANT_MASTER_COVENANT_CONDITION">
+          <End Role="COVENANT_CONDITION" Type="Self.COVENANT_CONDITION" Multiplicity="0..1" />
+          <End Role="COVENANT_MASTER" Type="Self.COVENANT_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_CONDITION">
+              <PropertyRef Name="CONDITION_TYPE" />
+            </Principal>
+            <Dependent Role="COVENANT_MASTER">
+              <PropertyRef Name="CONDITION_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVENANT_RECORD_COVENANT_MASTER">
+          <End Role="COVENANT_MASTER" Type="Self.COVENANT_MASTER" Multiplicity="1" />
+          <End Role="COVENANT_RECORD" Type="Self.COVENANT_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_MASTER">
+              <PropertyRef Name="COVENANT_NO" />
+            </Principal>
+            <Dependent Role="COVENANT_RECORD">
+              <PropertyRef Name="COVENANT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_BORROWER_LOAN_MASTER">
+          <End Role="LOAN_MASTER" Type="Self.LOAN_MASTER" Multiplicity="1" />
+          <End Role="LOAN_MASTER_BORROWER" Type="Self.LOAN_MASTER_BORROWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_BORROWER">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_COVENANT_COVENANT_MASTER">
+          <End Role="COVENANT_MASTER" Type="Self.COVENANT_MASTER" Multiplicity="1" />
+          <End Role="LOAN_MASTER_COVENANT" Type="Self.LOAN_MASTER_COVENANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_MASTER">
+              <PropertyRef Name="COVENANT_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_COVENANT">
+              <PropertyRef Name="COVENANT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_COVENANT_LOAN_MASTER">
+          <End Role="LOAN_MASTER" Type="Self.LOAN_MASTER" Multiplicity="1" />
+          <End Role="LOAN_MASTER_COVENANT" Type="Self.LOAN_MASTER_COVENANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_COVENANT">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_RATING_LOAN_MASTER">
+          <End Role="LOAN_MASTER" Type="Self.LOAN_MASTER" Multiplicity="1" />
+          <End Role="LOAN_MASTER_RATING" Type="Self.LOAN_MASTER_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_RATING">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_SECURITY_LOAN_MASTER">
+          <End Role="LOAN_MASTER" Type="Self.LOAN_MASTER" Multiplicity="1" />
+          <End Role="LOAN_MASTER_SECURITY" Type="Self.LOAN_MASTER_SECURITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_SECURITY">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_TRANS_FACILITY_MASTER">
+          <End Role="FACILITY_MASTER" Type="Self.FACILITY_MASTER" Multiplicity="1" />
+          <End Role="LOAN_TRANS" Type="Self.LOAN_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACILITY_MASTER">
+              <PropertyRef Name="REF_NO" />
+            </Principal>
+            <Dependent Role="LOAN_TRANS">
+              <PropertyRef Name="REF_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_CONTENT_TRANCHE_MASTER">
+          <End Role="TRANCHE_MASTER" Type="Self.TRANCHE_MASTER" Multiplicity="1" />
+          <End Role="TRANCHE_CONTENT" Type="Self.TRANCHE_CONTENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_CONTENT">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_GUARANTEE_TRANCHE_MASTER">
+          <End Role="TRANCHE_MASTER" Type="Self.TRANCHE_MASTER" Multiplicity="1" />
+          <End Role="TRANCHE_GUARANTEE" Type="Self.TRANCHE_GUARANTEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_GUARANTEE">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_MARGIN_TRANCHE_MASTER">
+          <End Role="TRANCHE_MASTER" Type="Self.TRANCHE_MASTER" Multiplicity="1" />
+          <End Role="TRANCHE_MARGIN" Type="Self.TRANCHE_MARGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_MARGIN">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_MASTER_LOAN_MASTER">
+          <End Role="LOAN_MASTER" Type="Self.LOAN_MASTER" Multiplicity="0..1" />
+          <End Role="TRANCHE_MASTER" Type="Self.TRANCHE_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanDataModelStoreContainer">
+          <EntitySet Name="COVENANT_CONDITION" EntityType="Self.COVENANT_CONDITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_CONDITION_GROUP" EntityType="Self.COVENANT_CONDITION_GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_FREQ_TYPE" EntityType="Self.COVENANT_FREQ_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_MASTER" EntityType="Self.COVENANT_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_PERMISSION" EntityType="Self.COVENANT_PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_RECEIPT_TIMING" EntityType="Self.COVENANT_RECEIPT_TIMING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_RECORD" EntityType="Self.COVENANT_RECORD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COVENANT_TYPE" EntityType="Self.COVENANT_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXCH_RATE" EntityType="Self.EXCH_RATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACILITY_MASTER" EntityType="Self.FACILITY_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER" EntityType="Self.LOAN_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER_BORROWER" EntityType="Self.LOAN_MASTER_BORROWER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER_COVENANT" EntityType="Self.LOAN_MASTER_COVENANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER_RATING" EntityType="Self.LOAN_MASTER_RATING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER_SECURITY" EntityType="Self.LOAN_MASTER_SECURITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_MASTER_STATUS_CODE" EntityType="Self.LOAN_MASTER_STATUS_CODE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_TRANS" EntityType="Self.LOAN_TRANS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROD_TYPE" EntityType="Self.PROD_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUS_CODE" EntityType="Self.STATUS_CODE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANCHE_CONTENT" EntityType="Self.TRANCHE_CONTENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANCHE_GUARANTEE" EntityType="Self.TRANCHE_GUARANTEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANCHE_MARGIN" EntityType="Self.TRANCHE_MARGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANCHE_MASTER" EntityType="Self.TRANCHE_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LCS_CUST_MASTER" EntityType="Self.LCS_CUST_MASTER" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LCS_CUST_MASTER].[CUST_ABBR] AS [CUST_ABBR], 
+    [LCS_CUST_MASTER].[BRANCH_NO] AS [BRANCH_NO], 
+    [LCS_CUST_MASTER].[CONTACT] AS [CONTACT], 
+    [LCS_CUST_MASTER].[STATUS] AS [STATUS], 
+    [LCS_CUST_MASTER].[PREP_BY] AS [PREP_BY], 
+    [LCS_CUST_MASTER].[PREP_ON] AS [PREP_ON], 
+    [LCS_CUST_MASTER].[APPR_BY] AS [APPR_BY], 
+    [LCS_CUST_MASTER].[APPR_ON] AS [APPR_ON]
+    FROM [dbo].[LCS_CUST_MASTER] AS [LCS_CUST_MASTER]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vGUIDE_CUSTOMER_MASTER" EntityType="Self.vGUIDE_CUSTOMER_MASTER" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vGUIDE_CUSTOMER_MASTER].[BRANCH_NO] AS [BRANCH_NO], 
+    [vGUIDE_CUSTOMER_MASTER].[CUST_ABBR] AS [CUST_ABBR], 
+    [vGUIDE_CUSTOMER_MASTER].[CUST_NAME] AS [CUST_NAME], 
+    [vGUIDE_CUSTOMER_MASTER].[ADDRESS_1] AS [ADDRESS_1], 
+    [vGUIDE_CUSTOMER_MASTER].[ADDRESS_2] AS [ADDRESS_2], 
+    [vGUIDE_CUSTOMER_MASTER].[TEL_NO] AS [TEL_NO], 
+    [vGUIDE_CUSTOMER_MASTER].[FAX_NO] AS [FAX_NO], 
+    [vGUIDE_CUSTOMER_MASTER].[NATIONALITY] AS [NATIONALITY], 
+    [vGUIDE_CUSTOMER_MASTER].[STATUS_CD] AS [STATUS_CD], 
+    [vGUIDE_CUSTOMER_MASTER].[DEPARTMENT_CD] AS [DEPARTMENT_CD], 
+    [vGUIDE_CUSTOMER_MASTER].[STEPS_CUST_CD] AS [STEPS_CUST_CD], 
+    [vGUIDE_CUSTOMER_MASTER].[JAPANESE_FLG] AS [JAPANESE_FLG], 
+    [vGUIDE_CUSTOMER_MASTER].[GUIDE_STATUS] AS [GUIDE_STATUS], 
+    [vGUIDE_CUSTOMER_MASTER].[CCIF] AS [CCIF], 
+    [vGUIDE_CUSTOMER_MASTER].[CCIF_NAME] AS [CCIF_NAME]
+    FROM [dbo].[vGUIDE_CUSTOMER_MASTER] AS [vGUIDE_CUSTOMER_MASTER]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP" Association="Self.FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP">
+            <End Role="COVENANT_CONDITION_GROUP" EntitySet="COVENANT_CONDITION_GROUP" />
+            <End Role="COVENANT_CONDITION" EntitySet="COVENANT_CONDITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVENANT_MASTER_COVENANT_CONDITION" Association="Self.FK_COVENANT_MASTER_COVENANT_CONDITION">
+            <End Role="COVENANT_CONDITION" EntitySet="COVENANT_CONDITION" />
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVENANT_RECORD_COVENANT_MASTER" Association="Self.FK_COVENANT_RECORD_COVENANT_MASTER">
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+            <End Role="COVENANT_RECORD" EntitySet="COVENANT_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_BORROWER_LOAN_MASTER" Association="Self.FK_LOAN_MASTER_BORROWER_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_BORROWER" EntitySet="LOAN_MASTER_BORROWER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_COVENANT_COVENANT_MASTER" Association="Self.FK_LOAN_MASTER_COVENANT_COVENANT_MASTER">
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+            <End Role="LOAN_MASTER_COVENANT" EntitySet="LOAN_MASTER_COVENANT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_COVENANT_LOAN_MASTER" Association="Self.FK_LOAN_MASTER_COVENANT_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_COVENANT" EntitySet="LOAN_MASTER_COVENANT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_RATING_LOAN_MASTER" Association="Self.FK_LOAN_MASTER_RATING_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_RATING" EntitySet="LOAN_MASTER_RATING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_SECURITY_LOAN_MASTER" Association="Self.FK_LOAN_MASTER_SECURITY_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_SECURITY" EntitySet="LOAN_MASTER_SECURITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_TRANS_FACILITY_MASTER" Association="Self.FK_LOAN_TRANS_FACILITY_MASTER">
+            <End Role="FACILITY_MASTER" EntitySet="FACILITY_MASTER" />
+            <End Role="LOAN_TRANS" EntitySet="LOAN_TRANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_CONTENT_TRANCHE_MASTER" Association="Self.FK_TRANCHE_CONTENT_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_CONTENT" EntitySet="TRANCHE_CONTENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_GUARANTEE_TRANCHE_MASTER" Association="Self.FK_TRANCHE_GUARANTEE_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_GUARANTEE" EntitySet="TRANCHE_GUARANTEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_MARGIN_TRANCHE_MASTER" Association="Self.FK_TRANCHE_MARGIN_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_MARGIN" EntitySet="TRANCHE_MARGIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_MASTER_LOAN_MASTER" Association="Self.FK_TRANCHE_MASTER_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoanDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FACILITY_MASTER">
+          <Key>
+            <PropertyRef Name="REF_NO" />
+          </Key>
+          <Property Name="REF_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLN_NO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLN_NO1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="RATING1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RATING2" Type="Int16" />
+          <Property Name="PROD_TYPE1" Type="Int16" />
+          <Property Name="PROD_TYPE2" Type="Int16" />
+          <Property Name="PROD_TYPE3" Type="Int16" />
+          <Property Name="PROD_TYPE4" Type="Int16" />
+          <Property Name="APPR_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPR_DATE1" Type="DateTime" Precision="3" />
+          <Property Name="MULTI_CCY" Type="Boolean" />
+          <Property Name="BASE_CCY" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="LIMIT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="MAT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="SIGHT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MAX_INT_PERIOD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BASE_RATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BASE_RATE_REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MARGIN" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="INT_CALC_METHOD" Type="Int16" />
+          <Property Name="INT_CALC_REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REPAY_TYPE" Type="Int16" />
+          <Property Name="REPAY_REMARK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OTHER_REMARK" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="G_FEE_TYPE" Type="Int16" />
+          <Property Name="G_FEE_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="FEE_KIND_ID" Type="Byte" Nullable="false" />
+          <Property Name="FEE_RATE" Type="Decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="FEE_CALC_METHOD_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="FEE_START_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FEE_END_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FEE_PAYMENT_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="FREQ_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="DAY_OF_MONTH_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="FEE_COL_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FEE_REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY2" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_BY1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_BY2" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_NO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECT_DEBIT" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOAN_TRANS" Relationship="Self.FK_LOAN_TRANS_FACILITY_MASTER" FromRole="FACILITY_MASTER" ToRole="LOAN_TRANS" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER">
+          <Key>
+            <PropertyRef Name="LOAN_NO" />
+          </Key>
+          <Property Name="LOAN_NO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRANCH_NO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="MULTI_BRW" Type="Boolean" />
+          <Property Name="AGREEM_DATE1" Type="DateTime" Precision="3" />
+          <Property Name="AGREEM_DATE2" Type="DateTime" Precision="3" />
+          <Property Name="AMENDMENT_DATE" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="RATING" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_TYPE2" Type="Int16" />
+          <Property Name="PROD_TYPE4" Type="Int16" />
+          <Property Name="REMARKS" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="AGENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="CONTACT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TEL_NO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FAX_NO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <Property Name="CCIF" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CCIF_NAME" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GCIF" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RATIO_SPREAD1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RATIO_SPREAD2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LOAN_MASTER_BORROWER" Relationship="LoanDataModel.FK_LOAN_MASTER_BORROWER_LOAN_MASTER" FromRole="LOAN_MASTER" ToRole="LOAN_MASTER_BORROWER" />
+          <NavigationProperty Name="LOAN_MASTER_RATING" Relationship="LoanDataModel.FK_LOAN_MASTER_RATING_LOAN_MASTER" FromRole="LOAN_MASTER" ToRole="LOAN_MASTER_RATING" />
+          <NavigationProperty Name="LOAN_MASTER_SECURITY" Relationship="LoanDataModel.FK_LOAN_MASTER_SECURITY_LOAN_MASTER" FromRole="LOAN_MASTER" ToRole="LOAN_MASTER_SECURITY" />
+          <NavigationProperty Name="TRANCHE_MASTER" Relationship="LoanDataModel.FK_TRANCHE_MASTER_LOAN_MASTER" FromRole="LOAN_MASTER" ToRole="TRANCHE_MASTER" />
+          <NavigationProperty Name="LOAN_MASTER_COVENANT" Relationship="LoanDataModel.FK_LOAN_MASTER_COVENANT_LOAN_MASTER" FromRole="LOAN_MASTER" ToRole="LOAN_MASTER_COVENANT" />
+        </EntityType>
+        <EntityType Name="LOAN_TRANS">
+          <Key>
+            <PropertyRef Name="REF_NO" />
+            <PropertyRef Name="TRANS_NO" />
+          </Key>
+          <Property Name="REF_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TRANS_NO" Type="Int32" Nullable="false" />
+          <Property Name="RO_NO" Type="Int32" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DUE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INC_DUE_DATE" Type="Boolean" />
+          <Property Name="DAYS" Type="Int32" />
+          <Property Name="DRAW_CCY" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="DRAW_AMT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="DRAW_EQUIV" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="DRAW_EXCH_RATE_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DRAW_EXCH_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="REPAY_CCY" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="REPAY_AMT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="REPAY_EQUIV" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="REPAY_EXCH_RATE_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="REPAY_EXCH_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="BAL_AMT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="INT_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="BASE_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="INT_AMT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="INT_AMT_CALC" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="INT_RECV_DATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="INT_RECV_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PROC_BY1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY2" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_BY1" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_BY2" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="CHK_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="FLAG_DEL_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="INC_START_DATE" Type="Boolean" />
+          <Property Name="DRAWDOWN_NO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SCHEME_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="AUTHORIZED" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="FINAL_DUE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INTEREST_TO_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INTEREST_CALC_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BASE_RATE_CODE" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SPREAD" Type="Decimal" Precision="22" Scale="7" />
+          <Property Name="INTEREST_COLLECT" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="INTERNAL_RATE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVING_METHOD" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PAYING_METHOD" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNT_CODE" Type="Int32" />
+          <Property Name="CUSTOMER_ACCOUNT_CODE_BORROWER" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_ACCOUNT_CODE" Type="Int32" />
+          <Property Name="ACCOUNT_NO1" Type="Int32" />
+          <Property Name="ACCOUNT_NO2" Type="Int32" />
+          <Property Name="ACCOUNT_NO1_MANUAL_ENTRY" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNT_NO2_MANUAL_ENTRY" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ATTENTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Old_RO_InterestCollect" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Old_RO_IntAmt" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="RO_Type1" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="RO_Type2" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="InitialInputDateTime" Type="DateTime" Precision="3" />
+          <Property Name="InitialApprovalDateTime" Type="DateTime" Precision="3" />
+          <Property Name="FinalApprovalDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyRateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ApproveModifiedRateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyRatesBy" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="AppRatesBy" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="FACILITY_MASTER" Relationship="Self.FK_LOAN_TRANS_FACILITY_MASTER" FromRole="LOAN_TRANS" ToRole="FACILITY_MASTER" />
+        </EntityType>
+        <EntityType Name="LCS_CUST_MASTER">
+          <Key>
+            <PropertyRef Name="CUST_ABBR" />
+            <PropertyRef Name="BRANCH_NO" />
+          </Key>
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BRANCH_NO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTACT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PREP_BY" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="PREP_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_LOAN_TRANS_FACILITY_MASTER">
+          <End Role="FACILITY_MASTER" Type="Self.FACILITY_MASTER" Multiplicity="1" />
+          <End Role="LOAN_TRANS" Type="Self.LOAN_TRANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACILITY_MASTER">
+              <PropertyRef Name="REF_NO" />
+            </Principal>
+            <Dependent Role="LOAN_TRANS">
+              <PropertyRef Name="REF_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FACILITY_MASTER" EntityType="Self.FACILITY_MASTER" />
+          <EntitySet Name="LOAN_MASTER" EntityType="Self.LOAN_MASTER" />
+          <EntitySet Name="LOAN_TRANS" EntityType="Self.LOAN_TRANS" />
+          <EntitySet Name="LCS_CUST_MASTER" EntityType="Self.LCS_CUST_MASTER" />
+          <AssociationSet Name="FK_LOAN_TRANS_FACILITY_MASTER" Association="Self.FK_LOAN_TRANS_FACILITY_MASTER">
+            <End Role="FACILITY_MASTER" EntitySet="FACILITY_MASTER" />
+            <End Role="LOAN_TRANS" EntitySet="LOAN_TRANS" />
+          </AssociationSet>
+          <EntitySet Name="LOAN_MASTER_BORROWER" EntityType="LoanDataModel.LOAN_MASTER_BORROWER" />
+          <EntitySet Name="LOAN_MASTER_RATING" EntityType="LoanDataModel.LOAN_MASTER_RATING" />
+          <EntitySet Name="LOAN_MASTER_SECURITY" EntityType="LoanDataModel.LOAN_MASTER_SECURITY" />
+          <EntitySet Name="TRANCHE_CONTENT" EntityType="LoanDataModel.TRANCHE_CONTENT" />
+          <EntitySet Name="TRANCHE_GUARANTEE" EntityType="LoanDataModel.TRANCHE_GUARANTEE" />
+          <EntitySet Name="TRANCHE_MARGIN" EntityType="LoanDataModel.TRANCHE_MARGIN" />
+          <EntitySet Name="TRANCHE_MASTER" EntityType="LoanDataModel.TRANCHE_MASTER" />
+          <AssociationSet Name="FK_LOAN_MASTER_BORROWER_LOAN_MASTER" Association="LoanDataModel.FK_LOAN_MASTER_BORROWER_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_BORROWER" EntitySet="LOAN_MASTER_BORROWER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_RATING_LOAN_MASTER" Association="LoanDataModel.FK_LOAN_MASTER_RATING_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_RATING" EntitySet="LOAN_MASTER_RATING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_SECURITY_LOAN_MASTER" Association="LoanDataModel.FK_LOAN_MASTER_SECURITY_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_SECURITY" EntitySet="LOAN_MASTER_SECURITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_MASTER_LOAN_MASTER" Association="LoanDataModel.FK_TRANCHE_MASTER_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_CONTENT_TRANCHE_MASTER" Association="LoanDataModel.FK_TRANCHE_CONTENT_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_CONTENT" EntitySet="TRANCHE_CONTENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_GUARANTEE_TRANCHE_MASTER" Association="LoanDataModel.FK_TRANCHE_GUARANTEE_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_GUARANTEE" EntitySet="TRANCHE_GUARANTEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANCHE_MARGIN_TRANCHE_MASTER" Association="LoanDataModel.FK_TRANCHE_MARGIN_TRANCHE_MASTER">
+            <End Role="TRANCHE_MASTER" EntitySet="TRANCHE_MASTER" />
+            <End Role="TRANCHE_MARGIN" EntitySet="TRANCHE_MARGIN" />
+          </AssociationSet>
+          <EntitySet Name="EXCH_RATE" EntityType="LoanDataModel.EXCH_RATE" />
+          <EntitySet Name="COVENANT_CONDITION" EntityType="LoanDataModel.COVENANT_CONDITION" />
+          <EntitySet Name="COVENANT_CONDITION_GROUP" EntityType="LoanDataModel.COVENANT_CONDITION_GROUP" />
+          <EntitySet Name="COVENANT_FREQ_TYPE" EntityType="LoanDataModel.COVENANT_FREQ_TYPE" />
+          <EntitySet Name="COVENANT_MASTER" EntityType="LoanDataModel.COVENANT_MASTER" />
+          <EntitySet Name="COVENANT_PERMISSION" EntityType="LoanDataModel.COVENANT_PERMISSION" />
+          <EntitySet Name="COVENANT_RECEIPT_TIMING" EntityType="LoanDataModel.COVENANT_RECEIPT_TIMING" />
+          <EntitySet Name="COVENANT_RECORD" EntityType="LoanDataModel.COVENANT_RECORD" />
+          <EntitySet Name="COVENANT_TYPE" EntityType="LoanDataModel.COVENANT_TYPE" />
+          <EntitySet Name="LOAN_MASTER_COVENANT" EntityType="LoanDataModel.LOAN_MASTER_COVENANT" />
+          <EntitySet Name="PROD_TYPE" EntityType="LoanDataModel.PROD_TYPE" />
+          <EntitySet Name="STATUS_CODE" EntityType="LoanDataModel.STATUS_CODE" />
+          <AssociationSet Name="FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP" Association="LoanDataModel.FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP">
+            <End Role="COVENANT_CONDITION_GROUP" EntitySet="COVENANT_CONDITION_GROUP" />
+            <End Role="COVENANT_CONDITION" EntitySet="COVENANT_CONDITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVENANT_MASTER_COVENANT_CONDITION" Association="LoanDataModel.FK_COVENANT_MASTER_COVENANT_CONDITION">
+            <End Role="COVENANT_CONDITION" EntitySet="COVENANT_CONDITION" />
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COVENANT_RECORD_COVENANT_MASTER" Association="LoanDataModel.FK_COVENANT_RECORD_COVENANT_MASTER">
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+            <End Role="COVENANT_RECORD" EntitySet="COVENANT_RECORD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_COVENANT_COVENANT_MASTER" Association="LoanDataModel.FK_LOAN_MASTER_COVENANT_COVENANT_MASTER">
+            <End Role="COVENANT_MASTER" EntitySet="COVENANT_MASTER" />
+            <End Role="LOAN_MASTER_COVENANT" EntitySet="LOAN_MASTER_COVENANT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOAN_MASTER_COVENANT_LOAN_MASTER" Association="LoanDataModel.FK_LOAN_MASTER_COVENANT_LOAN_MASTER">
+            <End Role="LOAN_MASTER" EntitySet="LOAN_MASTER" />
+            <End Role="LOAN_MASTER_COVENANT" EntitySet="LOAN_MASTER_COVENANT" />
+          </AssociationSet>
+          <EntitySet Name="vGUIDE_CUSTOMER_MASTER" EntityType="LoanDataModel.vGUIDE_CUSTOMER_MASTER" />
+          <EntitySet Name="LOAN_MASTER_STATUS_CODE" EntityType="LoanDataModel.LOAN_MASTER_STATUS_CODE" />
+        </EntityContainer>
+        <EntityType Name="LOAN_MASTER_BORROWER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAN_NO" Type="Int32" Nullable="false" />
+          <Property Name="CUST_ABBR" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CCIF" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CCIF_NAME" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="GCIF" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOAN_MASTER" Relationship="LoanDataModel.FK_LOAN_MASTER_BORROWER_LOAN_MASTER" FromRole="LOAN_MASTER_BORROWER" ToRole="LOAN_MASTER" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_RATING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAN_NO" Type="Int32" Nullable="false" />
+          <Property Name="RATING_TYPE" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="RATING_RANGE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LOAN_MASTER" Relationship="LoanDataModel.FK_LOAN_MASTER_RATING_LOAN_MASTER" FromRole="LOAN_MASTER_RATING" ToRole="LOAN_MASTER" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_SECURITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAN_NO" Type="Int32" Nullable="false" />
+          <Property Name="GUARANTEE" Type="Boolean" Nullable="false" />
+          <Property Name="GUARANTOR" Type="Boolean" Nullable="false" />
+          <Property Name="GUARANTOR_SECURITY_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="COLLATERAL" Type="Boolean" Nullable="false" />
+          <Property Name="COLLATERAL_SECURITY_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="COLLATERAL_LEDGER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EXPIRY_DATE" Type="DateTime" Precision="0" />
+          <Property Name="DETAILS" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMMENT" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LOAN_MASTER" Relationship="LoanDataModel.FK_LOAN_MASTER_SECURITY_LOAN_MASTER" FromRole="LOAN_MASTER_SECURITY" ToRole="LOAN_MASTER" />
+        </EntityType>
+        <EntityType Name="TRANCHE_CONTENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRANCHE_NO" Type="Int32" Nullable="false" />
+          <Property Name="REF_NO" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="LIMIT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="CCY" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TRANCHE_MASTER" Relationship="LoanDataModel.FK_TRANCHE_CONTENT_TRANCHE_MASTER" FromRole="TRANCHE_CONTENT" ToRole="TRANCHE_MASTER" />
+        </EntityType>
+        <EntityType Name="TRANCHE_GUARANTEE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRANCHE_NO" Type="Int32" Nullable="false" />
+          <Property Name="GUARANTEE_NO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GBASE_GUARANTEE_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BORROWER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MULTI_BORROWERS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BENEFICIARY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGINAL_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OUTSTANDING_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BG_ISSUE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="BG_CANCEL_DATE" Type="DateTime" Precision="0" />
+          <Property Name="BG_EXPIRY_DATE" Type="DateTime" Precision="0" />
+          <Property Name="BG_REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TRANCHE_MASTER" Relationship="LoanDataModel.FK_TRANCHE_GUARANTEE_TRANCHE_MASTER" FromRole="TRANCHE_GUARANTEE" ToRole="TRANCHE_MASTER" />
+        </EntityType>
+        <EntityType Name="TRANCHE_MARGIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TRANCHE_NO" Type="Int32" Nullable="false" />
+          <Property Name="REF_NO" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="RATIO_TYPE" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="RATIO_RANGE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RATIO_MARGIN" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="LINE_FEE" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="COMMITMENT_FEE" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="PERFOMANCE_GNTEE" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="FINANCIAL_GNTEE" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="OTHER" Type="Decimal" Precision="12" Scale="6" />
+          <Property Name="SELECTED" Type="Boolean" Nullable="false" />
+          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TRANCHE_MASTER" Relationship="LoanDataModel.FK_TRANCHE_MARGIN_TRANCHE_MASTER" FromRole="TRANCHE_MARGIN" ToRole="TRANCHE_MASTER" />
+        </EntityType>
+        <EntityType Name="TRANCHE_MASTER">
+          <Key>
+            <PropertyRef Name="TRANCHE_NO" />
+          </Key>
+          <Property Name="TRANCHE_NO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAN_NO" Type="Int32" />
+          <Property Name="TRANCHE_TYPE" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TRANCHE_NAME" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_TYPE1" Type="Int16" />
+          <Property Name="PROD_TYPE5" Type="Int16" />
+          <Property Name="APPLN_NO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="APPLN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="HO_APPR_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPLN_NO_RELT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="APPLN_DATE_RELT" Type="DateTime" Precision="3" />
+          <Property Name="BASE_CCY" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MULTI_CCY" Type="Boolean" />
+          <Property Name="TRANCHE_PORTION" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="SYND_PORTION" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="PORTION_NOTES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AVAIL_START" Type="DateTime" Precision="3" />
+          <Property Name="AVAIL_END" Type="DateTime" Precision="3" />
+          <Property Name="PERIOD_NOTES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MAT_DATE_NOTES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MIN_DD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MULTIPLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <Property Name="MULTI_CCY_DESC" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MAXI_DRAWDOWN_PERIOD" Type="Int16" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_DAYS" Type="Int16" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_TIMES" Type="Int16" Nullable="false" />
+          <Property Name="SILENT_MARGIN" Type="Boolean" Nullable="false" />
+          <Property Name="TRD_INTERNAL_RATE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CFD_BASE_RATE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MARGIN_11AM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MARGIN_REMARK_11AM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RATING_TYPE" Type="Boolean" Nullable="false" />
+          <Property Name="RATIIO_TYPE" Type="Boolean" Nullable="false" />
+          <Property Name="FINANCIAL_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOAN_MASTER" Relationship="LoanDataModel.FK_TRANCHE_MASTER_LOAN_MASTER" FromRole="TRANCHE_MASTER" ToRole="LOAN_MASTER" />
+          <NavigationProperty Name="TRANCHE_CONTENT" Relationship="LoanDataModel.FK_TRANCHE_CONTENT_TRANCHE_MASTER" FromRole="TRANCHE_MASTER" ToRole="TRANCHE_CONTENT" />
+          <NavigationProperty Name="TRANCHE_GUARANTEE" Relationship="LoanDataModel.FK_TRANCHE_GUARANTEE_TRANCHE_MASTER" FromRole="TRANCHE_MASTER" ToRole="TRANCHE_GUARANTEE" />
+          <NavigationProperty Name="TRANCHE_MARGIN" Relationship="LoanDataModel.FK_TRANCHE_MARGIN_TRANCHE_MASTER" FromRole="TRANCHE_MASTER" ToRole="TRANCHE_MARGIN" />
+        </EntityType>
+        <Association Name="FK_LOAN_MASTER_BORROWER_LOAN_MASTER">
+          <End Type="LoanDataModel.LOAN_MASTER" Role="LOAN_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.LOAN_MASTER_BORROWER" Role="LOAN_MASTER_BORROWER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_BORROWER">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_RATING_LOAN_MASTER">
+          <End Type="LoanDataModel.LOAN_MASTER" Role="LOAN_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.LOAN_MASTER_RATING" Role="LOAN_MASTER_RATING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_RATING">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_SECURITY_LOAN_MASTER">
+          <End Type="LoanDataModel.LOAN_MASTER" Role="LOAN_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.LOAN_MASTER_SECURITY" Role="LOAN_MASTER_SECURITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_SECURITY">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_MASTER_LOAN_MASTER">
+          <End Type="LoanDataModel.LOAN_MASTER" Role="LOAN_MASTER" Multiplicity="0..1" />
+          <End Type="LoanDataModel.TRANCHE_MASTER" Role="TRANCHE_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_CONTENT_TRANCHE_MASTER">
+          <End Type="LoanDataModel.TRANCHE_MASTER" Role="TRANCHE_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.TRANCHE_CONTENT" Role="TRANCHE_CONTENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_CONTENT">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_GUARANTEE_TRANCHE_MASTER">
+          <End Type="LoanDataModel.TRANCHE_MASTER" Role="TRANCHE_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.TRANCHE_GUARANTEE" Role="TRANCHE_GUARANTEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_GUARANTEE">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANCHE_MARGIN_TRANCHE_MASTER">
+          <End Type="LoanDataModel.TRANCHE_MASTER" Role="TRANCHE_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.TRANCHE_MARGIN" Role="TRANCHE_MARGIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANCHE_MASTER">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Principal>
+            <Dependent Role="TRANCHE_MARGIN">
+              <PropertyRef Name="TRANCHE_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EXCH_RATE">
+          <Key>
+            <PropertyRef Name="CCY_CODE" />
+          </Key>
+          <Property Name="CCY_CODE" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="DKB_SPECIAL_RATE_USD" Type="Decimal" Precision="18" Scale="6" />
+        </EntityType>
+        <EntityType Name="COVENANT_CONDITION">
+          <Key>
+            <PropertyRef Name="CONDITION_TYPE" />
+          </Key>
+          <Property Name="CONDITION_TYPE" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONDITION_DESC" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CONDITION_GROUP" Type="Byte" />
+          <NavigationProperty Name="COVENANT_CONDITION_GROUP" Relationship="LoanDataModel.FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP" FromRole="COVENANT_CONDITION" ToRole="COVENANT_CONDITION_GROUP" />
+          <NavigationProperty Name="COVENANT_MASTER" Relationship="LoanDataModel.FK_COVENANT_MASTER_COVENANT_CONDITION" FromRole="COVENANT_CONDITION" ToRole="COVENANT_MASTER" />
+        </EntityType>
+        <EntityType Name="COVENANT_CONDITION_GROUP">
+          <Key>
+            <PropertyRef Name="CONDITION_GROUP_TYPE" />
+          </Key>
+          <Property Name="CONDITION_GROUP_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="CONDITION_GROUP_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COVENANT_CONDITION" Relationship="LoanDataModel.FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP" FromRole="COVENANT_CONDITION_GROUP" ToRole="COVENANT_CONDITION" />
+        </EntityType>
+        <EntityType Name="COVENANT_FREQ_TYPE">
+          <Key>
+            <PropertyRef Name="FREQ_TYPE" />
+          </Key>
+          <Property Name="FREQ_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="FREQ_DESC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="INTERVAL" Type="Byte" />
+          <Property Name="DATE_PART" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="COVENANT_MASTER">
+          <Key>
+            <PropertyRef Name="COVENANT_NO" />
+          </Key>
+          <Property Name="COVENANT_NO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BRANCH_NO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ACCOUNT_OFFICER" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="COV_TYPE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="REPORT_TYPE" Type="Byte" />
+          <Property Name="FREQ_TYPE" Type="Byte" />
+          <Property Name="DAY_OF_MONTH_TYPE" Type="Byte" />
+          <Property Name="COV_START_DATE" Type="DateTime" Precision="0" />
+          <Property Name="COV_END_DATE" Type="DateTime" Precision="0" />
+          <Property Name="TIME_OF_RECEIPT" Type="Byte" />
+          <Property Name="CONDITION_TYPE" Type="Byte" />
+          <Property Name="MATH_SYMBOL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="DENOMINATION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MARGIN_BASE_TYPE" Type="Byte" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="COVENANT_CONDITION" Relationship="LoanDataModel.FK_COVENANT_MASTER_COVENANT_CONDITION" FromRole="COVENANT_MASTER" ToRole="COVENANT_CONDITION" />
+          <NavigationProperty Name="COVENANT_RECORD" Relationship="LoanDataModel.FK_COVENANT_RECORD_COVENANT_MASTER" FromRole="COVENANT_MASTER" ToRole="COVENANT_RECORD" />
+          <NavigationProperty Name="LOAN_MASTER_COVENANT" Relationship="LoanDataModel.FK_LOAN_MASTER_COVENANT_COVENANT_MASTER" FromRole="COVENANT_MASTER" ToRole="LOAN_MASTER_COVENANT" />
+        </EntityType>
+        <EntityType Name="COVENANT_PERMISSION">
+          <Key>
+            <PropertyRef Name="DEPT_ID" />
+            <PropertyRef Name="DEPARTMENT_CODE" />
+          </Key>
+          <Property Name="DEPT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT_CODE" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_CODE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="COVENANT_RECEIPT_TIMING">
+          <Key>
+            <PropertyRef Name="TIMING_TYPE" />
+          </Key>
+          <Property Name="TIMING_TYPE" Type="Byte" Nullable="false" />
+          <Property Name="TIMING_DESC" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="INTERVAL" Type="Byte" Nullable="false" />
+          <Property Name="DATE_PART" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COVENANT_RECORD">
+          <Key>
+            <PropertyRef Name="COVENANT_NO" />
+            <PropertyRef Name="RECORD_NO" />
+          </Key>
+          <Property Name="COVENANT_NO" Type="Int32" Nullable="false" />
+          <Property Name="RECORD_NO" Type="Int32" Nullable="false" />
+          <Property Name="REPORT_FREQ_TYPE" Type="Byte" />
+          <Property Name="REPORT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="DUE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="CONDITION_TYPE" Type="Byte" />
+          <Property Name="MATH_SYMBOL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="DENOMINATION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DATE_RECIEVED" Type="DateTime" Precision="0" />
+          <Property Name="RATE" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="DATE_RECIEVED_ADJ" Type="DateTime" Precision="0" />
+          <Property Name="RATE_ADJ" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="IN_COMPLIANCE" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ORIGINAL_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AO_REMARKS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <Property Name="STRESS_VALUE" Type="Decimal" Precision="38" Scale="2" />
+          <NavigationProperty Name="COVENANT_MASTER" Relationship="LoanDataModel.FK_COVENANT_RECORD_COVENANT_MASTER" FromRole="COVENANT_RECORD" ToRole="COVENANT_MASTER" />
+        </EntityType>
+        <EntityType Name="COVENANT_TYPE">
+          <Key>
+            <PropertyRef Name="COVENANT_TYPE1" />
+          </Key>
+          <Property Name="COVENANT_TYPE1" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="COVENANT_DECS" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_COVENANT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAN_NO" Type="Int32" Nullable="false" />
+          <Property Name="COVENANT_NO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COVENANT_MASTER" Relationship="LoanDataModel.FK_LOAN_MASTER_COVENANT_COVENANT_MASTER" FromRole="LOAN_MASTER_COVENANT" ToRole="COVENANT_MASTER" />
+          <NavigationProperty Name="LOAN_MASTER" Relationship="LoanDataModel.FK_LOAN_MASTER_COVENANT_LOAN_MASTER" FromRole="LOAN_MASTER_COVENANT" ToRole="LOAN_MASTER" />
+        </EntityType>
+        <EntityType Name="PROD_TYPE">
+          <Key>
+            <PropertyRef Name="PROD_ID" />
+          </Key>
+          <Property Name="PROD_ID" Type="Int16" Nullable="false" />
+          <Property Name="PROD_DESC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STATUS_CODE">
+          <Key>
+            <PropertyRef Name="STATUS_CODE1" />
+          </Key>
+          <Property Name="STATUS_CODE1" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="STATUS_DESC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP">
+          <End Type="LoanDataModel.COVENANT_CONDITION_GROUP" Role="COVENANT_CONDITION_GROUP" Multiplicity="0..1" />
+          <End Type="LoanDataModel.COVENANT_CONDITION" Role="COVENANT_CONDITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_CONDITION_GROUP">
+              <PropertyRef Name="CONDITION_GROUP_TYPE" />
+            </Principal>
+            <Dependent Role="COVENANT_CONDITION">
+              <PropertyRef Name="CONDITION_GROUP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVENANT_MASTER_COVENANT_CONDITION">
+          <End Type="LoanDataModel.COVENANT_CONDITION" Role="COVENANT_CONDITION" Multiplicity="0..1" />
+          <End Type="LoanDataModel.COVENANT_MASTER" Role="COVENANT_MASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_CONDITION">
+              <PropertyRef Name="CONDITION_TYPE" />
+            </Principal>
+            <Dependent Role="COVENANT_MASTER">
+              <PropertyRef Name="CONDITION_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COVENANT_RECORD_COVENANT_MASTER">
+          <End Type="LoanDataModel.COVENANT_MASTER" Role="COVENANT_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.COVENANT_RECORD" Role="COVENANT_RECORD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_MASTER">
+              <PropertyRef Name="COVENANT_NO" />
+            </Principal>
+            <Dependent Role="COVENANT_RECORD">
+              <PropertyRef Name="COVENANT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_COVENANT_COVENANT_MASTER">
+          <End Type="LoanDataModel.COVENANT_MASTER" Role="COVENANT_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.LOAN_MASTER_COVENANT" Role="LOAN_MASTER_COVENANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COVENANT_MASTER">
+              <PropertyRef Name="COVENANT_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_COVENANT">
+              <PropertyRef Name="COVENANT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOAN_MASTER_COVENANT_LOAN_MASTER">
+          <End Type="LoanDataModel.LOAN_MASTER" Role="LOAN_MASTER" Multiplicity="1" />
+          <End Type="LoanDataModel.LOAN_MASTER_COVENANT" Role="LOAN_MASTER_COVENANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAN_MASTER">
+              <PropertyRef Name="LOAN_NO" />
+            </Principal>
+            <Dependent Role="LOAN_MASTER_COVENANT">
+              <PropertyRef Name="LOAN_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vGUIDE_CUSTOMER_MASTER">
+          <Key>
+            <PropertyRef Name="BRANCH_NO" />
+            <PropertyRef Name="GUIDE_STATUS" />
+          </Key>
+          <Property Name="BRANCH_NO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TEL_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FAX_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NATIONALITY" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTMENT_CD" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="STEPS_CUST_CD" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="JAPANESE_FLG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GUIDE_STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CCIF" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="CCIF_NAME" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOAN_MASTER_STATUS_CODE">
+          <Key>
+            <PropertyRef Name="MODULE" />
+            <PropertyRef Name="STATUS_CODE" />
+          </Key>
+          <Property Name="MODULE" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SHORT_DESC" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FULL_DESC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoanDataModelStoreContainer" CdmEntityContainer="LoanDBEntities">
+          <EntitySetMapping Name="FACILITY_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.FACILITY_MASTER">
+              <MappingFragment StoreEntitySet="FACILITY_MASTER">
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="APPLN_NO" ColumnName="APPLN_NO" />
+                <ScalarProperty Name="APPLN_NO1" ColumnName="APPLN_NO1" />
+                <ScalarProperty Name="RATING1" ColumnName="RATING1" />
+                <ScalarProperty Name="RATING2" ColumnName="RATING2" />
+                <ScalarProperty Name="PROD_TYPE1" ColumnName="PROD_TYPE1" />
+                <ScalarProperty Name="PROD_TYPE2" ColumnName="PROD_TYPE2" />
+                <ScalarProperty Name="PROD_TYPE3" ColumnName="PROD_TYPE3" />
+                <ScalarProperty Name="PROD_TYPE4" ColumnName="PROD_TYPE4" />
+                <ScalarProperty Name="APPR_DATE" ColumnName="APPR_DATE" />
+                <ScalarProperty Name="APPR_DATE1" ColumnName="APPR_DATE1" />
+                <ScalarProperty Name="MULTI_CCY" ColumnName="MULTI_CCY" />
+                <ScalarProperty Name="BASE_CCY" ColumnName="BASE_CCY" />
+                <ScalarProperty Name="LIMIT" ColumnName="LIMIT" />
+                <ScalarProperty Name="MAT_DATE" ColumnName="MAT_DATE" />
+                <ScalarProperty Name="SIGHT_DATE" ColumnName="SIGHT_DATE" />
+                <ScalarProperty Name="MAX_INT_PERIOD" ColumnName="MAX_INT_PERIOD" />
+                <ScalarProperty Name="BASE_RATE" ColumnName="BASE_RATE" />
+                <ScalarProperty Name="BASE_RATE_REMARK" ColumnName="BASE_RATE_REMARK" />
+                <ScalarProperty Name="MARGIN" ColumnName="MARGIN" />
+                <ScalarProperty Name="INT_CALC_METHOD" ColumnName="INT_CALC_METHOD" />
+                <ScalarProperty Name="INT_CALC_REMARK" ColumnName="INT_CALC_REMARK" />
+                <ScalarProperty Name="REPAY_TYPE" ColumnName="REPAY_TYPE" />
+                <ScalarProperty Name="REPAY_REMARK" ColumnName="REPAY_REMARK" />
+                <ScalarProperty Name="OTHER_REMARK" ColumnName="OTHER_REMARK" />
+                <ScalarProperty Name="G_FEE_TYPE" ColumnName="G_FEE_TYPE" />
+                <ScalarProperty Name="G_FEE_RATE" ColumnName="G_FEE_RATE" />
+                <ScalarProperty Name="FEE_KIND_ID" ColumnName="FEE_KIND_ID" />
+                <ScalarProperty Name="FEE_RATE" ColumnName="FEE_RATE" />
+                <ScalarProperty Name="FEE_CALC_METHOD_TYPE" ColumnName="FEE_CALC_METHOD_TYPE" />
+                <ScalarProperty Name="FEE_START_DATE" ColumnName="FEE_START_DATE" />
+                <ScalarProperty Name="FEE_END_DATE" ColumnName="FEE_END_DATE" />
+                <ScalarProperty Name="FEE_PAYMENT_TYPE" ColumnName="FEE_PAYMENT_TYPE" />
+                <ScalarProperty Name="FREQ_TYPE" ColumnName="FREQ_TYPE" />
+                <ScalarProperty Name="DAY_OF_MONTH_TYPE" ColumnName="DAY_OF_MONTH_TYPE" />
+                <ScalarProperty Name="FEE_COL_DATE" ColumnName="FEE_COL_DATE" />
+                <ScalarProperty Name="FEE_REMARKS" ColumnName="FEE_REMARKS" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PROC_BY1" ColumnName="PROC_BY1" />
+                <ScalarProperty Name="PROC_BY2" ColumnName="PROC_BY2" />
+                <ScalarProperty Name="APPR_BY1" ColumnName="APPR_BY1" />
+                <ScalarProperty Name="APPR_BY2" ColumnName="APPR_BY2" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+                <ScalarProperty Name="DIRECT_DEBIT" ColumnName="DIRECT_DEBIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER">
+              <MappingFragment StoreEntitySet="LOAN_MASTER">
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="MULTI_BRW" ColumnName="MULTI_BRW" />
+                <ScalarProperty Name="AGREEM_DATE1" ColumnName="AGREEM_DATE1" />
+                <ScalarProperty Name="AGREEM_DATE2" ColumnName="AGREEM_DATE2" />
+                <ScalarProperty Name="AMENDMENT_DATE" ColumnName="AMENDMENT_DATE" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="PROD_TYPE2" ColumnName="PROD_TYPE2" />
+                <ScalarProperty Name="PROD_TYPE4" ColumnName="PROD_TYPE4" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="AGENT" ColumnName="AGENT" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="TEL_NO" ColumnName="TEL_NO" />
+                <ScalarProperty Name="FAX_NO" ColumnName="FAX_NO" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PROC_BY" ColumnName="PROC_BY" />
+                <ScalarProperty Name="PROC_ON" ColumnName="PROC_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="CCIF" ColumnName="CCIF" />
+                <ScalarProperty Name="CCIF_NAME" ColumnName="CCIF_NAME" />
+                <ScalarProperty Name="GCIF" ColumnName="GCIF" />
+                <ScalarProperty Name="RATIO_SPREAD1" ColumnName="RATIO_SPREAD1" />
+                <ScalarProperty Name="RATIO_SPREAD2" ColumnName="RATIO_SPREAD2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_TRANS">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_TRANS">
+              <MappingFragment StoreEntitySet="LOAN_TRANS">
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="TRANS_NO" ColumnName="TRANS_NO" />
+                <ScalarProperty Name="RO_NO" ColumnName="RO_NO" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="DUE_DATE" ColumnName="DUE_DATE" />
+                <ScalarProperty Name="INC_DUE_DATE" ColumnName="INC_DUE_DATE" />
+                <ScalarProperty Name="DAYS" ColumnName="DAYS" />
+                <ScalarProperty Name="DRAW_CCY" ColumnName="DRAW_CCY" />
+                <ScalarProperty Name="DRAW_AMT" ColumnName="DRAW_AMT" />
+                <ScalarProperty Name="DRAW_EQUIV" ColumnName="DRAW_EQUIV" />
+                <ScalarProperty Name="DRAW_EXCH_RATE_IND" ColumnName="DRAW_EXCH_RATE_IND" />
+                <ScalarProperty Name="DRAW_EXCH_RATE" ColumnName="DRAW_EXCH_RATE" />
+                <ScalarProperty Name="REPAY_CCY" ColumnName="REPAY_CCY" />
+                <ScalarProperty Name="REPAY_AMT" ColumnName="REPAY_AMT" />
+                <ScalarProperty Name="REPAY_EQUIV" ColumnName="REPAY_EQUIV" />
+                <ScalarProperty Name="REPAY_EXCH_RATE_IND" ColumnName="REPAY_EXCH_RATE_IND" />
+                <ScalarProperty Name="REPAY_EXCH_RATE" ColumnName="REPAY_EXCH_RATE" />
+                <ScalarProperty Name="BAL_AMT" ColumnName="BAL_AMT" />
+                <ScalarProperty Name="INT_RATE" ColumnName="INT_RATE" />
+                <ScalarProperty Name="BASE_RATE" ColumnName="BASE_RATE" />
+                <ScalarProperty Name="INT_AMT" ColumnName="INT_AMT" />
+                <ScalarProperty Name="INT_AMT_CALC" ColumnName="INT_AMT_CALC" />
+                <ScalarProperty Name="INT_RECV_DATE" ColumnName="INT_RECV_DATE" />
+                <ScalarProperty Name="INT_RECV_BY" ColumnName="INT_RECV_BY" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="PROC_BY1" ColumnName="PROC_BY1" />
+                <ScalarProperty Name="PROC_BY2" ColumnName="PROC_BY2" />
+                <ScalarProperty Name="APPR_BY1" ColumnName="APPR_BY1" />
+                <ScalarProperty Name="APPR_BY2" ColumnName="APPR_BY2" />
+                <ScalarProperty Name="CHK_BY" ColumnName="CHK_BY" />
+                <ScalarProperty Name="FLAG_DEL_BY" ColumnName="FLAG_DEL_BY" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="INC_START_DATE" ColumnName="INC_START_DATE" />
+                <ScalarProperty Name="DRAWDOWN_NO" ColumnName="DRAWDOWN_NO" />
+                <ScalarProperty Name="SCHEME_NO" ColumnName="SCHEME_NO" />
+                <ScalarProperty Name="AUTHORIZED" ColumnName="AUTHORIZED" />
+                <ScalarProperty Name="FINAL_DUE_DATE" ColumnName="FINAL_DUE_DATE" />
+                <ScalarProperty Name="INTEREST_TO_DATE" ColumnName="INTEREST_TO_DATE" />
+                <ScalarProperty Name="INTEREST_CALC_CODE" ColumnName="INTEREST_CALC_CODE" />
+                <ScalarProperty Name="BASE_RATE_CODE" ColumnName="BASE_RATE_CODE" />
+                <ScalarProperty Name="SPREAD" ColumnName="SPREAD" />
+                <ScalarProperty Name="INTEREST_COLLECT" ColumnName="INTEREST_COLLECT" />
+                <ScalarProperty Name="INTERNAL_RATE" ColumnName="INTERNAL_RATE" />
+                <ScalarProperty Name="RECEIVING_METHOD" ColumnName="RECEIVING_METHOD" />
+                <ScalarProperty Name="PAYING_METHOD" ColumnName="PAYING_METHOD" />
+                <ScalarProperty Name="ACCOUNT_CODE" ColumnName="ACCOUNT_CODE" />
+                <ScalarProperty Name="CUSTOMER_ACCOUNT_CODE_BORROWER" ColumnName="CUSTOMER_ACCOUNT_CODE_BORROWER" />
+                <ScalarProperty Name="CUSTOMER_ACCOUNT_CODE" ColumnName="CUSTOMER_ACCOUNT_CODE" />
+                <ScalarProperty Name="ACCOUNT_NO1" ColumnName="ACCOUNT_NO1" />
+                <ScalarProperty Name="ACCOUNT_NO2" ColumnName="ACCOUNT_NO2" />
+                <ScalarProperty Name="ACCOUNT_NO1_MANUAL_ENTRY" ColumnName="ACCOUNT_NO1_MANUAL_ENTRY" />
+                <ScalarProperty Name="ACCOUNT_NO2_MANUAL_ENTRY" ColumnName="ACCOUNT_NO2_MANUAL_ENTRY" />
+                <ScalarProperty Name="ATTENTION" ColumnName="ATTENTION" />
+                <ScalarProperty Name="Old_RO_InterestCollect" ColumnName="Old_RO_InterestCollect" />
+                <ScalarProperty Name="Old_RO_IntAmt" ColumnName="Old_RO_IntAmt" />
+                <ScalarProperty Name="RO_Type1" ColumnName="RO_Type1" />
+                <ScalarProperty Name="RO_Type2" ColumnName="RO_Type2" />
+                <ScalarProperty Name="InitialInputDateTime" ColumnName="InitialInputDateTime" />
+                <ScalarProperty Name="InitialApprovalDateTime" ColumnName="InitialApprovalDateTime" />
+                <ScalarProperty Name="FinalApprovalDateTime" ColumnName="FinalApprovalDateTime" />
+                <ScalarProperty Name="ModifyRateDateTime" ColumnName="ModifyRateDateTime" />
+                <ScalarProperty Name="ApproveModifiedRateDateTime" ColumnName="ApproveModifiedRateDateTime" />
+                <ScalarProperty Name="ModifyRatesBy" ColumnName="ModifyRatesBy" />
+                <ScalarProperty Name="AppRatesBy" ColumnName="AppRatesBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCS_CUST_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.LCS_CUST_MASTER">
+              <MappingFragment StoreEntitySet="LCS_CUST_MASTER">
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+                <ScalarProperty Name="CONTACT" ColumnName="CONTACT" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PREP_BY" ColumnName="PREP_BY" />
+                <ScalarProperty Name="PREP_ON" ColumnName="PREP_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER_BORROWER">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER_BORROWER">
+              <MappingFragment StoreEntitySet="LOAN_MASTER_BORROWER">
+                <ScalarProperty Name="GCIF" ColumnName="GCIF" />
+                <ScalarProperty Name="CCIF_NAME" ColumnName="CCIF_NAME" />
+                <ScalarProperty Name="CCIF" ColumnName="CCIF" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER_RATING">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER_RATING">
+              <MappingFragment StoreEntitySet="LOAN_MASTER_RATING">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="RATING_RANGE" ColumnName="RATING_RANGE" />
+                <ScalarProperty Name="RATING_TYPE" ColumnName="RATING_TYPE" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER_SECURITY">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER_SECURITY">
+              <MappingFragment StoreEntitySet="LOAN_MASTER_SECURITY">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+                <ScalarProperty Name="EXPIRY_DATE" ColumnName="EXPIRY_DATE" />
+                <ScalarProperty Name="COLLATERAL_LEDGER" ColumnName="COLLATERAL_LEDGER" />
+                <ScalarProperty Name="COLLATERAL_SECURITY_TYPE" ColumnName="COLLATERAL_SECURITY_TYPE" />
+                <ScalarProperty Name="COLLATERAL" ColumnName="COLLATERAL" />
+                <ScalarProperty Name="GUARANTOR_SECURITY_TYPE" ColumnName="GUARANTOR_SECURITY_TYPE" />
+                <ScalarProperty Name="GUARANTOR" ColumnName="GUARANTOR" />
+                <ScalarProperty Name="GUARANTEE" ColumnName="GUARANTEE" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANCHE_CONTENT">
+            <EntityTypeMapping TypeName="LoanDataModel.TRANCHE_CONTENT">
+              <MappingFragment StoreEntitySet="TRANCHE_CONTENT">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CCY" ColumnName="CCY" />
+                <ScalarProperty Name="LIMIT" ColumnName="LIMIT" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANCHE_GUARANTEE">
+            <EntityTypeMapping TypeName="LoanDataModel.TRANCHE_GUARANTEE">
+              <MappingFragment StoreEntitySet="TRANCHE_GUARANTEE">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BG_REMARK" ColumnName="BG_REMARK" />
+                <ScalarProperty Name="BG_EXPIRY_DATE" ColumnName="BG_EXPIRY_DATE" />
+                <ScalarProperty Name="BG_CANCEL_DATE" ColumnName="BG_CANCEL_DATE" />
+                <ScalarProperty Name="BG_ISSUE_DATE" ColumnName="BG_ISSUE_DATE" />
+                <ScalarProperty Name="OUTSTANDING_AMOUNT" ColumnName="OUTSTANDING_AMOUNT" />
+                <ScalarProperty Name="ORIGINAL_AMOUNT" ColumnName="ORIGINAL_AMOUNT" />
+                <ScalarProperty Name="CCY" ColumnName="CCY" />
+                <ScalarProperty Name="BENEFICIARY" ColumnName="BENEFICIARY" />
+                <ScalarProperty Name="MULTI_BORROWERS" ColumnName="MULTI_BORROWERS" />
+                <ScalarProperty Name="BORROWER" ColumnName="BORROWER" />
+                <ScalarProperty Name="GBASE_GUARANTEE_NO" ColumnName="GBASE_GUARANTEE_NO" />
+                <ScalarProperty Name="GUARANTEE_NO" ColumnName="GUARANTEE_NO" />
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANCHE_MARGIN">
+            <EntityTypeMapping TypeName="LoanDataModel.TRANCHE_MARGIN">
+              <MappingFragment StoreEntitySet="TRANCHE_MARGIN">
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="SELECTED" ColumnName="SELECTED" />
+                <ScalarProperty Name="OTHER" ColumnName="OTHER" />
+                <ScalarProperty Name="FINANCIAL_GNTEE" ColumnName="FINANCIAL_GNTEE" />
+                <ScalarProperty Name="PERFOMANCE_GNTEE" ColumnName="PERFOMANCE_GNTEE" />
+                <ScalarProperty Name="COMMITMENT_FEE" ColumnName="COMMITMENT_FEE" />
+                <ScalarProperty Name="LINE_FEE" ColumnName="LINE_FEE" />
+                <ScalarProperty Name="RATIO_MARGIN" ColumnName="RATIO_MARGIN" />
+                <ScalarProperty Name="RATIO_RANGE" ColumnName="RATIO_RANGE" />
+                <ScalarProperty Name="RATIO_TYPE" ColumnName="RATIO_TYPE" />
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANCHE_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.TRANCHE_MASTER">
+              <MappingFragment StoreEntitySet="TRANCHE_MASTER">
+                <ScalarProperty Name="FINANCIAL_NAME" ColumnName="FINANCIAL_NAME" />
+                <ScalarProperty Name="RATIIO_TYPE" ColumnName="RATIIO_TYPE" />
+                <ScalarProperty Name="RATING_TYPE" ColumnName="RATING_TYPE" />
+                <ScalarProperty Name="MARGIN_REMARK_11AM" ColumnName="MARGIN_REMARK_11AM" />
+                <ScalarProperty Name="MARGIN_11AM" ColumnName="MARGIN_11AM" />
+                <ScalarProperty Name="CFD_BASE_RATE" ColumnName="CFD_BASE_RATE" />
+                <ScalarProperty Name="TRD_INTERNAL_RATE" ColumnName="TRD_INTERNAL_RATE" />
+                <ScalarProperty Name="SILENT_MARGIN" ColumnName="SILENT_MARGIN" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_TIMES" ColumnName="MAXI_DRAWDOWN_TIMES" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_DAYS" ColumnName="MAXI_DRAWDOWN_DAYS" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_PERIOD" ColumnName="MAXI_DRAWDOWN_PERIOD" />
+                <ScalarProperty Name="MULTI_CCY_DESC" ColumnName="MULTI_CCY_DESC" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="PROC_ON" ColumnName="PROC_ON" />
+                <ScalarProperty Name="PROC_BY" ColumnName="PROC_BY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MULTIPLE" ColumnName="MULTIPLE" />
+                <ScalarProperty Name="MIN_DD" ColumnName="MIN_DD" />
+                <ScalarProperty Name="MAT_DATE_NOTES" ColumnName="MAT_DATE_NOTES" />
+                <ScalarProperty Name="MAT_DATE" ColumnName="MAT_DATE" />
+                <ScalarProperty Name="PERIOD_NOTES" ColumnName="PERIOD_NOTES" />
+                <ScalarProperty Name="AVAIL_END" ColumnName="AVAIL_END" />
+                <ScalarProperty Name="AVAIL_START" ColumnName="AVAIL_START" />
+                <ScalarProperty Name="PORTION_NOTES" ColumnName="PORTION_NOTES" />
+                <ScalarProperty Name="SYND_PORTION" ColumnName="SYND_PORTION" />
+                <ScalarProperty Name="TRANCHE_PORTION" ColumnName="TRANCHE_PORTION" />
+                <ScalarProperty Name="MULTI_CCY" ColumnName="MULTI_CCY" />
+                <ScalarProperty Name="BASE_CCY" ColumnName="BASE_CCY" />
+                <ScalarProperty Name="APPLN_DATE_RELT" ColumnName="APPLN_DATE_RELT" />
+                <ScalarProperty Name="APPLN_NO_RELT" ColumnName="APPLN_NO_RELT" />
+                <ScalarProperty Name="HO_APPR_DATE" ColumnName="HO_APPR_DATE" />
+                <ScalarProperty Name="APPLN_DATE" ColumnName="APPLN_DATE" />
+                <ScalarProperty Name="APPLN_NO" ColumnName="APPLN_NO" />
+                <ScalarProperty Name="PROD_TYPE5" ColumnName="PROD_TYPE5" />
+                <ScalarProperty Name="PROD_TYPE1" ColumnName="PROD_TYPE1" />
+                <ScalarProperty Name="TRANCHE_NAME" ColumnName="TRANCHE_NAME" />
+                <ScalarProperty Name="TRANCHE_TYPE" ColumnName="TRANCHE_TYPE" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXCH_RATE">
+            <EntityTypeMapping TypeName="LoanDataModel.EXCH_RATE">
+              <MappingFragment StoreEntitySet="EXCH_RATE">
+                <ScalarProperty Name="DKB_SPECIAL_RATE_USD" ColumnName="DKB_SPECIAL_RATE_USD" />
+                <ScalarProperty Name="CCY_CODE" ColumnName="CCY_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_CONDITION">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_CONDITION">
+              <MappingFragment StoreEntitySet="COVENANT_CONDITION">
+                <ScalarProperty Name="CONDITION_GROUP" ColumnName="CONDITION_GROUP" />
+                <ScalarProperty Name="CONDITION_DESC" ColumnName="CONDITION_DESC" />
+                <ScalarProperty Name="CONDITION_TYPE" ColumnName="CONDITION_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_CONDITION_GROUP">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_CONDITION_GROUP">
+              <MappingFragment StoreEntitySet="COVENANT_CONDITION_GROUP">
+                <ScalarProperty Name="CONDITION_GROUP_DESC" ColumnName="CONDITION_GROUP_DESC" />
+                <ScalarProperty Name="CONDITION_GROUP_TYPE" ColumnName="CONDITION_GROUP_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_FREQ_TYPE">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_FREQ_TYPE">
+              <MappingFragment StoreEntitySet="COVENANT_FREQ_TYPE">
+                <ScalarProperty Name="DATE_PART" ColumnName="DATE_PART" />
+                <ScalarProperty Name="INTERVAL" ColumnName="INTERVAL" />
+                <ScalarProperty Name="FREQ_DESC" ColumnName="FREQ_DESC" />
+                <ScalarProperty Name="FREQ_TYPE" ColumnName="FREQ_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_MASTER">
+              <MappingFragment StoreEntitySet="COVENANT_MASTER">
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="PROC_ON" ColumnName="PROC_ON" />
+                <ScalarProperty Name="PROC_BY" ColumnName="PROC_BY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MARGIN_BASE_TYPE" ColumnName="MARGIN_BASE_TYPE" />
+                <ScalarProperty Name="DENOMINATION" ColumnName="DENOMINATION" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="MATH_SYMBOL" ColumnName="MATH_SYMBOL" />
+                <ScalarProperty Name="CONDITION_TYPE" ColumnName="CONDITION_TYPE" />
+                <ScalarProperty Name="TIME_OF_RECEIPT" ColumnName="TIME_OF_RECEIPT" />
+                <ScalarProperty Name="COV_END_DATE" ColumnName="COV_END_DATE" />
+                <ScalarProperty Name="COV_START_DATE" ColumnName="COV_START_DATE" />
+                <ScalarProperty Name="DAY_OF_MONTH_TYPE" ColumnName="DAY_OF_MONTH_TYPE" />
+                <ScalarProperty Name="FREQ_TYPE" ColumnName="FREQ_TYPE" />
+                <ScalarProperty Name="REPORT_TYPE" ColumnName="REPORT_TYPE" />
+                <ScalarProperty Name="COV_TYPE" ColumnName="COV_TYPE" />
+                <ScalarProperty Name="ACCOUNT_OFFICER" ColumnName="ACCOUNT_OFFICER" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="COVENANT_NO" ColumnName="COVENANT_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_PERMISSION">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_PERMISSION">
+              <MappingFragment StoreEntitySet="COVENANT_PERMISSION">
+                <ScalarProperty Name="DEPT_CODE_ID" ColumnName="DEPT_CODE_ID" />
+                <ScalarProperty Name="DEPARTMENT_CODE" ColumnName="DEPARTMENT_CODE" />
+                <ScalarProperty Name="DEPT_ID" ColumnName="DEPT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_RECEIPT_TIMING">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_RECEIPT_TIMING">
+              <MappingFragment StoreEntitySet="COVENANT_RECEIPT_TIMING">
+                <ScalarProperty Name="ORDER" ColumnName="ORDER" />
+                <ScalarProperty Name="DATE_PART" ColumnName="DATE_PART" />
+                <ScalarProperty Name="INTERVAL" ColumnName="INTERVAL" />
+                <ScalarProperty Name="TIMING_DESC" ColumnName="TIMING_DESC" />
+                <ScalarProperty Name="TIMING_TYPE" ColumnName="TIMING_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_RECORD">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_RECORD">
+              <MappingFragment StoreEntitySet="COVENANT_RECORD">
+                <ScalarProperty Name="STRESS_VALUE" ColumnName="STRESS_VALUE" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="PROC_ON" ColumnName="PROC_ON" />
+                <ScalarProperty Name="PROC_BY" ColumnName="PROC_BY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="AO_REMARKS" ColumnName="AO_REMARKS" />
+                <ScalarProperty Name="ORIGINAL_DESC" ColumnName="ORIGINAL_DESC" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="IN_COMPLIANCE" ColumnName="IN_COMPLIANCE" />
+                <ScalarProperty Name="RATE_ADJ" ColumnName="RATE_ADJ" />
+                <ScalarProperty Name="DATE_RECIEVED_ADJ" ColumnName="DATE_RECIEVED_ADJ" />
+                <ScalarProperty Name="RATE" ColumnName="RATE" />
+                <ScalarProperty Name="DATE_RECIEVED" ColumnName="DATE_RECIEVED" />
+                <ScalarProperty Name="DENOMINATION" ColumnName="DENOMINATION" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="MATH_SYMBOL" ColumnName="MATH_SYMBOL" />
+                <ScalarProperty Name="CONDITION_TYPE" ColumnName="CONDITION_TYPE" />
+                <ScalarProperty Name="DUE_DATE" ColumnName="DUE_DATE" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="REPORT_FREQ_TYPE" ColumnName="REPORT_FREQ_TYPE" />
+                <ScalarProperty Name="RECORD_NO" ColumnName="RECORD_NO" />
+                <ScalarProperty Name="COVENANT_NO" ColumnName="COVENANT_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COVENANT_TYPE">
+            <EntityTypeMapping TypeName="LoanDataModel.COVENANT_TYPE">
+              <MappingFragment StoreEntitySet="COVENANT_TYPE">
+                <ScalarProperty Name="COVENANT_DECS" ColumnName="COVENANT_DECS" />
+                <ScalarProperty Name="COVENANT_TYPE1" ColumnName="COVENANT_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER_COVENANT">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER_COVENANT">
+              <MappingFragment StoreEntitySet="LOAN_MASTER_COVENANT">
+                <ScalarProperty Name="COVENANT_NO" ColumnName="COVENANT_NO" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROD_TYPE">
+            <EntityTypeMapping TypeName="LoanDataModel.PROD_TYPE">
+              <MappingFragment StoreEntitySet="PROD_TYPE">
+                <ScalarProperty Name="PROD_DESC" ColumnName="PROD_DESC" />
+                <ScalarProperty Name="PROD_ID" ColumnName="PROD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS_CODE">
+            <EntityTypeMapping TypeName="LoanDataModel.STATUS_CODE">
+              <MappingFragment StoreEntitySet="STATUS_CODE">
+                <ScalarProperty Name="STATUS_DESC" ColumnName="STATUS_DESC" />
+                <ScalarProperty Name="STATUS_CODE1" ColumnName="STATUS_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vGUIDE_CUSTOMER_MASTER">
+            <EntityTypeMapping TypeName="LoanDataModel.vGUIDE_CUSTOMER_MASTER">
+              <MappingFragment StoreEntitySet="vGUIDE_CUSTOMER_MASTER">
+                <ScalarProperty Name="CCIF_NAME" ColumnName="CCIF_NAME" />
+                <ScalarProperty Name="CCIF" ColumnName="CCIF" />
+                <ScalarProperty Name="GUIDE_STATUS" ColumnName="GUIDE_STATUS" />
+                <ScalarProperty Name="JAPANESE_FLG" ColumnName="JAPANESE_FLG" />
+                <ScalarProperty Name="STEPS_CUST_CD" ColumnName="STEPS_CUST_CD" />
+                <ScalarProperty Name="DEPARTMENT_CD" ColumnName="DEPARTMENT_CD" />
+                <ScalarProperty Name="STATUS_CD" ColumnName="STATUS_CD" />
+                <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+                <ScalarProperty Name="FAX_NO" ColumnName="FAX_NO" />
+                <ScalarProperty Name="TEL_NO" ColumnName="TEL_NO" />
+                <ScalarProperty Name="ADDRESS_2" ColumnName="ADDRESS_2" />
+                <ScalarProperty Name="ADDRESS_1" ColumnName="ADDRESS_1" />
+                <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_MASTER_STATUS_CODE">
+            <EntityTypeMapping TypeName="LoanDataModel.LOAN_MASTER_STATUS_CODE">
+              <MappingFragment StoreEntitySet="LOAN_MASTER_STATUS_CODE">
+                <ScalarProperty Name="FULL_DESC" ColumnName="FULL_DESC" />
+                <ScalarProperty Name="SHORT_DESC" ColumnName="SHORT_DESC" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

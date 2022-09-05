@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+    <link href="../../../Content/UpdateStyle.css" rel="stylesheet" />
+    <script src="../includeExtHTML.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var origin = location.origin;
+            var webapi = 'http://localhost:62001';
+
+            if (sessionStorage.getItem('accessToken') == null) {
+            	window.location.href = origin + "/Register.html"
+            }
+
+             $('#divBasicAuthUsername').load("../commonBasicAuthForm.html");
+
+            if (sessionStorage.getItem('Username') == null) {
+                $('#authoriser').val("System");
+            } else {
+                $('#authoriser').val(sessionStorage.getItem("Username"));
+            }
+
+            $('#txtGUsername').val(sessionStorage.getItem("Username"));
+            $('#txtGPassword').val(sessionStorage.getItem("Password"));
+
+            // Wired the button to click function
+            $('#btnGet').click(function () {
+                //*******************************
+                // get user name and password
+                //*******************************
+                var username = $('#txtGUsername').val();
+                var password = $('#txtGPassword').val();
+
+				//$('#linkClose').click(function () {
+				//	$('#divMessageBox').hide('fade');
+                //});
+				if ($('#txtRefNo').val() == '') {
+					$('#divMessageBox').addClass('alert-warning');
+					$('#divMessageText').text("Please enter Gbase Reference No");
+					$('#divMessageBox').show('fade');
+					return false;
+				}
+
+                $.ajax({
+                    type: 'PUT',
+                    url: origin + '//api/FXTransactionExt/',
+                    dataType: 'json',
+                    data: {
+                        REF_NO: $('#txtRefNo').val(),
+                        optDate: $('#OperationDate').val(),
+						AUTHORIZE_BY: $('#authoriser').val(),
+                    },
+                    //data: guideStatus,
+                    //data: { "id": id, "GUIDEStatus" : guideStatus },
+                    //*****************************************************************************
+                    // Specify the authentication header btoa() method encodes a string to Base64
+                    //*****************************************************************************
+                    headers: {
+                    	//'Authorization': 'Basic ' + btoa(username + ':' + password)
+                    	'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken")
+                    },
+
+                    success: function (result) {
+                        // or
+                        //alert("saved");
+                        $('#DivSpanUsername').removeClass('hidden');
+
+                        // or
+                        $('#divMessageBox').addClass('alert-success');
+                        $('#divMessageText').text("Updated Successfully");
+                        $('#divMessageBox').show('fade');
+
+                        // and
+                        $('#divModalFooter').addClass("btn-primary");
+                        $('#divModalHeader').text("FX GID Upload");
+                        $('#divModalBody').text("Updated Successfully");
+                        $('#successModal').modal('show');
+                    },
+
+                    error: function (jQXHR) {
+
+                        // If status code is 401, access token expired, so redirect the user to the login page
+                        if (jQXHR.status == "401") {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("Access Deny");
+                            $('#divModalBody').text("Please enter user name and password again");
+
+                        }
+                        else if (jQXHR.status == "404") {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("FX GID Upload");
+                            $('#divModalBody').text("Record Not found");
+
+                        }
+                        else {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("FX GID Upload");
+                            $('#divModalBody').text("Internal server error");
+
+                        }
+
+                        $('#divMessageBox').addClass('alert-warning');
+                        $('#divMessageBox').show('fade');
+
+                        $('#divModalFooter').addClass("btn-warning");
+                        $('#successModal').modal('show');
+
+                    }
+
+
+                });
+            });
+
+            // Wired the button to click function
+            $('#btnBack').click(function () {
+                //sessionStorage.removeItem('accessToken');
+                window.location.href = origin + "/HOME";
+            });
+
+            // whenever error happen, it redirect to login page
+            $('#linkClose').click(function () {
+                $('#divMessageBox').hide('fade');
+            });
+
+            // whenever error happen, it redirect to login page
+            $('#errorModal').on('hidden.bs.modal', function () {
+                window.location.href = origin + "/HOME";
+            });
+
+            //$('#spanUsername').text('Hello ' + localStorage.getItem('UserName'));
+            $('#spanUsername').text(' Hello ' + sessionStorage.getItem('Username'));
+
+        });
+    </script>
+</head>
+
+
+<body style="padding-top:20px">
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>Set FX Transaction GID Upload</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <!--<div w3-include-html="../commonMessageBox.html"></div>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <!--Bootstrap alert to display any validation errors-->
+                <div id="divMessageBox" class="alert collapse">
+                    <a id="linkClose" href="#" class="close">&times;</a>
+                    <div id="divMessageText"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-4">
+
+                <div id="DivSpanUsername">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>GBASE Ref No :</td>
+                            <td><input type="text" class="form-control" id="txtRefNo" value="FEB751379802" /></td>
+                        </tr>
+                        <tr>
+                            <td>Operation Date :</td>
+                            <td><input type="date" class="form-control" id="OperationDate" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>OPERATOR BY :</td>
+                            <td><input type="text" class="form-control" id="authoriser" value="" readonly /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="well">
+                    <input id="btnGet" class="btn btn-outline-primary float-left" type="button" value="Set GID Upload Again" />
+                    <input id="btnBack" class="btn btn-outline-primary float-right" type="button" value="Back" />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+         $('#divBasicAuthUsername').hide('fade'); 
+         includeHTML();
+    </script>
+</body>
+</html>

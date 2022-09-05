@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+
+    <link href="../../../Content/DisplayStyle.css" rel="stylesheet" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+
+    <script src="../CustomScripts.js"></script>
+    <script src="../includeExtHTML.js"></script>
+
+    <script src="getFXTransactionByDatesCustAbbr.js"></script>
+    <!--<script type="text/javascript">
+    </script>-->
+</head>
+
+<body style="padding-top:20px">
+
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>FX Transaction Report by Dates & Customer </h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html="../commonMessageBox.html"></div>
+
+        <div class="row ">
+            <div class="col-md-3">
+                <div id="DivSpanUsername" class="well hidden">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody thead class="thead-light">
+                        <tr>
+                            <td>Date type :</td>
+                            <td>
+                                <select class="form-control" id="dateType">
+                                    <option value="DelivaryDate">Delivary Date</option>
+                                    <option value="ContractValueDate">Contract Value Date</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date Range: </td>
+                            <td>From <input type="date" class="form-control" id="dateFrom" value="" /> To <input type="date" class="form-control" id="dateTo" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Name: (keyword)</td>
+                            <td><input type="text" class="form-control" id="custName" value="Mizuho" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="well">
+                    <input id="btnGet" class="btn btn-outline-primary m-1 float-left" type="button" value="Search" />
+                    <input id="btnCopy" class="btn btn-outline-info m-1 float-left" type="button" value="Copy"
+                           onclick="selectElementContents( document.getElementById('report_container') );" />
+                    <input id="btnBack" class="btn btn-outline-primary m-1 float-right" type="button" value="Back" />
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary" id="spinner" role="status" style="display:none;width: 6rem; height: 6rem;">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!--<div class="spinner" id="spinner" style="display:none;"></div>-->
+
+        <div id="report_container">
+            <div class="row ">
+                <div class="col-md-6">
+                    <div id="divData" class="hidden">
+                        <table class="table table-sm table-bordered table-striped table-hover" id="tblData">
+                            <thead>
+                                <tr class="success">
+                                    <th>REF NO</th>
+                                    <th>CUSTOMER ABBR</th>
+                                    <th>CUSTOMER NAME</th>
+
+                                    <th>ACT CD</th>
+                                    <th>ACT ABBR</th>
+
+                                    <th>CONTRACT DATE OPE</th>
+                                    <th>CONTRACT DATE VALUE</th>
+                                    <th>DELIVARY DATE</th>
+
+                                    <th>CONTRACT CCY</th>
+                                    <th>CONTRACT AMT</th>
+                                    <th>EQUIV CCY</th>
+                                    <th>EQUIV AMT</th>
+
+                                    <th>EXCHANGE RATE</th>
+                                    <th>INTERNAL RATE</th>
+                                    <th>SPREAD</th>
+
+                                    <th>STATUS</th>
+                                    <th>AUTHORIZE BY</th>
+                                    <th>TRAN NO</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyData"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+        $('#divBasicAuthUsername').hide('fade');
+        includeHTML();
+    </script>
+</body>
+</html>

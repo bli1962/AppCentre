@@ -1,0 +1,187 @@
+﻿@*<div class="row">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#section1">Update Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#section2">GUIDE Query</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#section3">ELCS Special Rate</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#section4">eDocument Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#section5">EUCBalance & MxInbound Query</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#">Under development</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </li>
+        </ul>
+    </div>*@
+
+
+<div class="row border" style="background-color: ghostwhite">
+
+    <div class="col-sm-2" id="myScrollspy">
+        <div id="navbar2">
+            <ul class="nav flex-column nav-tabs ">
+                <li class="nav-item ">
+                    <a class="nav-link active" data-toggle="tab" href="#section1">GUIDE Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#section4">eDocument Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#section6">Payment Control Status</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="tab" href="#section2">GUIDE Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#section3">ELCS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#section5">MxInbound Query</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#section7">Audit Reports</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-10">
+        <!-- Tab panes -->
+        <div class="tab-content" style="padding: 5px 5px 10px 5px;">
+            <div id="section1" class="container tab-pane active" style="padding: 5px 5px 5px 5px;">
+				<div class="list-group">
+
+					<h5>FX Transation ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/FXTransaction/PutFXTransaction.html"><b>Send FX Transaction To Finalised Status</b>&raquo;</a>
+
+					<h5>FX Settlement ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/FXSettlementInf/PutFXDelivery.html"><b>Send FX Settlement To Finalised Status</b>&raquo;</a>
+
+					<h5>Bank Information (BIF) ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/BankInf/PutBankInf.html"><b>Send Bank Information To Finalised Status</b>&raquo;</a>
+
+					<h5>Settlement Information (SIF)...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/SettlementInf/PutSettlementInf.html"><b>Send Settlement Information To Finalised Status</b>&raquo;</a>
+
+					<h5>FX Transation GID Upload...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/FXTransactionExt/PutFXTransactionExt.html"><b>Set FX GID Upload Again</b>&raquo;</a>
+
+					<h5>MoneyMarket Transation GID Upload...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/MoneyMarketTicket/PutMoneyMarketTicket.html"><b>Set MM GID Upload Again</b>&raquo;</a>
+
+					<h5>FX Customer (excluding GBASE Customer Master)...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/FXFCust/PutFXFCustAttribute.html"><b>Change FX Customer Attributes</b>&raquo;</a>
+
+					<h5>MoneyMarket CASA Closing Account ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/MxInboundEvent/PutMxEucBalanceEvent.html"><b>Set Closing Date for Today's CASA Closing Account</b> &raquo;</a>
+
+					<h5>GUIDE-DCS GAS Transactions ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/GAS/PutGasPendingTransaction.html"><b>Reset GUIDE-DCS GAS Transactions</b> &raquo;</a>
+
+					<h5>GUIDE Users ...</h5>
+					<a class="list-group-item list-group-item-action" href="~/src/app/User/PutUser.html"><b>Reset GUIDE User Status for Password Change</b> &raquo;</a>
+
+				</div>
+            </div>
+
+            <div id="section2" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+
+                    <h5>FX Settlement ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/FXSettlementInf/getFXDeliveryCorporate.html">Corporate Delivery Details Report &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/FXSettlementInf/getFXDeliveryCorporateSummary.html">Corporate Delivery Summary Report &raquo;</a>
+
+                    <h5>Bank Information ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/BankInf/GetBankInfByCustAbbr.html">Search BIF by Customer Abbrivation &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/BankInf/GetBankInfBySwiftID.html">Search BIF by Swift ID &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/BankInf/GetBankInfByStatus.html">Search BIF by Status &raquo;</a>
+
+                    <h5>Settlement Information ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/SettlementInf/GetSettlementInfByCustAbbr.html">Search SIF by Customer Abbrivation &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/SettlementInf/GetSettlementInfById.html">Search SIF by ID &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/SettlementInf/GetSettlementInfsByStatus.html">Search SIF by Status &raquo;</a>
+
+                    <h5>GUIDE Users ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/User/GetUserByUserId.html">Search User by User ID &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/User/GetUserByRecStatus.html">Search Users by Status &raquo;</a>
+                </div>
+            </div>
+
+            <div id="section3" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+                    <h5>Mizuho Special Rate (Loan)...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/ELCS/PutSpecialRate.html">Upload Special Rate &raquo;</a>
+
+                    <h5>RFR Interest Reports...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/ELCS/getLoanRfrInterest.html">Loan Transaction Report &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/ELCS/getSwapRfrInterest.html">Swap Loan Transaction Report &raquo;</a>
+
+                </div>
+            </div>
+
+            <div id="section4" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+                    <h5>eDocument ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/eDocument/PutEDocument.html">Set eDocument Reprint &raquo;</a>
+                </div>
+            </div>
+
+            <div id="section5" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+                    <h5>EUC Balance Event...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/MxInboundEvent/getMxEucBalanceEventByCustAbbr.html">Seach EUC balance event by Customer Abbrivation &raquo;</a>
+
+                    <a class="list-group-item list-group-item-action" href="~/src/app/MxInboundEvent/getMxEucBalanceEventByRefNo.html">Seach EUC balance event by GBASE Reference No. &raquo;</a>
+
+                    <h5>MxInbound Event Log ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/MxInboundEvent/getMxInboundEventLogBySender.html">Search Mx Inbound event log by Sender &raquo;</a>
+                </div>
+            </div>
+
+            <div id="section6" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+
+                    <h5>Payment Control...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/PaymentControl/PutPayment.html"><b>Change Payment Control Status</b>&raquo;</a>
+
+                    <h5>Swift Payment...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/PaymentControl/DeleteSwiftPayment.html"><b>Delete Swift Payment Records</b>&raquo;</a>
+                </div>
+            </div>
+
+
+            <div id="section7" class="container tab-pane fade" style="padding: 5px 5px 5px 5px;">
+                <div class="list-group">
+                    <h5>FX Transaction ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/FXTRansaction/getFXTransactionByDates.html">FX Transaction Report by Dates &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/FXTRansaction/getFXTransactionByDatesCustAbbr.html">FX Transaction Report by Dates & Customer Name &raquo;</a>
+
+                    <h5>MoneyMarket Transaction ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/MoneyMarketTicket/getMMTransactionByDates.html">MM Transaction Report by Dates &raquo;</a>
+
+                    <h5>ELCS ...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/CovenantMaster/GetCovenantRatio.html">Covenant Ratio Report &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/ELCS/getLoanTransactionByDates.html">Loan Transaction Report By Dates &raquo;</a>
+                    <a class="list-group-item list-group-item-action" href="~/Src/app/ELCS/getLoanTransactionByCcyDates.html">Loan Transaction Report By CCY and Dates &raquo;</a>
+
+                    <h5>AppCentre Log...</h5>
+                    <a class="list-group-item list-group-item-action" href="~/src/app/AuditLog/GetAuditLogByDate.html">Search Audit Log by Date &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

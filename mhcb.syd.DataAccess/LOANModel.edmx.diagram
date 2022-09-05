@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2351e7975f224c6a80cfe5b519feb3d9" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="LoanModel.FACILITY_MASTER" Width="1.5" PointX="1.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_TRANS" Width="1.5" PointX="3.5" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_TRANS_FACILITY_MASTER" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LoanModel.EXCH_RATE" Width="1.5" PointX="13.875" PointY="6.625" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_ACCOUNT_OFFICER" Width="1.5" PointX="8.375" PointY="28.25" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_BORROWER" Width="1.5" PointX="8.375" PointY="25.5" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_RATING" Width="1.5" PointX="8.375" PointY="30.625" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_SECURITY" Width="1.5" PointX="8.375" PointY="33.25" />
+        <EntityTypeShape EntityType="LoanModel.TRANCHE_CONTENT" Width="1.5" PointX="11.625" PointY="13.25" />
+        <EntityTypeShape EntityType="LoanModel.TRANCHE_GUARANTEE" Width="1.5" PointX="11.625" PointY="16.25" />
+        <EntityTypeShape EntityType="LoanModel.TRANCHE_MARGIN" Width="1.5" PointX="11.625" PointY="9.125" />
+        <EntityTypeShape EntityType="LoanModel.TRANCHE_MASTER" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LoanModel.TRANCHE_TYPE" Width="1.5" PointX="7.125" PointY="10.25" />
+        <EntityTypeShape EntityType="LoanModel.DEPT_PERMISSION" Width="1.5" PointX="11.75" PointY="1.875" />
+        <EntityTypeShape EntityType="LoanModel.LCS_CUST_MASTER" Width="1.5" PointX="6.75" PointY="12.875" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_ACCOUNT_OFFICER_LOAN_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_BORROWER_LOAN_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_RATING_LOAN_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_SECURITY_LOAN_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_TRANCHE_MASTER_LOAN_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_TRANCHE_CONTENT_TRANCHE_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_TRANCHE_GUARANTEE_TRANCHE_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_TRANCHE_MARGIN_TRANCHE_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_TRANCHE_MASTER_TRANCHE_TYPE" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_CONDITION" Width="1.5" PointX="17" PointY="10.75" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_CONDITION_GROUP" Width="1.5" PointX="14.75" PointY="10.875" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_MASTER" Width="1.5" PointX="19.25" PointY="9.125" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_PERMISSION" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_RECORD" Width="1.5" PointX="21.5" PointY="9.125" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_TYPE" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="LoanModel.FK_COVENANT_CONDITION_COVENANT_CONDITION_GROUP" />
+        <AssociationConnector Association="LoanModel.FK_COVENANT_MASTER_COVENANT_CONDITION" />
+        <AssociationConnector Association="LoanModel.FK_COVENANT_RECORD_COVENANT_MASTER" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_COVENANT" Width="1.5" PointX="21.875" PointY="5.625" />
+        <EntityTypeShape EntityType="LoanModel.LOAN_MASTER_STATUS_CODE" Width="1.5" PointX="0.75" PointY="13.75" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_COVENANT_COVENANT_MASTER" />
+        <AssociationConnector Association="LoanModel.FK_LOAN_MASTER_COVENANT_LOAN_MASTER" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_RECEIPT_TIMING" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="LoanModel.COVENANT_FREQ_TYPE" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LoanModel.PROD_TYPE" Width="1.5" PointX="14.375" PointY="3.75" />
+        <EntityTypeShape EntityType="LoanModel.vGUIDE_CUSTOMER_MASTER" Width="1.5" PointX="14.375" PointY="13.75" />
+        <EntityTypeShape EntityType="LoanModel.STATUS_CODE" Width="1.5" PointX="16.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

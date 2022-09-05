@@ -1,0 +1,21 @@
+﻿body {
+	font-family: Consolas, monospace,'Courier New';
+}
+
+
+th {
+	text-align: center;
+	font-size: small;
+	/*background-color: blue;*/
+	padding: 5px;
+	background-color: #1E88E5;
+	color: white;
+}
+
+td {
+	text-align: center;
+	font-size: small;
+	/*background-color: silver;*/
+	padding: 5px;
+	outline: none;
+}

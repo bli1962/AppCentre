@@ -1,0 +1,228 @@
+﻿Begin tran
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'F', GIP_Status= 4, GIP_DESCRIPTION = ''
+	where STATUS not in ('F', 'A', 'M', 'V' )
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'S', GIP_Status= 5,AUTHORIZE_BY = 'BL007010', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+	where SWIFT_ID  in ('ICBKCNBJXXX', 'EBVIVNVXXXX' )
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'S',  GIP_Status= 5, AUTHORIZE_BY = 'DL002041', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+	where SWIFT_ID  in ('COKSDE33XXX', 'BYLADEM1ALG' )
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'S',  GIP_Status= 5, AUTHORIZE_BY = 'GW003368', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+	where SWIFT_ID  in ('BYLADEMMXXX', 'BKCHCNBJ780' )
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'S',  GIP_Status= 5, AUTHORIZE_BY = 'UA003086', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+	where SWIFT_ID  in ('MHCBGB2LXXX', 'MHCBVNVXXXX' )
+
+	Update [GUIDE].[dbo].[BANK_INF]
+	Set STATUS = 'S',  GIP_Status= 5, AUTHORIZE_BY = 'MM003292', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+	where SWIFT_ID  in ('SVBKUS6SXXX', 'ICBKCNBJNTG' )
+
+	SELECT TOP (100) *
+	FROM [GUIDE].[dbo].[BANK_INF]
+	where STATUS not in ('F', 'A', 'M', 'V' )
+	order by [ADD_ON] desc
+
+--Commit tran
+--rollback tran
+
+
+
+Begin tran
+
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'F', GIP_Status= 4, GIP_DESCRIPTION = ''
+    	where STATUS not in ('F', 'A', 'V' )
+		
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'S', AUTHORIZE_BY = 'BL007010', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+    	where SIF_ID  in ('3318', '3317' )
+
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'S', AUTHORIZE_BY = 'DL002041', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+    	where SIF_ID  in ('3326', '3325' )
+
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'S', AUTHORIZE_BY = 'GW003368', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+    	where SIF_ID  in ('3324', '3323' )
+
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'S', AUTHORIZE_BY = 'UA003086', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+    	where SIF_ID  in ('3322', '3321' )
+
+    	Update [GUIDE].[dbo].[SETTLEMENT_INF]
+    	Set STATUS = 'S', AUTHORIZE_BY = 'MM003292', AUTHORIZE_ON=getdate(), ADD_ON = getdate()
+    	where SIF_ID  in ('3320', '3319' )
+
+
+    	SELECT TOP (100) *
+    	FROM [GUIDE].[dbo].[SETTLEMENT_INF]
+    	where STATUS not in ('F', 'A', 'V' )
+    	order by [ADD_ON] desc
+
+--Commit tran
+--rollback tran
+
+
+
+Begin tran
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'F'
+	where STATUS not in ('F', 'A', 'V' )
+	and CUST_ABBR not like 'NO GBASE%' and CUST_ABBR not like '999%' and CUST_ABBR not like 'NODREAMINPU%'
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'S', AUTHORIZE_BY = 'BL007010', ADD_ON = getdate(), AUTHORIZE_ON=getdate(), CONTRACT_DATE_OPE = getdate(), GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751764159', 'FEB751773653' )
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'S', AUTHORIZE_BY = 'DL002041', ADD_ON = getdate(), AUTHORIZE_ON=getdate(), CONTRACT_DATE_OPE = getdate(), GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751383157', 'FEB751768721' )
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'S', AUTHORIZE_BY = 'GW003368', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  CONTRACT_DATE_OPE = getdate(), GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751779447', 'FEB751383694' )
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'S', AUTHORIZE_BY = 'UA003086', ADD_ON = getdate(), AUTHORIZE_ON=getdate(), CONTRACT_DATE_OPE = getdate(), GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751621440', 'FEB751622323' )
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION]
+	Set STATUS = 'S', AUTHORIZE_BY = 'MM003292', ADD_ON = getdate(), AUTHORIZE_ON=getdate(), CONTRACT_DATE_OPE = getdate(), GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751710697', 'FEB751760260' )
+
+
+
+	SELECT TOP (100) *
+	FROM [GUIDE].[dbo].[FX_TRANSACTION]
+	where STATUS not in ('F', 'A', 'V' )
+	and CUST_ABBR not like 'NO GBASE%' and CUST_ABBR not like '999%' and CUST_ABBR not like 'NODREAMINPU%'
+	order by [ADD_ON] desc
+
+--Commit tran
+--rollback tran
+
+
+Begin tran
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'F', GIP_Status= 4, GIP_DESCRIPTION = ''
+	where STATUS not in ('F', 'A', 'V' )
+	and CUST_ABBR not like 'NO GBASE%' and CUST_ABBR not like '999%' and CUST_ABBR not like 'NODREAMINPU%'
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'S', AUTHORIZE_BY = 'BL007010', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751388921', 'FFB751388915' )
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'S', AUTHORIZE_BY = 'DL002041', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751388962', 'FEB751388960' )
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'S', AUTHORIZE_BY = 'GW003368', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751388959', 'SFB751388954' )
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'S', AUTHORIZE_BY = 'UA003086', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FSS751388955', 'FEB751388942' )
+
+	Update [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	Set STATUS = 'S', AUTHORIZE_BY = 'MM003292', ADD_ON = getdate(), AUTHORIZE_ON=getdate(),  GIP_STATUS = '', GIP_DESCRIPTION = '**102-I** TRANSACTION NO.=9999'
+	where REF_NO  in ('FEB751388949', 'FFB751388919' )
+
+
+	SELECT TOP (100) *
+	FROM [GUIDE].[dbo].[FX_SETTLEMENT_INF]
+	where STATUS not in ('F', 'A', 'V' )
+	and CUST_ABBR not like 'NO GBASE%' and CUST_ABBR not like '999%' and CUST_ABBR not like 'NODREAMINPU%'
+	order by [ADD_ON] desc
+
+--Commit tran
+--rollback tran
+
+
+
+-- GID
+Begin tran
+
+	Update [GUIDE].[dbo].[FX_TRANSACTION_EXT]
+	set [PrintDateTime] = getdate(), GIDUpload = 1
+	where REF_NO in ('FEB751388960', 'FEB751388962', 'SFB751388956', 'FEB751388949')
+
+	Select top 10  * from  [GUIDE].[dbo].[FX_TRANSACTION_EXT]
+	where PrintDateTime is not null
+	and Datediff(day, [PrintDateTime] , getdate()) = 0
+	order by PrintDateTime desc
+
+--Commit tran
+--rollback tran
+
+
+-- FXFCust
+SELECT TOP (10) 	
+	[Abbreviation]
+	,[SHORTNAME]
+	,[DeptCode]
+	,[TaxCode]
+	,[IBOSNO]    
+	,[Active]
+	,[STATUS]
+	,[DELETION_STATUS]
+	,[ADD_BY]
+	,[ADD_ON]
+	,[AUTHORIZE_BY]
+	,[AUTHORIZE_ON]   
+FROM [GUIDE].[dbo].[FXFCust]
+Where STATUS ='F' and DELETION_STATUS !='D'
+and [Abbreviation] != ''
+order by AUTHORIZE_ON desc
+
+
+-- [MxEucBalanceEvent]
+Declare @LastDate as datetime
+Select @LastDate = MAX(StatusUpdateTime)
+FROM [dbo].[MxEucBalanceEvent]
+Select @LastDate
+
+Update [dbo].[MxEucBalanceEvent]
+Set StatusUpdateTime = getdate()
+Where Datediff( day, StatusUpdateTime, @LastDate) = 0
+
+Select top 100  * from [dbo].[MxEucBalanceEvent]
+order by StatusUpdateTime desc
+GO
+
+
+
+-- [MxInboundEventLog]
+Declare @LastDate as datetime
+Select @LastDate = MAX(Timestamp)
+FROM [dbo].[MxInboundEventLog]
+
+Select @LastDate
+
+Select top 100  * from [dbo].[MxInboundEventLog]
+Where Datediff( day, Timestamp, @LastDate) = 0
+
+Update [dbo].[MxInboundEventLog]
+Set Timestamp = getdate()
+Where Datediff( day, Timestamp, @LastDate) = 0
+
+Select top 100  * from [dbo].[MxInboundEventLog]
+Where Datediff( day, Timestamp, getdate()) = 0
+
+-------------------------------------
+Select distinct b.SendingSystem from  [dbo].MxInboundEvents b
+inner join [dbo].MxInboundEventLog l on b.MessageId = Isnull(l.EventId, 0)
+where datediff(day, l.timestamp, getdate()) = 0
+
+Select  b.* , l.* from [dbo].MxInboundEvents b
+inner join [dbo].MxInboundEventLog l on b.MessageId = Isnull(l.EventId, 0)
+where datediff(day, l.timestamp, getdate()) = 0

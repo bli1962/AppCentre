@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73F3CAB9-6CED-4588-842E-67CD3146F144}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mhcb.syd.DataAccess</RootNamespace>
+    <AssemblyName>mhcb.syd.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\PROD\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\UAT\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AUDIT_LOG.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomesticClearing_GOPosting.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomesticClearing_Payment.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GAS_GO_DEBIT.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxCounterpartyType.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxCustCounterpartyType.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnDemand_Batch.cs">
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnDemand_Batch_Log.cs">
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OnDemand_Lock.cs">
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPD_37_Loan_Raw.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPD_37_Swap_Raw.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_Product.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_ProductReference.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PROD_TYPE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STATUS_CODE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vGUIDE_CUSTOMER_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\CovenantMasterRecordView.cs" />
+    <Compile Include="COVENANT_CONDITION.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_CONDITION_GROUP.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_FREQ_TYPE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_PERMISSION.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_RECEIPT_TIMING.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_RECORD.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COVENANT_TYPE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_COVENANT.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_STATUS_CODE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MoneyMarketTicket.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_MatchMoneyMarket.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_Payment.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_PaymentLog.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_Status.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_SwiftAck.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_SwiftPayment.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl_SwiftPaymentLog.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SECURITY_GROUPS.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USER.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\BankInfView.cs" />
+    <Compile Include="BANK_INF.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_INF_CORR.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentSavingsStatement.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMER_MASTER.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPT_PERMISSION.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eDocumentModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eDocumentModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eDocumentModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eDocumentModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eDocumentModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EUCDBArchiveModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EUCDBArchiveModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EUCDBArchiveModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EUCDBArchiveModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EUCDBArchiveModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EXCH_RATE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACILITY_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ForeignExchangeConfirmation.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ForeignExchangeStatement.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\CovenantRatioView.cs" />
+    <Compile Include="view\CustAbbrInfo.cs" />
+    <Compile Include="view\eDocumentView.cs" />
+    <Compile Include="view\ExchRateView.cs" />
+    <Compile Include="view\FacilityMasterLoanTransView.cs" />
+    <Compile Include="view\FxDeliveryCorpView.cs" />
+    <Compile Include="view\FxDeliveryCorpSummaryView.cs" />
+    <Compile Include="FXFCcy.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FXFCust.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\FXDeliveryView.cs" />
+    <Compile Include="view\FXFCustomerView.cs" />
+    <Compile Include="FXFSwift.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormStatus.cs" />
+    <Compile Include="FX_SETTLEMENT_INF.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FX_TRANSACTION.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FX_TRANSACTION_EXT.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gBaseDocument.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDEModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUIDEModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDEModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUIDEModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUIDEModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LCS_CUST_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOANModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LOANModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOANModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOANModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LOANModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_ACCOUNT_OFFICER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_BORROWER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_RATING.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_MASTER_SECURITY.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_TRANCHE_CONTENT_BATCH.cs">
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_TRANCHE_MASTER_BATCH.cs">
+      <DependentUpon>EUCDBArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAN_TRANS.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MoneyMarketConfirmation.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MoneyMarketStatement.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxCustomerEvent.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxCustomerStatu.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxEucBalanceEvent.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxGuideCustDetail.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxInboundEvent.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxInboundEventLog.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\FXTransactionExtView.cs" />
+    <Compile Include="view\FXTransactionView.cs" />
+    <Compile Include="view\GASDebitView.cs" />
+    <Compile Include="view\LoanMasterTrancheView.cs" />
+    <Compile Include="view\OnDemandBatchLogView.cs" />
+    <Compile Include="view\OnDemandBatchView.cs" />
+    <Compile Include="view\RFAInterestLoanView.cs" />
+    <Compile Include="view\MoneyMarketReportView.cs" />
+    <Compile Include="view\MoneyMarketTicketView.cs" />
+    <Compile Include="view\MxEucBalanceEventView.cs" />
+    <Compile Include="view\MxInboundEventLogView.cs" />
+    <Compile Include="MxInboundMessageStatu.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MxTaxCode.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="view\RFAInterestSwapView.cs" />
+    <Compile Include="view\SettlementInfView.cs" />
+    <Compile Include="SETTLEMENT_CORP_CUST_DEFAULT.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTLEMENT_INF.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Statement.cs">
+      <DependentUpon>eDocumentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANCHE_CONTENT.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANCHE_GUARANTEE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANCHE_MARGIN.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANCHE_MASTER.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANCHE_TYPE.cs">
+      <DependentUpon>LOANModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERS_Ext.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view\SwiftPaymentView.cs" />
+    <Compile Include="view\UserView.cs" />
+    <Compile Include="USER_SECURITY_GROUPS.cs">
+      <DependentUpon>GUIDEModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <EntityDeploy Include="GUIDEModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GUIDEModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="EUCDBArchiveModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EUCDBArchiveModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="eDocumentModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>eDocumentModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Debug.Config">
+      <DependentUpon>App.Config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="App.PROD.Config">
+      <DependentUpon>App.Config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="App.Release.Config">
+      <DependentUpon>App.Config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="App.UAT.Config">
+      <DependentUpon>App.Config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
+    <None Include="eDocumentModel.edmx.diagram">
+      <DependentUpon>eDocumentModel.edmx</DependentUpon>
+    </None>
+    <None Include="EUCDBArchiveModel.edmx.diagram">
+      <DependentUpon>EUCDBArchiveModel.edmx</DependentUpon>
+    </None>
+    <None Include="GUIDEModel.edmx.diagram">
+      <DependentUpon>GUIDEModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="LOANModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LOANModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LOANModel.edmx.diagram">
+      <DependentUpon>LOANModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="eDocumentModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eDocumentModel.edmx</DependentUpon>
+      <LastGenOutput>eDocumentModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="eDocumentModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eDocumentModel.edmx</DependentUpon>
+      <LastGenOutput>eDocumentModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="EUCDBArchiveModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EUCDBArchiveModel.edmx</DependentUpon>
+      <LastGenOutput>EUCDBArchiveModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EUCDBArchiveModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EUCDBArchiveModel.edmx</DependentUpon>
+      <LastGenOutput>EUCDBArchiveModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="GUIDEModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GUIDEModel.edmx</DependentUpon>
+      <LastGenOutput>GUIDEModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GUIDEModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GUIDEModel.edmx</DependentUpon>
+      <LastGenOutput>GUIDEModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="LOANModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LOANModel.edmx</DependentUpon>
+      <LastGenOutput>LOANModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LOANModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LOANModel.edmx</DependentUpon>
+      <LastGenOutput>LOANModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

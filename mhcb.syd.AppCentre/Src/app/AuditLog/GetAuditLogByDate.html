@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+
+    <link href="../../../Content/DisplayStyle.css" rel="stylesheet" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+
+    <script src="../CustomScripts.js"></script>
+    <script src="../includeExtHTML.js"></script>
+
+    <!--<script src="GetBankInfByCustAbbr.js"></script>-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var origin = location.origin;
+            var dev = 'http://localhost:62001';
+            var deploy = location.origin + '/webapi';
+
+            if (sessionStorage.getItem('accessToken') == null) {
+                window.location.href = origin + "/Register.html"
+            }
+
+            $('#txtGUsername').val(sessionStorage.getItem("Username"));
+            $('#txtGPassword').val(sessionStorage.getItem("Password"));
+
+            //**************************************************************
+            // it is for basic authorization purpose, don't remove please
+            //**************************************************************
+            //$('#divBasicAuthUsername').load("../commonBasicAuthForm.html");
+
+
+            // Wired the button to click function
+            $('#btnGet').click(function () {
+                //*******************************
+                // get user name and password
+                //*******************************
+                var username = $('#txtGUsername').val();
+                var password = $('#txtGPassword').val();
+
+                $('#linkClose').click(function () {
+                    $('#divMessageBox').hide('fade');
+                });
+
+                //alert("hello");
+                showSpinner();
+
+                $.ajax({
+                    type: 'GET',
+                    url: origin + '//api/AuditLog/LoadAuditLogByDates/',
+                    //url: dev+ '/api/AuditLog/',
+                    //url: deploy + '/api/AuditLog/',
+
+                    dataType: 'json',
+                    data: {
+                        "optDateFrom": $('#OperationDateFrom').val(),
+                        "optDateTo": $('#OperationDateTo').val()
+                    },
+                    //*****************************************************************************
+                    // Specify the authentication header btoa() method encodes a string to Base64
+                    //*****************************************************************************
+                    headers: {
+                        //'Authorization': 'Basic ' + btoa(username + ':' + password)
+                        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken")
+                    },
+
+                    success: function (result) {
+
+                        $('#bodyData').empty();
+                        $('#divData').removeClass('hidden');
+                        $('#DivSpanUsername').removeClass('hidden');
+
+                        $.each(result, function (index, value) {
+                            var row = $('<tr><td>'
+                                + value.AUDIT_ID + '</td><td>'
+                                + value.USER_ID + '</td><td>'
+                                + value.AUDIT_DATE + '</td><td>'
+                                + value.REF_NO + '</td><td>'
+                                + value.TRANS_NO + '</td><td>'
+                                + value.AUDIT_DESC + '</td><td>'
+                                + value.APP_NAME + '</td><td>'
+                                + value.TABLE_NAME + '</td><td>'
+                                + value.ORIGINAL_VALUE + '</td><td>'
+                                + value.NEW_VALUE + '</td></tr>'
+                            );
+
+                            $('#tblData').append(row);
+                            
+                        });
+                        hideSpinner();
+
+                        $('#divModalTitleText').text("Audit Log");
+
+                        $('#divMessageBox').addClass('alert-success');
+                        $('#divMessageText').text("Fetched Successfully");
+                       // $('#divMessageBox').show('fade');
+                    },
+
+                    error: function (jQXHR) {
+
+                        // If status code is 401, access token expired, so redirect the user to the login page
+                        if (jQXHR.status == "401") {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("Access Deny");
+                            $('#divModalBody').text("Your token has expired, please login again");
+
+                        }
+                        else if (jQXHR.status == "404") {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("Audit Log");
+                            $('#divModalBody').text("No record found");
+
+                        }
+                        else {
+                            $('#divMessageText').text(jQXHR.responseText);
+                            $('#divModalHeader').text("Audit Log");
+                            $('#divModalBody').text("Internal server error");
+
+                        }
+                        $('#bodyData').empty();
+                        hideSpinner();
+
+                        $('#divMessageBox').addClass('alert-warning');
+                       // $('#divMessageBox').show('fade');
+
+                        $('#divModalFooter').addClass("btn-warning");
+                        $('#successModal').modal('show');
+
+                        //400	Bad Request
+                        //401	Unauthorized
+                        //403	Forbidden
+                        //404	Not Found
+                        //500	Internal Server Error
+                    }
+
+                });
+            });
+
+            // remove AccessToken from session after logout
+            $('#btnBack').click(function () {
+                //sessionStorage.removeItem('accessToken');
+                window.location.href = origin + "/HOME";
+            });
+
+            $('#linkClose').click(function () {
+                $('#divMessageBox').hide('fade');
+            });
+
+            // whenever error happen, it redirect to login page
+            $('#errorModal').on('hidden.bs.modal', function () {
+                window.location.href = "/HOME";
+            });
+
+            $('#spanUsername').text('  Hello ' + sessionStorage.getItem('Username'));
+            //$('#spanUsername').text('Hello ' + localStorage.getItem('UserName'));
+
+            includeHTML();
+        });
+    </script>
+
+</head>
+
+
+<body style="padding-top: 20px;">
+
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>Fetch Audit Log by Date</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <!--<div w3-include-html="../commonMessageBox.html"></div>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <!--Bootstrap alert to display any validation errors-->
+                <div id="divMessageBox" class="alert collapse">
+                    <a id="linkClose" href="#" class="close">&times;</a>
+                    <div id="divMessageText"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-3">
+                <div id="DivSpanUsername" class="well hidden">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody thead class="thead-light">
+                        <tr>
+                            <td>Operation Date: </td>
+                            <td>From <input type="date" class="form-control" id="OperationDateFrom" value="" /> To <input type="date" class="form-control" id="OperationDateTo" value="" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="well">
+                    <input id="btnGet" class="btn btn-outline-primary m-1 m-1 float-left" type="button" value="Search" />
+                    <input id="btnCopy" class="btn btn-outline-info m-1 m-1 float-left" type="button" value="Copy"
+                           onclick="selectElementContents( document.getElementById('report_container') );" />
+                    <input id="btnBack" class="btn btn-outline-primary m-1 m-1 float-right" type="button" value="Back" />
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow text-primary" id="spinner" role="status" style="display:none;width: 6rem; height: 6rem;">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!--<div class="spinner" id="spinner" style="display:none;"></div>-->
+
+        <div id="report_container">
+            <div id="report_container">
+                <div class="row ">
+                    <div class="col-md-10">
+                        <div id="divData" class="hidden">
+                            <table class="table table-sm table-bordered table-striped table-hover" id="tblData">
+                                <thead>
+                                    <tr class="success">
+                                        <th>AUDIT ID</th>
+                                        <th>USER ID</th>
+                                        <th>AUDIT DATE</th>
+                                        <th>REF NO</th>
+                                        <th>TRANS NO</th>
+                                        <th>AUDIT DESCRIPTION</th>
+                                        <th>APPLICATION</th>
+                                        <th>TABLE NAME</th>
+                                        <th>ORIGINAL VALUE</th>
+                                        <th>NEW VALUE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyData"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+        $('#divBasicAuthUsername').hide('fade');
+        includeHTML();
+    </script>
+
+</body>
+</html>

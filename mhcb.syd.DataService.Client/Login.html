@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="utf-8" />
+	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="Content/GUIDEStyle.css" rel="stylesheet" />
+
+	<script src="Scripts/jquery-3.3.1.min.js"></script>
+	<script src="Scripts/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			var origin = location.origin;
+			// if (localStorage.getItem('accessToken') == null) {
+			//if (sessionStorage.getItem('accessToken') == null) {
+			//	window.location.href = origin + "/Register.html"
+			//}
+			// Must logig GUIDE user/password successfully
+			if (sessionStorage.getItem('LoginGuide') == null) {
+				window.location.href = "GUIDE.html";
+			}
+
+			// initial first part of email address
+			$('#txtUsername').val(sessionStorage.getItem("Username"));
+
+			$('#btnLogin').click(function () {
+				$.ajax({
+					// Post username, password & the grant type to /token
+					method: 'POST',
+					url: '/token',
+					contentType: 'application/json',
+					data: {
+						username: $('#txtUsername').val() + '@mizuho.cb.com',
+						password: $('#txtPassword').val(),
+						grant_type: 'password'
+					},
+					// When the request completes successfully, save the access token
+					// in the browser session storage and redirect the user to Data.html page.
+
+					//Please note:
+					//1. sessionStorage data is lost when the browser window is closed.
+					//2. To store an item in the browser session storage use setItem() method
+					//     Example: sessionStorage.setItem("accessToken", response.access_token)
+					//3. To retrieve an item from the browser session storage use getItem() method
+					//     Example: sessionStorage.getItem("accessToken")
+					//4. To remove an item from the browser session storage use removeItem() method
+					//     Example: sessionStorage.removeItem('accessToken')
+					success: function (response) {
+						// test code to see response details, please remove it
+						//$('#divMessageText').text(JSON.stringify(response));
+						//$('#divMessageBox').show('fade');
+
+						sessionStorage.setItem("accessToken", response.access_token);   //save token in sessionStorage
+						//localStorage.setItem("accessToken", response.access_token);  /save token in localStorage
+
+						sessionStorage.setItem("userName", response.userName);			//save username in localStorage
+						//localStorage.setItem("userName", response.userName);			//save username in localStorage
+
+						//window.location.href = "Data.html";                     //redirect the user to Data.html page
+						//window.location.href = "GetSettlementInfByCustAbbr.html";     //redirect the user to Data.html page
+						//window.location.href = "http://localhost:62001/Home";
+						window.location.href = origin + "/HOME";
+					},
+					// Display errors if any in the Bootstrap alert <div>
+					error: function (jqXHR) {
+						$('#divMessageBox').addClass('alert-warning');	
+						$('#divMessageText').text(jqXHR.responseText);
+						$('#divMessageBox').show('fade');
+					}
+				});
+			});
+
+
+			$('#linkClose').click(function () {
+				$('#divMessageBox').hide('fade');
+			});
+		});
+	</script>
+</head>
+
+<!--Lesson 24 - Login Page-->
+<body style="padding-top:20px">
+
+	<div class="container">
+		<div class="row ">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			</div>
+		</div>
+
+		<div class="row ">
+			<div class="col-md-4">
+				<div class="well">
+					<!--Table to capture username and password-->
+					<table class="table table-bordered table-sm">
+						<thead>
+							<tr class="success">
+								<th colspan="2" style="text-align:center">
+									Login as Registered User
+									<a class="btn btn-primary float-right" href="Register.html">Register</a>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>User name</td>
+								<td><input type="text" class="form-control" id="txtUsername" placeholder="Username" readonly/></td>
+							</tr>
+							<tr>
+								<td>Password</td>
+								<td><input type="password" class="form-control" id="txtPassword" placeholder="Password" /></td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="success">
+								<td colspan="2">
+									<input id="btnLogin" class="btn btn-success float-right" type="button" value="Login" />
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well hidden">
+					hidden column
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row ">
+			<div class="col-sm-4">
+				<!--Bootstrap alert to display error message if the login fails-->
+				<div id="divMessageBox" class="alert collapse">
+					<a id="linkClose" href="#" class="close">&times;</a>
+					<div id="divMessageText"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

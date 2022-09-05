@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="260811de76f141f5ba5dea927d58e22d" Name="Diagram1" ZoomLevel="41">
+        <EntityTypeShape EntityType="GUIDEDBModel.BANK_INF" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.BANK_INF_CORR" Width="1.5" PointX="12" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.CUSTOMER_MASTER" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FX_SETTLEMENT_INF" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FX_TRANSACTION" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FX_TRANSACTION_EXT" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FXFCcy" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FXFCust" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxCustomerEvent" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxInboundEvent" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.SETTLEMENT_CORP_CUST_DEFAULT" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.SETTLEMENT_INF" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.USER_SECURITY_GROUPS" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.USER" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.USERS_Ext" Width="1.5" PointX="10" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.GAS_GO_CREDIT" Width="1.5" PointX="15.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GUIDEDBModel.GAS_GO_DEBIT" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GUIDEDBModel.FK_BANK_INF_BANK_INF_CORR" ManuallyRouted="false" />
+        <AssociationConnector Association="GUIDEDBModel.FK_FX_TRANSACTION_CUSTOMER_MASTER" ManuallyRouted="false" />
+        <AssociationConnector Association="GUIDEDBModel.FK_FX_TRANSACTION_FX_SETTLEMENT_INF" ManuallyRouted="false" />
+        <AssociationConnector Association="GUIDEDBModel.FK_USERS_Ext_USERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxInboundEventLog" Width="1.5" PointX="10.375" PointY="18.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxGuideCustDetail" Width="1.5" PointX="12" PointY="24.625" />
+        <AssociationConnector Association="GUIDEDBModel.FK_FXFCustMxGuideCustDetail" />
+        <AssociationConnector Association="GUIDEDBModel.FK_MxGuideCustDetail_MxCustomerEvent" />
+        <EntityTypeShape EntityType="GUIDEDBModel.FXFSwift" Width="1.5" PointX="18.375" PointY="11.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxInboundMessageStatu" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxEucBalanceEvent" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.AUDIT_LOG" Width="1.5" PointX="3.375" PointY="18.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.SECURITY_GROUPS" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MoneyMarketTicket" Width="1.5" PointX="20.375" PointY="6.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_MatchFX" Width="1.5" PointX="24.625" PointY="5.125" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_MatchMoneyMarket" Width="1.5" PointX="24.625" PointY="8.625" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_Payment" Width="1.5" PointX="22.375" PointY="6.875" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_PaymentLog" Width="1.5" PointX="24.625" PointY="1.625" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_SwiftPayment" Width="1.5" PointX="24.625" PointY="12.375" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_SwiftPaymentLog" Width="1.5" PointX="26.875" PointY="13.625" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_MatchFX_PaymentControl_Payment" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_MatchMoneyMarket_PaymentControl_Payment" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_PaymentLog_PaymentControl_Payment" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftPayment_PaymentControl_Payment" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftPaymentLog_PaymentControl_SwiftPayment" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_SwiftAck" Width="1.5" PointX="26.875" PointY="6" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftAck_PaymentControl_Payment" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftAck_PaymentControl_SwiftPayment" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_Status" Width="1.5" PointX="18.125" PointY="20.125" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_Payment_PaymentControl_Status" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftPayment_PaymentControl_Status" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxCounterpartyType" Width="1.5" PointX="21.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_Product" Width="1.5" PointX="22.375" PointY="20.625" />
+        <EntityTypeShape EntityType="GUIDEDBModel.PaymentControl_ProductReference" Width="1.5" PointX="24.625" PointY="20" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_Payment_PaymentControl_ProductReference" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_ProductReference_PaymentControl_Product" />
+        <AssociationConnector Association="GUIDEDBModel.FK_PaymentControl_SwiftPayment_PaymentControl_ProductReference" />
+        <EntityTypeShape EntityType="GUIDEDBModel.MxCustCounterpartyType" Width="1.5" PointX="29.625" PointY="10.25" />
+        <AssociationConnector Association="GUIDEDBModel.FK_MxCustCounterpartyType_FXFCust" />
+        <AssociationConnector Association="GUIDEDBModel.FK_MxCustCounterpartyType_MxCounterpartyType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

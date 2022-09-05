@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.syd.DataAccess", "mhcb.syd.DataAccess\mhcb.syd.DataAccess.csproj", "{73F3CAB9-6CED-4588-842E-67CD3146F144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.syd.BusinessLayer", "mhcb.syd.BusinessLayer\mhcb.syd.BusinessLayer.csproj", "{8AE3A6BD-030D-4F46-9121-39C9754D39DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.syd.WebApi", "mhcb.syd.WebApi\mhcb.syd.WebApi.csproj", "{CAC67E3C-FE50-4111-82AA-C160B81C161F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.syd.AppCentre", "mhcb.syd.AppCentre\mhcb.syd.AppCentre.csproj", "{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.syd.Interface", "mhcb.syd.Interface\mhcb.syd.Interface.csproj", "{735FEDB9-3CED-4977-ABB4-F8432F2404DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mhcb.Syd.Models", "mhcb.Syd.Models\mhcb.Syd.Models.csproj", "{0E8BD317-307D-4F46-9AD1-D9945F024A13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		PROD|Any CPU = PROD|Any CPU
+		Release|Any CPU = Release|Any CPU
+		UAT|Any CPU = UAT|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.PROD|Any CPU.ActiveCfg = PROD|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.PROD|Any CPU.Build.0 = PROD|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{73F3CAB9-6CED-4588-842E-67CD3146F144}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.PROD|Any CPU.ActiveCfg = PROD|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.PROD|Any CPU.Build.0 = PROD|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{8AE3A6BD-030D-4F46-9121-39C9754D39DF}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.PROD|Any CPU.ActiveCfg = PROD|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.PROD|Any CPU.Build.0 = PROD|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{CAC67E3C-FE50-4111-82AA-C160B81C161F}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.PROD|Any CPU.ActiveCfg = PROD|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.PROD|Any CPU.Build.0 = PROD|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{D6F3BBCA-F514-4385-BF0B-6773C60AA48D}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.PROD|Any CPU.ActiveCfg = Release|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.PROD|Any CPU.Build.0 = Release|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{735FEDB9-3CED-4977-ABB4-F8432F2404DC}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.PROD|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.PROD|Any CPU.Build.0 = Debug|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8BD317-307D-4F46-9AD1-D9945F024A13}.UAT|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C4B9407-7C0A-4E15-A073-81BA5FCA6126}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bli1962.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = mhcb.syd.BusinessLayer\\mhcb.syd.BusinessLayer.csproj
+		SccProjectName1 = mhcb.syd.BusinessLayer
+		SccLocalPath1 = mhcb.syd.BusinessLayer
+		SccProjectUniqueName2 = mhcb.syd.DataAccess\\mhcb.syd.DataAccess.csproj
+		SccProjectName2 = mhcb.syd.DataAccess
+		SccLocalPath2 = mhcb.syd.DataAccess
+		SccProjectUniqueName3 = mhcb.syd.WebApi\\mhcb.syd.WebApi.csproj
+		SccProjectName3 = mhcb.syd.WebApi
+		SccLocalPath3 = mhcb.syd.WebApi
+		SccProjectUniqueName4 = mhcb.syd.AppCentre\\mhcb.syd.AppCentre.csproj
+		SccProjectName4 = mhcb.syd.AppCentre
+		SccLocalPath4 = mhcb.syd.AppCentre
+		SccProjectUniqueName5 = mhcb.syd.Interface\\mhcb.syd.Interface.csproj
+		SccProjectName5 = mhcb.syd.Interface
+		SccLocalPath5 = mhcb.syd.Interface
+		SccProjectUniqueName6 = mhcb.Syd.Models\\mhcb.Syd.Models.csproj
+		SccProjectName6 = mhcb.Syd.Models
+		SccLocalPath6 = mhcb.Syd.Models
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+
+	<link href="~/Content/LayoutStyle.css" rel="stylesheet" />
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+
+	<div id="navbar">
+		<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top navbar-custom ">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"
+							aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				</div>
+				<div class="navbar-collapse collapse" id="navbarNav">
+					<ul class="nav navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link " href="/GUIDE.html">Login Center</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="http://guide.mhcb.com.au/GUIDESG/Login.aspx">GUIDE</a>
+						</li>
+					</ul>
+				</div>
+				<div class="Logoheader">
+					<img src="~/Image/Logo.jpg" alt="Miziho Bank">
+				</div>
+			</div>
+		</nav>
+	</div>
+
+
+	<div class="jumbotron position-relative">
+		<h2>Mizuho Data Center</h2>
+		<p class="lead">
+			<span style="font-weight:bold; text-align:center;">The application provides you with the supplementary functions for both GUIDE and ELCS.</span>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td width="50%">
+							<h6>
+								From the data center, you can update GUIDE & ELCS data effectively by yourself rather than sendinging a service request to IT, such as
+							</h6>
+							<ul class="list-unstyled" style="list-style-type: disc !important;padding-left: 1em !important; margin-left: 1em;">
+								<li>change the status of FX transaction, FX delivery, Settlement Informatiom or Bank Information;</li>
+								<li>Append the missing closing date to today's Money Market Call Deposit account;</li>
+								<li>Reset the print status of eDocument file if it was missed print;</li>
+								<li>Update GUIDE customer profile values of Tax code, or department code;</li>
+								<li>Upload MIZUHO monthly Special Rate for uncommitted loan if it is out of date;</li>
+								<li>Reset GUIDE user profile due to failure to change password;</li>
+							</ul>
+						</td>
+						<td width="50%">
+							<h6>
+								Also you can query additional data of GUIDE & ELCS, such as
+							</h6>
+							<ul class="list-unstyled" style="list-style-type: disc !important;padding-left: 1em !important; margin-left: 1em;">
+								<li>View stauts of Settlement Information and Bank Information by status, customer abbrivation or swift Id;</li>
+								<li>View Today's EUC balance by customer abbrivation, or GBASE Ref No. or Account No.;</li>
+								<li>View Today's Inbound service event log by sending systems, EucBalance or GID Upload;</li>
+								<li>View Today's settlement bank account (summary / details) report for corporate customer;</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h7>Please be advised, you are required to register the system with GUIDE user name and one time password at the first time. If you have any questiong, please <a href="mailto:ben.li@mizuho-cb.com" target="_blank" class="btn btn-sm btn-outline-info">Email Us</a></h7>
+		</p>
+		<a href="/GUIDE.html" class="btn btn-primary ">Login Center &raquo;</a>
+		<a href="http://guide.mhcb.com.au/GUIDESG/Login.aspx" class="btn btn-primary ">GUIDE &raquo;</a>
+	</div>
+
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+	</div>
+
+	<div class="jumbotron fixed-bottom text-sm-left " style="margin-bottom:0">
+		<p>&copy; @DateTime.Now.Year - Mizuho Bank Sydney, developed by B. Li</p>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+
+
+
+
+@*<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>@ViewBag.Title - My ASP.NET Application</title>
+		@Styles.Render("~/Content/css")
+		@Scripts.Render("~/bundles/modernizr")
+
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li>@Html.ActionLink("Home", "Index", "Home")</li>
+						<li>@Html.ActionLink("About", "About", "Home")</li>
+						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					</ul>
+					@Html.Partial("_LoginPartial")
+				</div>
+			</div>
+		</div>
+		<div class="container body-content">
+			@RenderBody()
+			<hr />
+			<footer>
+				<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+			</footer>
+		</div>
+
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@RenderSection("scripts", required: false)
+	</body>
+	</html>*@

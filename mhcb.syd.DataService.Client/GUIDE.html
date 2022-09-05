@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>GUIDE</title>
+	<meta charset="utf-8" />
+
+	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="Content/GUIDEStyle.css" rel="stylesheet" />
+
+	<script src="Scripts/jquery-3.3.1.min.js"></script>
+	<script src="Scripts/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			var origin = location.origin;
+			var webapi = 'http://localhost:62001';
+
+			$('#btnLogin').click(function () {
+				$.ajax({
+					// Post username, password & the grant type to /token
+					type: 'GET',
+					url: 'http://localhost:62001//api/Guide/',
+					contentType: 'application/json',
+					data: {
+						username: $('#txtGUsername').val(),
+						password: $('#txtGPassword').val()
+					},
+
+					success: function (value) {
+						// alert("Hello world");
+						//alert(value);
+
+						$('#successModal').modal('show');
+
+						sessionStorage.setItem("LoginGuide", $('#txtGUsername').val());
+						sessionStorage.setItem("Username", $('#txtGUsername').val());
+						sessionStorage.setItem("Authorisers", value);
+
+						//redirect the user to Register.html page
+						window.location.href = origin + "//Register.html"
+					},
+					// Display errors if any in the Bootstrap alert <div>
+					error: function (jqXHR) {
+						//alert("Hello world 2");
+						$('#divMessageBox').addClass('alert-warning');	
+						$('#divMessageText').text(jqXHR.responseText);
+						$('#divMessageBox').show('fade');
+					}
+				});
+			});
+
+			// Close the bootstrap alert
+			$('#linkClose').click(function () {
+				$('#divMessageBox').hide('fade');
+			});
+
+			$(document).ready(function () {
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		});
+	</script>
+</head>
+
+
+<body style="padding-top:20px">
+	<div class="container">
+
+		<div class="row ">
+			<div class="col-md-4">
+				<div class="well">
+					<table class="table table-bordered table-sm">
+						<thead>
+							<tr class="success">
+								<th colspan="2">
+									GUIDE
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>User Name</td>
+								<td><input type="text" class="form-control" id="txtGUsername" value="BL007010" placeholder="Username" /></td>
+							</tr>
+							<tr>
+								<td>Password</td>
+								<td>
+									<a href="#" data-toggle="tooltip" class="red-tooltip" title="Please enter GUIDE password!">
+										<input type="password" class="form-control" 
+												id="txtGPassword" value="ZAQ1XSW2" placeholder="Password" />
+									</a>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr class="success">
+								<td colspan="2">
+									<input id="btnLogin" class="btn btn-success float-right" type="button" value="Login" />
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="row ">
+			<div class="col-sm-6">
+				<div id="divMessageBox" class="alert collapse">
+					<a id="linkClose" href="#" class="close">&times;</a>
+					<div id="divMessageText"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-mizuho">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title align-content-sm-center text-info">User</h5>
+					<button type="button" class="close" data-dismiss="modal">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<h3 class="modal-title">Login GUIDE Successfully</h3>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

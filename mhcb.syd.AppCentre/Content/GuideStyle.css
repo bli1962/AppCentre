@@ -1,0 +1,32 @@
+﻿body {
+	font-family: Consolas, monospace,'Courier New';
+}
+
+table {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-spacing: 5px;
+}
+
+thead tr th {
+	text-align: center;
+	font-size: larger;
+	background-color: darkcyan;
+	color: black;
+}
+
+tbody td {
+	text-align: center;
+	font-size: larger;
+	background-color: lightskyblue;
+	outline: none;
+	outline-width: thin;
+}
+
+tfoot tr td {
+	text-align: center;
+	font-size: larger;
+	background-color: darkcyan;
+	padding: 15px;
+	color: black;
+}

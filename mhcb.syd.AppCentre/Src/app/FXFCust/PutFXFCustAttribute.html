@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+
+    <link href="../../../Content/DisplayStyle.css" rel="stylesheet" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+
+    <script src="../CustomScripts.js"></script>
+    <script src="../includeExtHTML.js"></script>
+
+    <script src="PutFXFCustAttribute.js"></script>
+    <!--<script type="text/javascript">
+    </script>-->
+</head>
+
+
+<body style="padding-top:20px">
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div class="col-sm-12">
+                <h3></h3>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>Update FX Customer Attributes - Tax code, Dept code and Status</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <!--<div w3-include-html="../commonMessageBox.html"></div>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <!--Bootstrap alert to display any validation errors-->
+                <div id="divMessageBox" class="alert collapse">
+                    <a id="linkClose" href="#" class="close">&times;</a>
+                    <div id="divMessageText"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-4">
+
+                <div id="DivSpanUsername">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Customer Abbrivation :</td>
+                            <td><input type="text" class="form-control" id="abbreviation" value="" /></td>
+                            <td>For example: MIDLGB22</td>
+                        </tr>
+                        <tr>
+                            <td>STATUS :</td>
+                            <!--<td><input type="text" class="form-control" id="status" value="F" /></td>-->
+                            <td>
+                                <select class="form-control" id="status">
+                                    <option value="F">Finalised</option>
+                                    <option value="A">To be Authroised</option>
+                                    <option value="V">Verified</option>
+                                    <option value="D">Deleted</option>
+                                </select>
+                            </td>
+                            <td>Selection only</td>
+                        </tr>
+                        <tr>
+                            <td>TAX Code :</td>
+                            <!--<td><input type="text" class="form-control" id="status" value="F" /></td>-->
+                            <td>
+                                <select class="form-control" id="taxCode">
+                                    <option value="NA">No change</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="">Empty</option>
+
+                                </select>
+                            </td>
+                            <td>Selection only</td>
+                        </tr>
+                        <tr>
+                            <td>Department Code :</td>
+                            <!--<td><input type="text" class="form-control" id="deptCode" value="" /></td>-->
+                            <td>
+                                <select class="form-control" id="deptCode">
+                                    <option value="NA">No Change</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="70">70</option>
+                                    <option value="90">90</option>
+                                    <option value="">Empty</option>
+                                </select>
+                            </td>
+                            <td>Selection only</td>
+                        </tr>
+                        <tr>
+                            <td>AUTHORIZED BY :</td>
+                            <td><input type="text" class="form-control" id="authoriser" value="" readonly /></td>
+                            <td>Read only</td>
+                        </tr>                  
+                    </tbody>
+                </table>
+
+                <div class="well">
+                    <input id="btnUpdate" class="btn btn-outline-primary m-1 float-left" type="button" value="Update attributes" />
+                    <input id="btnBack" class="btn btn-outline-primary m-1 float-right" type="button" value="Back" />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+         $('#divBasicAuthUsername').hide('fade'); 
+         includeHTML();
+    </script>
+</body>
+</html>

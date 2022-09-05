@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EUCDbArchiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EUCDbArchive.dbo.LOAN_TRANCHE_CONTENT_BATCH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LOAN_TRANCHE_CONTENT_BATCH">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CCY" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TRANCHE_NO" Type="int" />
+          <Property Name="REF_NO" Type="varchar" MaxLength="12" />
+          <Property Name="CUST_ABBR" Type="varchar" MaxLength="12" />
+          <Property Name="LIMIT" Type="decimal" Precision="27" Scale="4" />
+          <Property Name="CCY" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="STATUS" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="int" />
+          <Property Name="DATA_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EUCDbArchive.dbo.LOAN_TRANCHE_MASTER_BATCH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LOAN_TRANCHE_MASTER_BATCH">
+          <Key>
+            <PropertyRef Name="TRANCHE_NO" />
+            <PropertyRef Name="MULTI_CCY_DESC" />
+            <PropertyRef Name="MAXI_DRAWDOWN_PERIOD" />
+            <PropertyRef Name="MAXI_DRAWDOWN_DAYS" />
+            <PropertyRef Name="MAXI_DRAWDOWN_TIMES" />
+            <PropertyRef Name="SILENT_MARGIN" />
+            <PropertyRef Name="TRD_INTERNAL_RATE" />
+            <PropertyRef Name="CFD_BASE_RATE" />
+            <PropertyRef Name="MARGIN_11AM" />
+            <PropertyRef Name="MARGIN_REMARK_11AM" />
+            <PropertyRef Name="RATING_TYPE" />
+            <PropertyRef Name="RATIIO_TYPE" />
+            <PropertyRef Name="FINANCIAL_NAME" />
+          </Key>
+          <Property Name="TRANCHE_NO" Type="int" Nullable="false" />
+          <Property Name="LOAN_NO" Type="int" />
+          <Property Name="TRANCHE_TYPE" Type="varchar" MaxLength="16" />
+          <Property Name="TRANCHE_NAME" Type="varchar" MaxLength="5" />
+          <Property Name="PROD_TYPE1" Type="smallint" />
+          <Property Name="PROD_TYPE5" Type="smallint" />
+          <Property Name="APPLN_NO" Type="varchar" MaxLength="11" />
+          <Property Name="APPLN_DATE" Type="datetime" />
+          <Property Name="HO_APPR_DATE" Type="datetime" />
+          <Property Name="APPLN_NO_RELT" Type="varchar" MaxLength="11" />
+          <Property Name="APPLN_DATE_RELT" Type="datetime" />
+          <Property Name="BASE_CCY" Type="char" MaxLength="3" />
+          <Property Name="MULTI_CCY" Type="bit" />
+          <Property Name="TRANCHE_PORTION" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="SYND_PORTION" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="PORTION_NOTES" Type="varchar" MaxLength="200" />
+          <Property Name="AVAIL_START" Type="datetime" />
+          <Property Name="AVAIL_END" Type="datetime" />
+          <Property Name="PERIOD_NOTES" Type="varchar" MaxLength="100" />
+          <Property Name="MAT_DATE" Type="datetime" />
+          <Property Name="MAT_DATE_NOTES" Type="varchar" MaxLength="100" />
+          <Property Name="MIN_DD" Type="varchar" MaxLength="200" />
+          <Property Name="MULTIPLE" Type="varchar" MaxLength="200" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PROC_BY" Type="char" MaxLength="6" />
+          <Property Name="PROC_ON" Type="datetime" />
+          <Property Name="APPR_BY" Type="char" MaxLength="6" />
+          <Property Name="APPR_ON" Type="datetime" />
+          <Property Name="MULTI_CCY_DESC" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_PERIOD" Type="smallint" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_DAYS" Type="smallint" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_TIMES" Type="smallint" Nullable="false" />
+          <Property Name="SILENT_MARGIN" Type="bit" Nullable="false" />
+          <Property Name="TRD_INTERNAL_RATE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CFD_BASE_RATE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MARGIN_11AM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MARGIN_REMARK_11AM" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RATING_TYPE" Type="bit" Nullable="false" />
+          <Property Name="RATIIO_TYPE" Type="bit" Nullable="false" />
+          <Property Name="FINANCIAL_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="int" />
+          <Property Name="DATA_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="OnDemand_Batch">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchNo" Type="int" />
+          <Property Name="Started" Type="bit" Nullable="false" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="Errored" Type="bit" Nullable="false" />
+          <Property Name="IsRec" Type="bit" Nullable="false" />
+          <Property Name="WhoRequested" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedWhen" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnDemand_Batch_Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" />
+          <Property Name="Level" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="When" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EUCDbArchive.dbo.OnDemand_Lock' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OnDemand_Lock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OnDemand_Batch_Log_OnDemand_Batch">
+          <End Role="OnDemand_Batch" Type="Self.OnDemand_Batch" Multiplicity="1" />
+          <End Role="OnDemand_Batch_Log" Type="Self.OnDemand_Batch_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OnDemand_Batch">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="OnDemand_Batch_Log">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EUCDbArchiveModelStoreContainer">
+          <EntitySet Name="OnDemand_Batch" EntityType="Self.OnDemand_Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnDemand_Batch_Log" EntityType="Self.OnDemand_Batch_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAN_TRANCHE_CONTENT_BATCH" EntityType="Self.LOAN_TRANCHE_CONTENT_BATCH" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOAN_TRANCHE_CONTENT_BATCH].[ID] AS [ID], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[TRANCHE_NO] AS [TRANCHE_NO], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[REF_NO] AS [REF_NO], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[CUST_ABBR] AS [CUST_ABBR], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[LIMIT] AS [LIMIT], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[CCY] AS [CCY], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[STATUS] AS [STATUS], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[BATCH_NUMBER] AS [BATCH_NUMBER], 
+    [LOAN_TRANCHE_CONTENT_BATCH].[DATA_DATE] AS [DATA_DATE]
+    FROM [dbo].[LOAN_TRANCHE_CONTENT_BATCH] AS [LOAN_TRANCHE_CONTENT_BATCH]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOAN_TRANCHE_MASTER_BATCH" EntityType="Self.LOAN_TRANCHE_MASTER_BATCH" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LOAN_TRANCHE_MASTER_BATCH].[TRANCHE_NO] AS [TRANCHE_NO], 
+    [LOAN_TRANCHE_MASTER_BATCH].[LOAN_NO] AS [LOAN_NO], 
+    [LOAN_TRANCHE_MASTER_BATCH].[TRANCHE_TYPE] AS [TRANCHE_TYPE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[TRANCHE_NAME] AS [TRANCHE_NAME], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PROD_TYPE1] AS [PROD_TYPE1], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PROD_TYPE5] AS [PROD_TYPE5], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPLN_NO] AS [APPLN_NO], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPLN_DATE] AS [APPLN_DATE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[HO_APPR_DATE] AS [HO_APPR_DATE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPLN_NO_RELT] AS [APPLN_NO_RELT], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPLN_DATE_RELT] AS [APPLN_DATE_RELT], 
+    [LOAN_TRANCHE_MASTER_BATCH].[BASE_CCY] AS [BASE_CCY], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MULTI_CCY] AS [MULTI_CCY], 
+    [LOAN_TRANCHE_MASTER_BATCH].[TRANCHE_PORTION] AS [TRANCHE_PORTION], 
+    [LOAN_TRANCHE_MASTER_BATCH].[SYND_PORTION] AS [SYND_PORTION], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PORTION_NOTES] AS [PORTION_NOTES], 
+    [LOAN_TRANCHE_MASTER_BATCH].[AVAIL_START] AS [AVAIL_START], 
+    [LOAN_TRANCHE_MASTER_BATCH].[AVAIL_END] AS [AVAIL_END], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PERIOD_NOTES] AS [PERIOD_NOTES], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MAT_DATE] AS [MAT_DATE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MAT_DATE_NOTES] AS [MAT_DATE_NOTES], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MIN_DD] AS [MIN_DD], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MULTIPLE] AS [MULTIPLE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[STATUS] AS [STATUS], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PROC_BY] AS [PROC_BY], 
+    [LOAN_TRANCHE_MASTER_BATCH].[PROC_ON] AS [PROC_ON], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPR_BY] AS [APPR_BY], 
+    [LOAN_TRANCHE_MASTER_BATCH].[APPR_ON] AS [APPR_ON], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MULTI_CCY_DESC] AS [MULTI_CCY_DESC], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MAXI_DRAWDOWN_PERIOD] AS [MAXI_DRAWDOWN_PERIOD], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MAXI_DRAWDOWN_DAYS] AS [MAXI_DRAWDOWN_DAYS], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MAXI_DRAWDOWN_TIMES] AS [MAXI_DRAWDOWN_TIMES], 
+    [LOAN_TRANCHE_MASTER_BATCH].[SILENT_MARGIN] AS [SILENT_MARGIN], 
+    [LOAN_TRANCHE_MASTER_BATCH].[TRD_INTERNAL_RATE] AS [TRD_INTERNAL_RATE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[CFD_BASE_RATE] AS [CFD_BASE_RATE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MARGIN_11AM] AS [MARGIN_11AM], 
+    [LOAN_TRANCHE_MASTER_BATCH].[MARGIN_REMARK_11AM] AS [MARGIN_REMARK_11AM], 
+    [LOAN_TRANCHE_MASTER_BATCH].[RATING_TYPE] AS [RATING_TYPE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[RATIIO_TYPE] AS [RATIIO_TYPE], 
+    [LOAN_TRANCHE_MASTER_BATCH].[FINANCIAL_NAME] AS [FINANCIAL_NAME], 
+    [LOAN_TRANCHE_MASTER_BATCH].[BATCH_NUMBER] AS [BATCH_NUMBER], 
+    [LOAN_TRANCHE_MASTER_BATCH].[DATA_DATE] AS [DATA_DATE]
+    FROM [dbo].[LOAN_TRANCHE_MASTER_BATCH] AS [LOAN_TRANCHE_MASTER_BATCH]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OnDemand_Lock" EntityType="Self.OnDemand_Lock" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OnDemand_Lock].[Id] AS [Id]
+    FROM [dbo].[OnDemand_Lock] AS [OnDemand_Lock]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_OnDemand_Batch_Log_OnDemand_Batch" Association="Self.FK_OnDemand_Batch_Log_OnDemand_Batch">
+            <End Role="OnDemand_Batch" EntitySet="OnDemand_Batch" />
+            <End Role="OnDemand_Batch_Log" EntitySet="OnDemand_Batch_Log" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EUCDbArchiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOAN_TRANCHE_CONTENT_BATCH">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CCY" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TRANCHE_NO" Type="Int32" />
+          <Property Name="REF_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="LIMIT" Type="Decimal" Precision="27" Scale="4" />
+          <Property Name="CCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="Int32" />
+          <Property Name="DATA_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="LOAN_TRANCHE_MASTER_BATCH">
+          <Key>
+            <PropertyRef Name="TRANCHE_NO" />
+            <PropertyRef Name="MULTI_CCY_DESC" />
+            <PropertyRef Name="MAXI_DRAWDOWN_PERIOD" />
+            <PropertyRef Name="MAXI_DRAWDOWN_DAYS" />
+            <PropertyRef Name="MAXI_DRAWDOWN_TIMES" />
+            <PropertyRef Name="SILENT_MARGIN" />
+            <PropertyRef Name="TRD_INTERNAL_RATE" />
+            <PropertyRef Name="CFD_BASE_RATE" />
+            <PropertyRef Name="MARGIN_11AM" />
+            <PropertyRef Name="MARGIN_REMARK_11AM" />
+            <PropertyRef Name="RATING_TYPE" />
+            <PropertyRef Name="RATIIO_TYPE" />
+            <PropertyRef Name="FINANCIAL_NAME" />
+          </Key>
+          <Property Name="TRANCHE_NO" Type="Int32" Nullable="false" />
+          <Property Name="LOAN_NO" Type="Int32" />
+          <Property Name="TRANCHE_TYPE" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TRANCHE_NAME" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PROD_TYPE1" Type="Int16" />
+          <Property Name="PROD_TYPE5" Type="Int16" />
+          <Property Name="APPLN_NO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="APPLN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="HO_APPR_DATE" Type="DateTime" Precision="3" />
+          <Property Name="APPLN_NO_RELT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="APPLN_DATE_RELT" Type="DateTime" Precision="3" />
+          <Property Name="BASE_CCY" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MULTI_CCY" Type="Boolean" />
+          <Property Name="TRANCHE_PORTION" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="SYND_PORTION" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="PORTION_NOTES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AVAIL_START" Type="DateTime" Precision="3" />
+          <Property Name="AVAIL_END" Type="DateTime" Precision="3" />
+          <Property Name="PERIOD_NOTES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MAT_DATE_NOTES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MIN_DD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MULTIPLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="PROC_ON" Type="DateTime" Precision="3" />
+          <Property Name="APPR_BY" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="APPR_ON" Type="DateTime" Precision="3" />
+          <Property Name="MULTI_CCY_DESC" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_PERIOD" Type="Int16" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_DAYS" Type="Int16" Nullable="false" />
+          <Property Name="MAXI_DRAWDOWN_TIMES" Type="Int16" Nullable="false" />
+          <Property Name="SILENT_MARGIN" Type="Boolean" Nullable="false" />
+          <Property Name="TRD_INTERNAL_RATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CFD_BASE_RATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MARGIN_11AM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MARGIN_REMARK_11AM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RATING_TYPE" Type="Boolean" Nullable="false" />
+          <Property Name="RATIIO_TYPE" Type="Boolean" Nullable="false" />
+          <Property Name="FINANCIAL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="Int32" />
+          <Property Name="DATA_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="EUCDbArchiveDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOAN_TRANCHE_CONTENT_BATCH" EntityType="Self.LOAN_TRANCHE_CONTENT_BATCH" />
+          <EntitySet Name="LOAN_TRANCHE_MASTER_BATCH" EntityType="Self.LOAN_TRANCHE_MASTER_BATCH" />
+          <EntitySet Name="OnDemand_Batch" EntityType="EUCDbArchiveModel.OnDemand_Batch" />
+          <EntitySet Name="OnDemand_Batch_Log" EntityType="EUCDbArchiveModel.OnDemand_Batch_Log" />
+          <EntitySet Name="OnDemand_Lock" EntityType="EUCDbArchiveModel.OnDemand_Lock" />
+          <AssociationSet Name="FK_OnDemand_Batch_Log_OnDemand_Batch" Association="EUCDbArchiveModel.FK_OnDemand_Batch_Log_OnDemand_Batch">
+            <End Role="OnDemand_Batch" EntitySet="OnDemand_Batch" />
+            <End Role="OnDemand_Batch_Log" EntitySet="OnDemand_Batch_Log" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OnDemand_Batch">
+          <Key>
+            <PropertyRef Name="BatchId" />
+          </Key>
+          <Property Name="BatchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchNo" Type="Int32" />
+          <Property Name="Started" Type="Boolean" Nullable="false" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <Property Name="Errored" Type="Boolean" Nullable="false" />
+          <Property Name="IsRec" Type="Boolean" Nullable="false" />
+          <Property Name="WhoRequested" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedWhen" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OnDemand_Batch_Log" Relationship="EUCDbArchiveModel.FK_OnDemand_Batch_Log_OnDemand_Batch" FromRole="OnDemand_Batch" ToRole="OnDemand_Batch_Log" />
+        </EntityType>
+        <EntityType Name="OnDemand_Batch_Log">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="When" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OnDemand_Batch" Relationship="EUCDbArchiveModel.FK_OnDemand_Batch_Log_OnDemand_Batch" FromRole="OnDemand_Batch_Log" ToRole="OnDemand_Batch" />
+        </EntityType>
+        <EntityType Name="OnDemand_Lock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_OnDemand_Batch_Log_OnDemand_Batch">
+          <End Type="EUCDbArchiveModel.OnDemand_Batch" Role="OnDemand_Batch" Multiplicity="1" />
+          <End Type="EUCDbArchiveModel.OnDemand_Batch_Log" Role="OnDemand_Batch_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OnDemand_Batch">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="OnDemand_Batch_Log">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EUCDbArchiveModelStoreContainer" CdmEntityContainer="EUCDbArchiveDBEntities">
+          <EntitySetMapping Name="LOAN_TRANCHE_CONTENT_BATCH">
+            <EntityTypeMapping TypeName="EUCDbArchiveModel.LOAN_TRANCHE_CONTENT_BATCH">
+              <MappingFragment StoreEntitySet="LOAN_TRANCHE_CONTENT_BATCH">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="LIMIT" ColumnName="LIMIT" />
+                <ScalarProperty Name="CCY" ColumnName="CCY" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BATCH_NUMBER" ColumnName="BATCH_NUMBER" />
+                <ScalarProperty Name="DATA_DATE" ColumnName="DATA_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAN_TRANCHE_MASTER_BATCH">
+            <EntityTypeMapping TypeName="EUCDbArchiveModel.LOAN_TRANCHE_MASTER_BATCH">
+              <MappingFragment StoreEntitySet="LOAN_TRANCHE_MASTER_BATCH">
+                <ScalarProperty Name="TRANCHE_NO" ColumnName="TRANCHE_NO" />
+                <ScalarProperty Name="LOAN_NO" ColumnName="LOAN_NO" />
+                <ScalarProperty Name="TRANCHE_TYPE" ColumnName="TRANCHE_TYPE" />
+                <ScalarProperty Name="TRANCHE_NAME" ColumnName="TRANCHE_NAME" />
+                <ScalarProperty Name="PROD_TYPE1" ColumnName="PROD_TYPE1" />
+                <ScalarProperty Name="PROD_TYPE5" ColumnName="PROD_TYPE5" />
+                <ScalarProperty Name="APPLN_NO" ColumnName="APPLN_NO" />
+                <ScalarProperty Name="APPLN_DATE" ColumnName="APPLN_DATE" />
+                <ScalarProperty Name="HO_APPR_DATE" ColumnName="HO_APPR_DATE" />
+                <ScalarProperty Name="APPLN_NO_RELT" ColumnName="APPLN_NO_RELT" />
+                <ScalarProperty Name="APPLN_DATE_RELT" ColumnName="APPLN_DATE_RELT" />
+                <ScalarProperty Name="BASE_CCY" ColumnName="BASE_CCY" />
+                <ScalarProperty Name="MULTI_CCY" ColumnName="MULTI_CCY" />
+                <ScalarProperty Name="TRANCHE_PORTION" ColumnName="TRANCHE_PORTION" />
+                <ScalarProperty Name="SYND_PORTION" ColumnName="SYND_PORTION" />
+                <ScalarProperty Name="PORTION_NOTES" ColumnName="PORTION_NOTES" />
+                <ScalarProperty Name="AVAIL_START" ColumnName="AVAIL_START" />
+                <ScalarProperty Name="AVAIL_END" ColumnName="AVAIL_END" />
+                <ScalarProperty Name="PERIOD_NOTES" ColumnName="PERIOD_NOTES" />
+                <ScalarProperty Name="MAT_DATE" ColumnName="MAT_DATE" />
+                <ScalarProperty Name="MAT_DATE_NOTES" ColumnName="MAT_DATE_NOTES" />
+                <ScalarProperty Name="MIN_DD" ColumnName="MIN_DD" />
+                <ScalarProperty Name="MULTIPLE" ColumnName="MULTIPLE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PROC_BY" ColumnName="PROC_BY" />
+                <ScalarProperty Name="PROC_ON" ColumnName="PROC_ON" />
+                <ScalarProperty Name="APPR_BY" ColumnName="APPR_BY" />
+                <ScalarProperty Name="APPR_ON" ColumnName="APPR_ON" />
+                <ScalarProperty Name="MULTI_CCY_DESC" ColumnName="MULTI_CCY_DESC" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_PERIOD" ColumnName="MAXI_DRAWDOWN_PERIOD" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_DAYS" ColumnName="MAXI_DRAWDOWN_DAYS" />
+                <ScalarProperty Name="MAXI_DRAWDOWN_TIMES" ColumnName="MAXI_DRAWDOWN_TIMES" />
+                <ScalarProperty Name="SILENT_MARGIN" ColumnName="SILENT_MARGIN" />
+                <ScalarProperty Name="TRD_INTERNAL_RATE" ColumnName="TRD_INTERNAL_RATE" />
+                <ScalarProperty Name="CFD_BASE_RATE" ColumnName="CFD_BASE_RATE" />
+                <ScalarProperty Name="MARGIN_11AM" ColumnName="MARGIN_11AM" />
+                <ScalarProperty Name="MARGIN_REMARK_11AM" ColumnName="MARGIN_REMARK_11AM" />
+                <ScalarProperty Name="RATING_TYPE" ColumnName="RATING_TYPE" />
+                <ScalarProperty Name="RATIIO_TYPE" ColumnName="RATIIO_TYPE" />
+                <ScalarProperty Name="FINANCIAL_NAME" ColumnName="FINANCIAL_NAME" />
+                <ScalarProperty Name="BATCH_NUMBER" ColumnName="BATCH_NUMBER" />
+                <ScalarProperty Name="DATA_DATE" ColumnName="DATA_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnDemand_Batch">
+            <EntityTypeMapping TypeName="EUCDbArchiveModel.OnDemand_Batch">
+              <MappingFragment StoreEntitySet="OnDemand_Batch">
+                <ScalarProperty Name="UpdatedWhen" ColumnName="UpdatedWhen" />
+                <ScalarProperty Name="CreatedWhen" ColumnName="CreatedWhen" />
+                <ScalarProperty Name="WhoRequested" ColumnName="WhoRequested" />
+                <ScalarProperty Name="IsRec" ColumnName="IsRec" />
+                <ScalarProperty Name="Errored" ColumnName="Errored" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Started" ColumnName="Started" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnDemand_Batch_Log">
+            <EntityTypeMapping TypeName="EUCDbArchiveModel.OnDemand_Batch_Log">
+              <MappingFragment StoreEntitySet="OnDemand_Batch_Log">
+                <ScalarProperty Name="When" ColumnName="When" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnDemand_Lock">
+            <EntityTypeMapping TypeName="EUCDbArchiveModel.OnDemand_Lock">
+              <MappingFragment StoreEntitySet="OnDemand_Lock">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

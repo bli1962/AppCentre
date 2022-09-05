@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/DisplayStyle.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // assign a variable to unorder list
+            // var ulSettlementInfs = $('#ulSettlemenfInf');
+
+            // Wired the button to click function
+            $('#btn').click(function () {
+                //*******************************
+                // get user name and password
+                //*******************************
+                var username = $('#txtUsername').val();
+                var password = $('#txtPassword').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:62001/api/settlementinf?status=F',
+                    dataType: 'json',
+                    //*****************************************************************************
+                    // Specify the authentication header btoa() method encodes a string to Base64
+                    ////*****************************************************************************
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(username + ':' + password)
+                    },
+
+                    success: function (result) {
+                        //ulSettlementInfs.empty();
+
+                        //ulSettlementInfs.append('<li>' + 'Call from the cross origin and basic authentication' + '</li>');
+
+                        //var title = 'SIF_ID' + ' ' + 'CUST_ABBR' + ' ' + 'RECORD_KIND' + ' ' + 'CCY_CD' + ' ' + 'STATUS' + ' ' + 'DELETION_STATUS' + ' ' + 'GIP_STATUS';
+                        //ulSettlementInfs.append('<li>' + title + '</li>');
+
+                        //$.each(data, function (index, val) {
+                        //    var fullSif = val.SIF_ID + ' ' + val.CUST_ABBR + ' ' + val.CCY_CD + ' ' + val.STATUS + ' ' + val.DELETION_STATUS + ' ' + val.GIP_STATUS;
+                        //    ulSettlementInfs.append('<li>' + fullSif + '</li>');
+                        //});
+                        $('#bodyData').empty();
+                        $('#divData').removeClass('hidden');
+
+                        $.each(result, function (index, value) {
+                            var row = $('<tr><td>'
+                                + value.SIF_ID + '</td><td>'
+                                + value.CUST_ABBR + '</td><td>'
+                                + value.RECORD_KIND + '</td><td>'
+                                + value.CCY_CD + '</td><td>'
+                                + value.STATUS + '</td><td>'
+                                + value.DELETION_STATUS + '</td><td>'
+                                + value.GIP_STATUS + '</td><td>'
+                                + value.GIP_DESCRIPTION + '</td><td>'
+                                + value.AUTHORIZE_BY + '</td><td>'
+                                + value.TRAN_NO + '</td></tr>');
+
+                            $('#tblData').append(row);
+                        });
+
+                    },
+                    complete: function (jqXHR) {
+                        if (jqXHR.status == '401') {
+                            ulEmployees.empty();
+
+                            ulEmployees.append('<li style="color:red">' + jqXHR.status + ' : ' + jqXHR.statusText + '</li>')
+                        }
+                    }
+                });
+            });
+
+            // Wired the button to click function
+            $('#btnClear').click(function () {
+                //ulSettlementInfs.empty();
+                $('#bodyData').empty();
+            });
+        });
+    </script>
+</head>
+
+
+<body>
+    <h2> Call Web Api service with basic authentic accross origin</h2>
+
+    Username : <input type="text" value="BL007010" id="txtUsername" />
+    Password : <input type="password" value="425009090658081504950886083108700500" id="txtPassword" />
+    <br /><br />
+
+    <div>
+        <input id="btn" type="button" value="Get All Settlement" />
+        <input id="btnClear" type="button" value="Clear" />
+        <!--Unorder list here
+        <ul id="ulSettlemenfInf" />-->
+        <hr />
+    </div>
+
+    <div class="row ">
+        <div class="col-md-6">
+            <div id="divData">
+                <table id="tblData">
+                    <thead>
+                        <tr class="success">
+                            <th>ID</th>
+                            <th>CUST_ABBR</th>
+                            <th>RECORD_KIND</th>
+                            <th>CCY_CD</th>
+                            <th>STATUS</th>
+                            <th>DELETION_STATUS</th>
+                            <th>GIP_STATUS</th>
+                            <th>GIP_DESCRIPTION</th>
+                            <th>AUTHORIZE_BY</th>
+                            <th>TRAN_NO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyData"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

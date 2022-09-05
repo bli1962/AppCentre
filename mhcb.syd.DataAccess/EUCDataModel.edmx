@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EUCDbArchiveDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'EUCDbArchive.EUC.CUSTOMER_BALANCE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CUSTOMER_BALANCE">
+          <Property Name="DATA_DATE" Type="datetime" />
+          <Property Name="BRANCH_NO" Type="nvarchar" MaxLength="3" />
+          <Property Name="BRANCH_NAME" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEPT_CD" Type="nvarchar" MaxLength="2" />
+          <Property Name="CUST_ABBR" Type="nvarchar" MaxLength="12" />
+          <Property Name="CCY_CD" Type="nvarchar" MaxLength="2" />
+          <Property Name="CCY_ABBR" Type="nvarchar" MaxLength="4" />
+          <Property Name="LOAN_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="BB_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="IB_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="ACC_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="LC_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="GRT_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="SEC_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TOTAL_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CURRENT_ACT_BC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="LOAN_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="BB_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="IB_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="ACC_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="LC_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="GRT_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="SEC_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TOTAL_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CURRENT_ACT_FC" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="UPDATEDATE" Type="datetime" />
+        </EntityType>-->
+        <EntityContainer Name="EUCDbArchiveDataModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EUCDbArchiveDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EUCDbArchiveDBEntities" annotation:LazyLoadingEnabled="true" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EUCDbArchiveDataModelStoreContainer" CdmEntityContainer="EUCDbArchiveDBEntities" />
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

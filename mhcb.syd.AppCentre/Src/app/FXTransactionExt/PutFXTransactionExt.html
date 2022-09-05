@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mizuho Data Center</title>
+    <meta charset="utf-8" />
+
+    <!--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>-->
+    <script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <link href="../../../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+
+    <link href="../../../Content/DisplayStyle.css" rel="stylesheet" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+
+    <script src="../CustomScripts.js"></script>
+    <script src="../includeExtHTML.js"></script>
+
+    <script src="PutFXTransactionExt.js"></script>
+    <!--<script type="text/javascript">
+    </script>-->
+</head>
+
+
+<body style="padding-top:20px">
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div class="col-sm-6">
+                <div class="panel panel-primary" style="color: blue; border-color: #ffffff; ">
+                    <div class="panel-body"><h4>Set GID Upload for FX Transaction</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div id="divBasicAuthUsername">
+                </div>
+            </div>
+        </div>
+
+        <!--<div w3-include-html="../commonMessageBox.html"></div>-->
+        <div class="row">
+            <div class="col-sm-4">
+                <!--Bootstrap alert to display any validation errors-->
+                <div id="divMessageBox" class="alert collapse">
+                    <a id="linkClose" href="#" class="close">&times;</a>
+                    <div id="divMessageText"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-10">
+                <div id="divData" class="hidden">
+                    <div class="well">
+                        <input id="btnRefresh" class="btn btn-outline-primary m-1 float-left" type="button" value="Get Today's GID of FX Transaction" />
+                        <br />
+                    </div>
+
+                    <table class="table table-sm table-bordered table-striped table-hover" style="background: #99ccff" id="tblData">
+                        <thead>
+                            <tr class="success">
+                                <th>Ref No</th>
+                                <th>Contract Id</th>
+                                <th>Trade Id</th>
+                                <th>Event</th>
+                                <th>Portfolio Group</th>
+                                <th>Portfolio Desk</th>
+                                <th>Portfolio Book</th>
+                                <th>Dealer</th>
+                                <th>Contract CCY</th>
+                                <th>EQUIV CCY</th>
+                                <th>Printed</th>
+                                <th>DateTime</th>
+                                <th>GID Upload</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyData"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-4">
+
+                <div id="DivSpanUsername">
+                    <span id="spanUsername" class="text-muted"></span>
+                </div>
+                <table class="table table-sm table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>GBASE Ref No :</td>
+                            <td><input type="text" class="form-control" id="txtRefNo" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>Operation Date :</td>
+                            <td><input type="date" class="form-control" id="OperationDate" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td>OPERATOR BY :</td>
+                            <td><input type="text" class="form-control" id="authoriser" value="" readonly /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="well">
+                    <input id="btnUpdate" class="btn btn-outline-primary m-1 float-left" type="button" value="Set GID Upload Again" />
+                    <input id="btnBack" class="btn btn-outline-primary m-1 float-right" type="button" value="Back" />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div w3-include-html="../commonModel.html"></div>
+    </div>
+
+    <script>
+         $('#divBasicAuthUsername').hide('fade'); 
+         includeHTML();
+    </script>
+</body>
+</html>
